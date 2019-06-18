@@ -1,12 +1,15 @@
+<?php 
+
+include_once './backend/BD.php';
+include_once './backend/modelo/MRegistro_usuarios.php';
+include_once './backend/controlador/CRegistro_usuarios.php';
+include_once './backend/registro_usuarios.php';
+?>
+
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
+<html lang="es">
     <head>
-        <title>TODO supply a title</title>
+        <title>webboard</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style/style.css">
@@ -18,8 +21,8 @@ and open the template in the editor.
         <header>
             <div class="container">
                 <div class="inicio">
-                    
-               
+
+
                 <div class="col-12">
                     <h1>WebBoard</h1>
                 </div>
@@ -29,7 +32,7 @@ and open the template in the editor.
         <div class="container">
             <div class="col-4">
                 <section>
-                    <div class="aside"> 
+                    <div class="aside">
                         <div class="nav">
                             <ul>
                                 <li>
@@ -53,58 +56,56 @@ and open the template in the editor.
                 </section>
             </div>
 
-            <div class="col-4"> 
+            <div class="col-4">
                 <fieldset>
                      <div class="row">
-                    <form class="formulario">
+                         <form action="<?php  echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="formulario">
 
                         <h1>Registrar Usuario</h1>
                         <div class="contenedor">
 
                             <div class="input-contenedor">
                                 <i class="fas fa-user icon"></i>
-                                <input type="text" placeholder="Nombre ">
+                                <input type="text" placeholder="Nombre " name="nombre">
 
                             </div>
                             <div class="input-contenedor">
                                 <i class="fas fa-user icon"></i>
-                                <input type="text" placeholder="Puesto">
+                                <input type="text" placeholder="Nivel de estudios" name="nivel_estudios" >
 
                             </div>
                             <div class="input-contenedor">
                                 <i class="fas fa-envelope icon"></i>
-                                <input type="text" placeholder="Correo electronico">
+                                <input type="email" id="email" placeholder="Correo electronico" name="email">
 
                             </div>
                             <div class="input-contenedor">
                                 <i class="fas fa-phone icon"></i>
-                                <input type="text" placeholder="Numero de telefono">
+                                <input type="text" placeholder="Numero de telefono" name="tel" >
 
                             </div>
 
                             <div class="input-contenedor">
                                 <i class="fas fa-envelope icon"></i>
-                                <input type="text" placeholder="Usuario">
+                                <input type="text" placeholder="Usuario" name="usuario" >
 
                             </div>
 
                             <div class="input-contenedor">
                                 <i class="fas fa-key icon"></i>
-                                <input type="password" placeholder="Contraseña">
-
+                                <input type="password" placeholder="Contraseña" name="password">
                             </div>
-                            <input type="submit" value="Registrate" class="button">
+                            <?php if(!empty($errores)): ?>
+                              <div class="errores"> <?php echo $errores; ?> </div>
+                            <?php elseif($enviado): ?>
+                              <p>Enviado correctamente</p>
+                              <?php endif; ?>
+                            <input type="submit" name="submit" value="Registrate" class="button">
                         </div>
+                        </form>
                      </div>
-                    </form>
                 </fieldset>
             </div>
         </div>
-
-
-
-
-
-    </div> 
 </body>
 </html>

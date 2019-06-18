@@ -50,17 +50,17 @@ header {
   text-align:left;
   justify-content: space-between;
 
-   
+
 }
 header h1{
     margin-top:3px;
     margin-left:-1150px;
  color:#F05B5B ;
   font-family: 'Gugi', cursive;
- 
+
 }
 article{
-    
+
 	background: white;
 	float: right;
 	min-height: 500px;
@@ -83,7 +83,7 @@ li {
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
-  
+
 }
 .aside{
     font-size:15px;
@@ -94,7 +94,7 @@ li {
 	width: 210px;
         height:520px;
       position: fixed;
-     
+
       z-index: 1100;
       display:block;
       border: 4px solid #F05B5B;
@@ -114,7 +114,7 @@ a:hover{
     background-color:#F05B5B;
     text-decoration: none;
     border-radius:30px;
-    
+
 }
 
 .formulario{
@@ -136,12 +136,22 @@ h1{
      font-family: 'Gugi', cursive;
      margin-top:60px;
 }
-input[type="text"],
-input[type="password"]{
+input[type="text"], input[type="password"]{
     font-size:15px;
     width: 82%;
     padding: 10px;
     border: none;
+}
+input[type="text"]:focus , input[type="password"]:focus, #email:focus{
+  border: 3px solid #F05B5B ;
+  border-radius: 10px;
+}
+
+#email{
+   font-size:15px;
+   width: 82%;
+   padding: 10px;
+   border: none;
 }
 .input-contenedor{
     margin-bottom: 15px;
@@ -160,11 +170,11 @@ input[type="password"]{
     background:  #1a2537;
     padding: 15px 20px;
      font-family: 'Gugi', cursive;
-    
+
     cursor: pointer;
     border-radius:30px;
     margin-left:75px;
-    
+
 }
 .button:hover{
     background:white;
