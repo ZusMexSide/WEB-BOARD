@@ -1,0 +1,59 @@
+
+@media all and (max-width: 600px){
+    div{
+        width:auto;
+        height:auto;
+        margin-left:auto;
+        margin-right: auto;
+        
+    }
+}
+@media all and (max-width: 600px){
+    .card{
+        width:auto;
+        height:auto;
+        margin-left:auto;
+        margin-right: auto;
+        
+    }
+}
+container{
+    margin-left:710px;
+}
+.informacion h5{
+    text-align: center;
+    color:white;
+}
+
+.card-body{
+    text-align:center;
+    color:white;
+}
+.card img{
+    border-radius:40px;
+    width:110px;
+    margin-left:60px; 
+}
+.card-body{
+   background-color:orangered;
+    
+}
+
+.card{
+    background-color:red;
+}
+
+.uno{
+    
+    background-color:#1a2537;
+   
+}
+.navbar-dark .navbar-brand {
+    color: #fff;
+    font-size: 35px;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+    font-size: 19px;
+}
+

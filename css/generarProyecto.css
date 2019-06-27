@@ -1,0 +1,96 @@
+
+ @media all and (max-width: 500px){
+    div{
+        width:auto;
+        height:auto;
+        margin-left:auto;
+        margin-right: auto;
+        
+    }
+}
+
+.uno{
+    background-color:#1a2537 ;
+    color:white;
+    margin-top:-164px;
+    height:75px;
+   
+}
+
+.form-container{
+    margin-top:60px;
+     border-radius:30px;
+    padding: 30px;
+   
+     
+ }
+
+form{
+    color:orangered;
+    background-color:#1a2537;
+}
+
+.form-group {
+    color:white;
+    
+}
+
+
+ .body{
+    background-color: orange;
+ }
+.btn-primary {
+    color: #fff;
+    background-color:red;
+    border-color: #007bff;
+}
+.container-fluid a {
+    
+    text-align: center;
+    color:white;
+    text-decoration: none;
+   margin-left:120px;
+    
+}
+.container-fluid a:hover {
+    text-decoration: none;
+    color:orangered;
+}
+.container-fluid button{
+    background-color:white;
+    color:#1a2537;
+    text-decoration: none;
+}
+.container-fluid button:hover{
+    background-color:orangered;
+    color:white;
+    text-decoration:none;
+}
+a {
+    color:white;
+    text-decoration: none;
+    background-color: transparent;
+}
+a:hover{
+    color:orangered;
+    text-decoration: none;
+    background-color: transparent;
+}
+.btn-primary {
+    color:black;
+    background-color:white;
+   
+}
+.btn-primary:hover{
+    color:white;
+    background-color:orangered;
+   
+}
+.navbar-dark .navbar-brand {
+    color: #fff;
+    font-size: 35px;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+    font-size: 19px;
+}

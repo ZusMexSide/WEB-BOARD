@@ -1,0 +1,50 @@
+
+ 
+
+.uno{
+    background-color:#1a2537 ;
+    color:white;
+    margin-top:-164px;
+    height:75px;
+   
+}
+
+.form-container{
+    margin-top:10px;
+     border-radius:30px;
+    padding: 30px;
+    height:auto;
+   
+     
+ }
+
+form{
+    color:orangered;
+    background-color:#1a2537;
+}
+
+.form-group {
+    color:white;
+    
+}
+
+
+ .body{
+    background-color: orange;
+ }
+
+.reg a {
+    margin-top: 190px;
+    background-color: orangered;
+    color: white;
+    width:1300px;
+    border-radius: 30px;
+}
+.navbar-dark .navbar-brand {
+    color: #fff;
+    font-size: 35px;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+    font-size: 19px;
+}

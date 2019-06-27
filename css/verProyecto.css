@@ -1,0 +1,54 @@
+@media all and (max-width: 600px){
+    div{
+        width:auto;
+        height:auto;
+        margin-left:auto;
+        margin-right: auto;
+        
+    }
+}
+
+p{
+    text-align:justify;
+}
+
+body{
+    margin:0;
+    padding:0;
+}
+
+h1{
+    text-align:center;
+    color:orangered;
+}
+ 
+h3{
+    color:black;
+margin-left:50px;
+    text-align:justify;
+}
+.proyecto {
+    color:white;
+    font-size:25px;
+}
+.proyecto:hover {
+    color:orangered;
+    text-decoration: none;
+}
+.card-header{
+    color:#FB6B1E;
+}
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color:#0c5460;
+    text-align: center;
+}
+.navbar-dark .navbar-brand {
+    color: #fff;
+    font-size: 35px;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+    font-size: 19px;
+}

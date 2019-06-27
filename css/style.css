@@ -1,0 +1,70 @@
+
+body{
+    background:white;
+  height:400px;
+    
+}
+ 
+ form{
+    background:#FF5733;
+    color:white;
+     margin-top:50px;
+     margin: 1px #1a2537 ;
+    
+ }
+.uno{
+    background-color:#1a2537 ;
+    color:white;
+    margin-top:-215px;
+    height:65px;
+   
+}
+.uno h1{
+    margin-top:50px;
+}
+
+.imagen{
+    margin-top:50px;
+    width:170px;
+    height:170px;
+    margin-left:70px;
+    position:static;
+}
+
+ 
+
+ .form-container{
+     border-radius:10px;
+    padding: 30px;
+   border-color:#1a2537;
+     color:#1a2537;
+     
+ }
+
+
+ .body{
+    background-color: orange;
+ }
+.btn-primary {
+    color:white;
+    background-color:#1a2537;
+    border-color: #007bff;
+    margin-left:170px;
+    margin-top:15px;
+    width:120px;
+}
+label {
+   display:inline-flex;
+    margin-bottom: .5rem;
+    margin-top:8px;
+}
+.navbar-dark .navbar-brand {
+    color: #fff;
+    font-size: 35px;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+    font-size: 19px;
+}
+
+

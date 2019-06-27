@@ -1,0 +1,104 @@
+@media all and (max-width: 300px){
+    div{
+        width:auto;
+        height:auto;
+        margin-left:auto;
+        margin-right: auto;
+        
+    }
+}
+
+p{
+  text-align:justify;
+}
+
+body{
+    margin:0;
+    padding:0;
+}
+
+.titulos h1{
+    float:left;
+    text-align:center;
+    color:orangered;
+}
+
+.titulos h2{
+    float:right;
+    color:#00D707;
+}
+ 
+h3{
+    color:black;
+margin-left:50px;
+    text-align:justify;
+}
+.tarea h1{
+    text-align: center;
+}
+.proyecto {
+    color:white;
+    font-size:25px;
+}
+.proyecto:hover {
+    color:orangered;
+    text-decoration: none;
+}
+.card-header{
+    color:#00D707;
+}
+.svg img{
+    width:80px;
+    position: relative;
+}
+
+
+.botones button{
+    border-radius:30px;
+    width:110px;
+    height:65px;
+    text-align: center;
+    background-color:#1a2537;
+    color:white;
+    margin-bottom:auto;
+    border-color:#1a2537;
+    margin-left:140px;
+    margin-top:10px;
+}
+.botones button:hover{
+    border-radius:30px;
+    width:110px;
+    height:65px;
+    text-align: center;
+    background-color:orangered;
+    color:white;
+    margin-bottom:auto;
+}
+
+
+.table{
+background-color:white;
+    color:#0c5460;
+    margin-top:40px;
+    text-align: center;
+  
+}
+.tabla{
+    width:400px;
+    color:#0c5460;
+}
+.table thead th {
+    vertical-align: bottom;
+  
+}
+.texto{
+    margin-top:40px;
+}
+.navbar-dark .navbar-brand {
+    color: #fff;
+    font-size: 35px;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+    font-size: 19px;
+}

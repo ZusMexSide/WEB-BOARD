@@ -55,6 +55,9 @@ if (isset($_POST['submit'])) {
         $password = htmlspecialchars($password);
         $password = stripslashes($password);
         $password = filter_var($password, FILTER_SANITIZE_STRING);
+    $password= password_hash($password, PASSWORD_DEFAULT,['cost'=>10]);
+    
+        
     } else {
         $errores .= " inserta tu contraseña <br>";
     }
