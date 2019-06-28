@@ -1,5 +1,12 @@
 <?php
-
+session_start();
+if (!isset($_SESSION['autentificado'])) {
+    header('Location: ../index.php');
+} else {
+    if ($_SESSION['autentificado']["privilegios"] == "Empleado") {
+        header('Location: ../index.php');
+    }
+}
 $CRegistro_usuarios= new CRegistro_usuarios();
 $errores = "";
 $enviado = "";

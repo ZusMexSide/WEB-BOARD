@@ -1,3 +1,14 @@
+<?php
+session_start();
+if (!isset($_SESSION['autentificado'])) {
+    header('Location: ../index.php');
+} else {
+    if ($_SESSION['autentificado']["privilegios"] == "Empleado") {
+        header('Location: ../index.php');
+    }
+}
+
+?>
 <html lang="en">
   <head>
     <!-- Required meta tags -->

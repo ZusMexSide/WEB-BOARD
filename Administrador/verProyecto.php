@@ -1,3 +1,13 @@
+<?php
+session_start();
+if (!isset($_SESSION['autentificado'])) {
+    header('Location: ../index.php');
+} else {
+    if ($_SESSION['autentificado']["privilegios"] == "Empleado") {
+        header('Location: ../index.php');
+    }
+}
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -22,10 +32,10 @@ and open the template in the editor.
   </button>
   <div class="collapse navbar-collapse p-2" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="proyectos.html">Proyectos</a>
-        <a class="nav-item nav-link" href="generarProyecto.html"> Generar Proyecto</a>
-      <a class="nav-item nav-link" href="agregarPersonal.html">Agregar Personal</a>
-      <a class="nav-item nav-link" href="personal.html">Personal</a>
+      <a class="nav-item nav-link active" href="proyectos.php">Proyectos</a>
+        <a class="nav-item nav-link" href="generarProyecto.php"> Generar Proyecto</a>
+      <a class="nav-item nav-link" href="agregarPersonal.php">Agregar Personal</a>
+      <a class="nav-item nav-link" href="personal.php">Personal</a>
      
     </div>
   </div>
@@ -73,7 +83,7 @@ and open the template in the editor.
      <div class="card text-white bg-dark mt-5" style="max-width: 18rem;"> 
   <div class="card-header"><h2>Listo</h2></div>
   <div class="card-body">
-      <a class="proyecto" href="descripcion.html">Eduardo Herrera</a>
+      <a class="proyecto" href="descripcion.php">Eduardo Herrera</a>
     <p class="card-text">Crear una base de datos de una tienda</p>
   </div>
 </div>

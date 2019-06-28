@@ -1,3 +1,13 @@
+<?php
+session_start();
+if (!isset($_SESSION['autentificado'])) {
+    header('Location: ../index.php');
+} else {
+    if ($_SESSION['autentificado']["privilegios"] == "Empleado") {
+        header('Location: ../index.php');
+    }
+}
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -11,7 +21,7 @@ and open the template in the editor.
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-     <link rel="stylesheet" href="css/descripcion.css">  
+    <link rel="stylesheet" href="../css/descripcion.css">  
  <title>    Administrador</title>
   </head>
   <body>
@@ -22,10 +32,10 @@ and open the template in the editor.
   </button>
   <div class="collapse navbar-collapse p-2" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="proyectos.html">Proyectos</a>
-        <a class="nav-item nav-link" href="generarProyecto.html"> Generar Proyecto</a>
-      <a class="nav-item nav-link" href="agregarPersonal.html">Agregar Personal</a>
-      <a class="nav-item nav-link" href="personal.html">Personal</a>
+      <a class="nav-item nav-link active" href="proyectos.php">Proyectos</a>
+        <a class="nav-item nav-link" href="generarProyecto.php"> Generar Proyecto</a>
+      <a class="nav-item nav-link" href="agregarPersonal.php">Agregar Personal</a>
+      <a class="nav-item nav-link" href="personal.php">Personal</a>
      
     </div>
   </div>

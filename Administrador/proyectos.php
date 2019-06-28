@@ -1,7 +1,11 @@
 <?php
 session_start();
-if (!isset($_SESSION['auttentificado'])) {
+if (!isset($_SESSION['autentificado'])) {
     header('Location: ../index.php');
+} else {
+    if ($_SESSION['autentificado']["privilegios"] == "Empleado") {
+        header('Location: ../index.php');
+    }
 }
 ?>
 <html lang="en">
@@ -22,8 +26,8 @@ if (!isset($_SESSION['auttentificado'])) {
   </button>
   <div class="collapse navbar-collapse p-2" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="proyectos.php">Proyectos<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="generarProyecto.php">Generar Proyecto</a>
+        <a class="nav-item nav-link active" href="proyectos.php">Proyectos<span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="generarProyecto.php">Generar Proyecto</a>
       <a class="nav-item nav-link" href="agregarPersonal.php">Agregar Personal</a>
       <a class="nav-item nav-link" href="personal.php">Personal</a>
      
