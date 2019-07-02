@@ -19,8 +19,19 @@
  }
 
 form{
-    color:orangered;
+     padding:20px;
+    color:white;
+    background-color:red;
     background-color:#1a2537;
+}
+form .errores{
+    text-align:center;
+    padding:20px;
+    color:white;
+    background-color:red;
+    background-color:#F50E3B;
+    text-decoration:#1a2537;
+   box-shadow: inset 0 0 1em gold;
 }
 
 .form-group {
@@ -47,4 +58,26 @@ form{
 .navbar-dark .navbar-nav .nav-link {
     color: rgba(255,255,255,.5);
     font-size: 19px;
+}
+.salir{
+   font-size:25px;
+   color: rgba(255,255,255,.5);
+  float:right;
+   padding-right:10px;
+    padding-left:10px;
+}
+.salir:hover{
+    color:white;
+}
+.btn-primary {
+    color:white;
+    background-color:#18293A;
+    border-color:white;
+    font-size:20px;
+}
+.btn-primary:hover {
+    color:#18293A;
+    background-color:white;
+    border-color:#18293A;
+    font-size:20px;
 }

@@ -17,13 +17,14 @@ if (isset($_POST['submit'])) {
     $tel = $_POST['tel'];
     $usuario = $_POST['usuario'];
     $password = $_POST['password'];
+    
     if (!empty($nombre)) {
         $nombre = trim($nombre);
         $nombre = htmlspecialchars($nombre);
         $nombre = stripslashes($nombre);
         $nombre = filter_var($nombre, FILTER_SANITIZE_STRING);
     } else {
-        $errores .= " inserta un nombre <br>";
+        $errores .= "inserta un nombre <br> ";
     }
     if (!empty($nivel_estudios)) {
         $nivel_estudios = trim($nivel_estudios);

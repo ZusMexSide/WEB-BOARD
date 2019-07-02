@@ -1,14 +1,5 @@
 
- @media all and (max-width: 500px){
-    div{
-        width:auto;
-        height:auto;
-        margin-left:auto;
-        margin-right: auto;
-        
-    }
-}
-
+ 
 .uno{
     background-color:#1a2537 ;
     color:white;
@@ -38,52 +29,35 @@ form{
 
  .body{
     background-color: orange;
+   
  }
 .btn-primary {
     color: #fff;
     background-color:red;
-    border-color: #007bff;
-}
-.container-fluid a {
-    
-    text-align: center;
-    color:white;
-    text-decoration: none;
-   margin-left:120px;
-    
-}
-.container-fluid a:hover {
-    text-decoration: none;
-    color:orangered;
-}
-.container-fluid button{
-    background-color:white;
-    color:#1a2537;
-    text-decoration: none;
-}
-.container-fluid button:hover{
-    background-color:orangered;
-    color:white;
-    text-decoration:none;
+  
 }
 a {
+    padding:15px;
+    text-align:center;
     color:white;
     text-decoration: none;
     background-color: transparent;
 }
 a:hover{
-    color:orangered;
+    color:white;
     text-decoration: none;
     background-color: transparent;
 }
 .btn-primary {
-    color:black;
-    background-color:white;
+    color:white;
+    background-color:#18293A;
+    border-color:white;
    
 }
 .btn-primary:hover{
-    color:white;
-    background-color:orangered;
+    color:#18293A;
+    background-color:white;
+      border-color:white;
    
 }
 .navbar-dark .navbar-brand {
@@ -93,4 +67,14 @@ a:hover{
 .navbar-dark .navbar-nav .nav-link {
     color: rgba(255,255,255,.5);
     font-size: 19px;
+}
+.salir{
+   font-size:25px;
+   color: rgba(255,255,255,.5);
+  float:right;
+   padding-right:10px;
+    padding-left:10px;
+}
+.salir:hover{
+    color:white;
 }

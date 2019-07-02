@@ -30,14 +30,13 @@ include_once './backend/logica/LLogin.php';
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-sm">
-                    <div class="imagen">
-                        <img src="img/img2.png" class="imagen">
+                    <div class="row justify-content-center">
+                    <img class="img-responsive" src="img/img2.png" alt="img2">
                     </div>
                 </div>
                 <div class="col-sm">
                     <form method="post" class="form-container">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Usuario:</label>
+                       <label for="exampleInputEmail1">Usuario:</label>
                             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="usuario" placeholder="Ingresa tu usuario">
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Password:</label>
@@ -49,8 +48,7 @@ include_once './backend/logica/LLogin.php';
                                 echo $error;
                             }
                             ?>
-                        </div>
-                    </form>
+                     </form>
                 </div>
             </div>
         </div>

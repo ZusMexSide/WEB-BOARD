@@ -102,3 +102,14 @@ background-color:white;
     color: rgba(255,255,255,.5);
     font-size: 19px;
 }
+.salir{
+   font-size:25px;
+   color: rgba(255,255,255,.5);
+  float:right;
+   padding-right:10px;
+    padding-left:10px;
+}
+.salir:hover{
+    color:white;
+}
+

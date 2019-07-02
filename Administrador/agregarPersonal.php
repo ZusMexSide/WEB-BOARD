@@ -16,6 +16,7 @@ and open the template in the editor.
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="../css/agregarPersonal.css">
         <title>Usuarios</title>
@@ -35,10 +36,11 @@ and open the template in the editor.
 
                 </div>
             </div>
+            <a class="salir" href=""> <i class="fas fa-sign-out-alt" ></i></a>
         </nav>
         <div class="container-fluid">
             <div class="row justify-content-center">
-                <div class="col-8 col-sm-6 col-md-4">
+                <div class="col-sm-5">
                     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="form-container">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nombre:</label>

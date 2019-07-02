@@ -35,17 +35,17 @@ container{
     margin-left:60px; 
 }
 .card-body{
-   background-color:orangered;
+   background-color:#18293A;
     
 }
 
 .card{
-    background-color:red;
+    background-color:white;
 }
 
 .uno{
     
-    background-color:#1a2537;
+    background-color:white;
    
 }
 .navbar-dark .navbar-brand {
@@ -54,6 +54,16 @@ container{
 }
 .navbar-dark .navbar-nav .nav-link {
     color: rgba(255,255,255,.5);
-    font-size: 19px;
+    font-size:19px;
+}
+.salir{
+   font-size:25px;
+   color: rgba(255,255,255,.5);
+  float:right;
+   padding-right:10px;
+    padding-left:10px;
+}
+.salir:hover{
+    color:white;
 }
 

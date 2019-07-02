@@ -34,41 +34,18 @@ container{
     margin-left:60px; 
 }
 .card-body{
-   background-color:orangered;
+   background-color:#18293A;
     
 }
 
 .card{
-    background-color:red;
+    background-color:white;
 }
 
 .uno{
     
-    background-color:#1a2537;
-   
-}
-
-.texto{
-    margin-top: 20px;
-    text-align: center;
-    color:orangered;
-}
-
-.reg a{
-   
-    margin-top:190px;
-    background-color:orangered;
-    color:white;
-    width:100px;
-    border-radius:30px;
-}
-.reg a:hover{
-    margin-top:190px;
-    text-decoration: none;
     background-color:white;
-    color:orangered;
    
-    border-radius:30px;
 }
 .navbar-dark .navbar-brand {
     color: #fff;
@@ -76,5 +53,37 @@ container{
 }
 .navbar-dark .navbar-nav .nav-link {
     color: rgba(255,255,255,.5);
-    font-size: 19px;
+    font-size:19px;
+}
+.salir{
+   font-size:25px;
+   color: rgba(255,255,255,.5);
+  float:right;
+   padding-right:10px;
+    padding-left:10px;
+}
+.salir:hover{
+    color:white;
+}
+
+h2{
+    color:#18293A;
+    margin-top:10px;
+    text-align:center;
+}
+.boton input{
+    background-color:#18293A;
+    border-color:#18293A;
+    border-radius:30px;
+    height:40px;
+    color:white;
+    float:right;
+}
+.boton input:hover{
+    background-color:white;
+    border-color:#18293A;
+    border-radius:30px;
+    height:40px;
+    color:#18293A;
+    float:right;
 }

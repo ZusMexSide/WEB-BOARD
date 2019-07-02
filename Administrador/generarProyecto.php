@@ -21,6 +21,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="../css/generarProyecto.css">  
         <title>Usuarios</title>
@@ -40,10 +41,11 @@ and open the template in the editor.
 
                 </div>
             </div>
+            <a class="salir" href=""> <i class="fas fa-sign-out-alt" ></i></a>
         </nav>
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-6">
+                <div class="col-sm-5">
                     <form class="form-container">
                         <div class="form-group">
                             <label for="nombreProyecto">Lider Del Proyecto:</label>
@@ -61,7 +63,7 @@ and open the template in the editor.
                             <label for="expiracion">Fecha De Expiracion:</label>
                             <input type="Date" row=10 class="form-control" id="correo" placeholder="">
                         </div>
-                        <a class="boton" href="AgregarPersonas.html">Agregar Personal</a>
+                        <a class="boton" href="AgregarPersonas.php">Agregar Personal</a>
                         <button type="submit" class="btn btn-primary btn-block ">Guardar Proyecto</button>
                     </form>
                 </div>
