@@ -18,7 +18,7 @@ if (!isset($_SESSION['autentificado'])) {
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-2" >
-            <a class="navbar-brand" href="#">WebBoard</a>
+            <a class="navbar-brand" href="proyectos_usuarios.php">WebBoard</a>
             <div class="collapse navbar-collapse p-2" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                 </div>

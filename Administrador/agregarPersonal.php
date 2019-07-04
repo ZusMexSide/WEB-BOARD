@@ -1,7 +1,7 @@
 <?php
 include_once '../backend/modelo/BD.php';
-include_once '../backend/modelo/MRegistro_usuarios.php';
-include_once '../backend/controlador/CRegistro_usuarios.php';
+include_once '../backend/modelo/MUsuarios.php';
+include_once '../backend/controlador/CUsuarios.php';
 include_once '../backend/logica/registro_usuarios.php';
 ?>
 <!DOCTYPE html>
@@ -23,7 +23,7 @@ and open the template in the editor.
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">WebBoard</a>
+            <a class="navbar-brand" href="proyectos.php">WebBoard</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -41,7 +41,7 @@ and open the template in the editor.
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-sm-5">
-                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="form-container">
+                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data" class="form-container">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nombre:</label>
                             <input name="nombre" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
@@ -67,6 +67,11 @@ and open the template in the editor.
                             <label for="exampleInputPassword1">Password:</label>
                             <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="">
                         </div>
+                         <label for="exampleInputPassword1">Fotografia:</label><br>
+                         <input name="foto" type="file" accept="images/*" id="foto" placeholder="">
+                         <br>
+                         <br>
+
                         <?php if (!empty($errores)): ?>
                             <div class="errores"> <?php echo $errores; ?> </div>
                         <?php elseif ($enviado): ?>

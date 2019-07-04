@@ -1,4 +1,7 @@
 <?php
+include_once '../backend/modelo/BD.php';
+include_once '../backend/modelo/MUsuarios.php';
+include_once '../backend/controlador/CUsuarios.php';
 session_start();
 if (!isset($_SESSION['autentificado'])) {
     header('Location: ../index.php');
@@ -7,6 +10,7 @@ if (!isset($_SESSION['autentificado'])) {
         header('Location: ../index.php');
     }
 }
+$personal=new CUsuarios();
 ?>
 <html lang="en">
     <head>
@@ -21,7 +25,7 @@ if (!isset($_SESSION['autentificado'])) {
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">WebBoard</a>
+             <a class="navbar-brand" href="proyectos.php">WebBoard</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -37,118 +41,7 @@ if (!isset($_SESSION['autentificado'])) {
         </nav>
         <div class="container">
             <div class="row">
-                <div class="col-sm">
-                    <div class="card mt-5" style="width: 15rem;">
-                        <div class="uno"> 
-                            <img src="../imagenes/uno.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h3 class="card-title">Informacion:</h3>
-                                <div class="informacion">
-                                    <h5>Nombre:Juan Torres </h5>
-                                    <h5>Puesto:Diseñador</h5>
-                                    <h5>Tareas:Proyectos </h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mt-5" style="width: 15rem;">
-                        <div class="uno"> 
-                            <img src="../imagenes/uno.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h3 class="card-title">Informacion:</h3>
-                                <div class="informacion">
-                                    <h5>Nombre:Juan Torres </h5>
-                                    <h5>Puesto:Diseñador</h5>
-                                    <h5>Tareas:Proyectos </h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card mt-5" style="width: 15rem;">
-                        <div class="uno"> 
-                            <img src="../imagenes/uno.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h3 class="card-title">Informacion:</h3>
-                                <div class="informacion">
-                                    <h5>Nombre:Juan Torres </h5>
-                                    <h5>Puesto:Diseñador</h5>
-                                    <h5>Tareas:Proyectos </h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mt-5" style="width: 15rem;">
-                        <div class="uno"> 
-                            <img src="../imagenes/uno.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h3 class="card-title">Informacion:</h3>
-                                <div class="informacion">
-                                    <h5>Nombre:Juan Torres </h5>
-                                    <h5>Puesto:Diseñador</h5>
-                                    <h5>Tareas:Proyectos </h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card mt-5 mr-150" style="width: 15rem;">
-                        <div class="uno"> 
-                            <img src="../imagenes/uno.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h3 class="card-title">Informacion:</h3>
-                                <div class="informacion">
-                                    <h5>Nombre:Juan Torres </h5>
-                                    <h5>Puesto:Diseñador</h5>
-                                    <h5>Tareas:Proyectos </h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mt-5" style="width: 15rem;">
-                        <div class="uno"> 
-                            <img src="../imagenes/uno.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h3 class="card-title">Informacion:</h3>
-                                <div class="informacion">
-                                    <h5>Nombre:Juan Torres </h5>
-                                    <h5>Puesto:Diseñador</h5>
-                                    <h5>Tareas:Proyectos </h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card mt-5 mr-150" style="width: 15rem;">
-                        <div class="uno"> 
-                            <img src="../imagenes/uno.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h3 class="card-title">Informacion:</h3>
-                                <div class="informacion">
-                                    <h5>Nombre:Juan Torres </h5>
-                                    <h5>Puesto:Diseñador</h5>
-                                    <h5>Tareas:Proyectos </h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mt-5" style="width: 15rem;">
-                        <div class="uno"> 
-                            <img src="../imagenes/uno.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h3 class="card-title">Informacion:</h3>
-                                <div class="informacion">
-                                    <h5>Nombre:Juan Torres </h5>
-                                    <h5>Puesto:Diseñador</h5>
-                                    <h5>Tareas:Proyectos </h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+             <?php echo $personal->personalCompleto()?>
             </div>
         </div> 
 

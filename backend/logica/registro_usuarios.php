@@ -7,7 +7,7 @@ if (!isset($_SESSION['autentificado'])) {
         header('Location: ../index.php');
     }
 }
-$CRegistro_usuarios= new CRegistro_usuarios();
+$CRegistro_usuarios= new CUsuarios();
 $errores = "";
 $enviado = "";
 if (isset($_POST['submit'])) {
@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
     $tel = $_POST['tel'];
     $usuario = $_POST['usuario'];
     $password = $_POST['password'];
-    
+
     if (!empty($nombre)) {
         $nombre = trim($nombre);
         $nombre = htmlspecialchars($nombre);
@@ -64,19 +64,21 @@ if (isset($_POST['submit'])) {
         $password = stripslashes($password);
         $password = filter_var($password, FILTER_SANITIZE_STRING);
     $password= password_hash($password, PASSWORD_DEFAULT,['cost'=>10]);
-    
-        
+
+
     } else {
         $errores .= " inserta tu contraseña <br>";
+    }
+    if (!empty($_FILES['foto']['tmp_name'])){
+        copy($_FILES['foto']['tmp_name'],"../imagenes/".$_FILES['foto']['name']);
+        $url="imagenes/".$_FILES['foto']['name'];
+    }else {
+      $errores.="selecciona una foto <br>";
     }
     if (!$errores) {
         $enviado = true;
     }
     if($enviado){
-        $CRegistro_usuarios->insertarUsuario( $nombre, $nivel_estudios, $correo, $tel, $usuario, $password);
+        $CRegistro_usuarios->insertarUsuario( $nombre, $nivel_estudios, $correo, $tel, $usuario, $password,$url);
     }
 }
-
-
-
-
