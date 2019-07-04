@@ -23,7 +23,7 @@ if (!isset($_SESSION['autentificado'])) {
                 <div class="navbar-nav">
                 </div>
             </div>
-            <a class="salir" href=""> <i class="fas fa-sign-out-alt" ></i></a>
+            <a class="salir" href="../backend/logica/cerrar_sesion.php"> <i class="fas fa-sign-out-alt" ></i></a>
         </nav>
         <div class="inicio"> <h1>PROYECTOS</h1></div>
         <div class="container">

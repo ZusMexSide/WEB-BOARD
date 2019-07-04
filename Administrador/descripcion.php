@@ -40,7 +40,7 @@ and open the template in the editor.
 
                 </div>
             </div>
-            <a class="salir" href=""> <i class="fas fa-sign-out-alt" ></i></a>
+             <a class="salir" href="../backend/logica/cerrar_sesion.php"> <i class="fas fa-sign-out-alt" ></i></a>
         </nav>
         <div class="container">
             <div class="row">
