@@ -121,14 +121,14 @@ background-color:white;
     color:#0c5460;
     text-align: center;
 }
-.navbar-dark .navbar-brand {
+/*.navbar-dark .navbar-brand {
     color: #fff;
-    font-size: 35px;
+    font-size:35px;
 }
 .navbar-dark .navbar-nav .nav-link {
     color: rgba(255,255,255,.5);
     font-size: 19px;
-}
+}*/
 
 .salir{
    font-size:25px;

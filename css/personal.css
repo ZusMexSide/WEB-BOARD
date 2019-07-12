@@ -28,16 +28,16 @@ container{
 .card-body{
     text-align:center;
     color:white;
+     background-color:#18293A;
 }
 .card img{
-    border-radius:40px;
-    width:110px;
-    margin-left:60px; 
+    border-radius:10px;
+    width:150px;
+    height:150px;
+    margin-left:44px; 
+   
 }
-.card-body{
-   background-color:#18293A;
-    
-}
+
 
 .card{
     background-color:white;
@@ -45,7 +45,8 @@ container{
 
 .uno{
     
-    background-color:white;
+    background-color:orange;
+    
    
 }
 .navbar-dark .navbar-brand {
@@ -65,5 +66,9 @@ container{
 }
 .salir:hover{
     color:white;
+}
+.img{
+   width:60px;
+   height:60px;
 }
 

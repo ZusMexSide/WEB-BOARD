@@ -1,43 +1,29 @@
 
- 
-.uno{
-    background-color:#1a2537 ;
-    color:white;
-    margin-top:-164px;
-    height:75px;
-   
+ @media all and (max-width: 300px){
+    div{
+        width:auto;
+        height:auto;
+        margin-left:auto;
+        margin-right: auto;
+        
+    }
 }
-
 .form-container{
-    margin-top:60px;
-     border-radius:30px;
+    margin-top:10px;
+     border-radius:20px;
     padding: 30px;
+    height:auto;
    
      
  }
-
-form{
-    color:orangered;
+ form{
+     padding:20px;
+    color:white;
+    background-color:red;
     background-color:#1a2537;
 }
-
-.form-group {
-    color:white;
-    
-}
-
-
- .body{
-    background-color: orange;
-   
- }
-.btn-primary {
-    color: #fff;
-    background-color:red;
-  
-}
 a {
-    padding:15px;
+    
     text-align:center;
     color:white;
     text-decoration: none;
@@ -58,15 +44,16 @@ a:hover{
     color:#18293A;
     background-color:white;
       border-color:white;
-   
 }
+
+
 .navbar-dark .navbar-brand {
     color: #fff;
     font-size: 35px;
 }
 .navbar-dark .navbar-nav .nav-link {
     color: rgba(255,255,255,.5);
-    font-size: 19px;
+    font-size:19px;
 }
 .salir{
    font-size:25px;

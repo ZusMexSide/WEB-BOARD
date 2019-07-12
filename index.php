@@ -31,7 +31,7 @@ include_once './backend/logica/LLogin.php';
             <div class="row justify-content-center">
                 <div class="col-sm">
                     <div class="row justify-content-center">
-                    <img class="img-responsive" src="img/img2.png" alt="img2">
+                        <img class="img-responsive" src="img/listo.svg" alt="img2">
                     </div>
                 </div>
                 <div class="col-sm">

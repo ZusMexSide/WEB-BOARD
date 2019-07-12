@@ -1,4 +1,12 @@
-
+@media all and (max-width: 300px){
+    div{
+        width:auto;
+        height:auto;
+        margin-left:auto;
+        margin-right: auto;
+        
+    }
+}
 body{
     background:white;
   height:400px;
@@ -38,10 +46,10 @@ body{
     margin-top:50px;
 }
 
-.imagen{
+.img-responsive{
     margin-top:40px;
-    width:250px;
-    height:250px;
+    width:280px;
+    height:280px;
     
     
 }

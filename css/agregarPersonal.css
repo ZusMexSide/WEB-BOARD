@@ -11,7 +11,7 @@
 
 .form-container{
     margin-top:10px;
-     border-radius:30px;
+     border-radius:20px;
     padding: 30px;
     height:auto;
    
@@ -34,14 +34,11 @@ form .errores{
    box-shadow: inset 0 0 1em gold;
 }
 
-.form-group {
-    color:white;
-    
-}
 
 
  .body{
     background-color: orange;
+    height:1600px;
  }
 
 .reg a {
@@ -71,13 +68,49 @@ form .errores{
 }
 .btn-primary {
     color:white;
-    background-color:#18293A;
-    border-color:white;
+    background-color:#EA9A05; 
+    border-color:#EA9A05; 
     font-size:20px;
+    width:60%;
+    margin-left:20%;
+    margin-right:15%;
+    border-radius:15px;
 }
 .btn-primary:hover {
-    color:#18293A;
+   color:#EA9A05; 
     background-color:white;
-    border-color:#18293A;
-    font-size:20px;
+   font-size:20px;
+    border-radius:15px;
+    border-color:white;
+}
+
+.input-label{
+    text-align:center;
+    width:60%;
+    background-color:#EA9A05;
+    color:white;
+    padding:25px;
+    border-radius:15px;
+    margin-left:20%;
+    margin-right:15%;
+}
+.input-label:hover{
+     text-align:center;
+    width:60%;
+    background-color:white;
+    color:#EA9A05; 
+    padding:25px;
+    border-radius:15px;
+    margin-left:20%;
+    margin-right:15%;
+}
+.form-div{
+   margin-top:10px;
+}
+#foto{
+    display:none;
+}
+
+label{
+  color:#EA9A05;  
 }
