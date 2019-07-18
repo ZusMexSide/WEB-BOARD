@@ -1,53 +1,63 @@
 
 @media all and (max-width: 600px){
     div{
+        margin:auto;
+        display:block;
         width:auto;
-        height:auto;
-        margin-left:auto;
-        margin-right: auto;
-        
+       
+
     }
 }
-@media all and (max-width: 600px){
-    .card{
-        width:auto;
-        height:auto;
-        margin-left:auto;
-        margin-right: auto;
-        
-    }
+body{
+    font-family:'Raleway',sans-serif;
+    font-size: 14px;
+    font-weight:400;
+    color:#777;
 }
-container{
-    margin-left:710px;
-}
-.informacion h5{
-    text-align: center;
-    color:white;
+.card-body{
+   margin-top:10px;
+    box-shadow:5px 5px 5px orangered;
+    text-align:center;
+    color:black;
+    background-color:white;
+     width:auto;
+    height:320px;
+    display:block;  
+    font-size:10px;
+    transition:all 0.3s ease-in;
+    -webkit-transition:all 0.3s ease-in;
+    -moz-transition:all 0.3s ease-in;
+    
+ 
 }
 
-.card-body{
-    text-align:center;
+.card-body:hover{
+    background-color:orangered;
     color:white;
-     background-color:#18293A;
+    border-radius:5px;
+    border:none;
+    box-shadow:5px 5px 10px #9e9e9e;
 }
 .card img{
-    border-radius:10px;
-    width:150px;
+    margin-top:-100px;
+ margin:auto;
+    width:180px;
     height:150px;
-    margin-left:44px; 
-   
-}
+    display:block; 
 
+}
 
 .card{
-    background-color:white;
+  
+  border:none;
+ background-color:white;
 }
 
-.uno{
-    
-    background-color:orange;
-    
-   
+
+
+
+.div.card-body{
+   color:red; 
 }
 .navbar-dark .navbar-brand {
     color: #fff;
@@ -57,18 +67,44 @@ container{
     color: rgba(255,255,255,.5);
     font-size:19px;
 }
-.salir{
-   font-size:25px;
-   color: rgba(255,255,255,.5);
-  float:right;
-   padding-right:10px;
+.salir i{
+    font-size:25px;
+    color: rgba(255,255,255,.5);
+    float:right;
+    padding-right:10px;
     padding-left:10px;
 }
-.salir:hover{
+.salir i:hover{
     color:white;
 }
-.img{
-   width:60px;
-   height:60px;
+
+
+
+.navbar-toggler{
+   margin-left:auto;
 }
 
+.card-body img{
+    margin-top:-70px;
+    width:130px;
+    height:130px;
+}
+
+i{
+    font-size:22px;
+    color:black ;
+    margin-top:-10px;
+    
+}
+
+
+
+.card-title{
+    margin-top:10px;
+    height:140px;
+    font-size:15px;
+}
+
+.col-sm{
+    margin:auto;
+}

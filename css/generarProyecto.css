@@ -65,3 +65,11 @@ a:hover{
 .salir:hover{
     color:white;
 }
+
+.modal-header h2{
+    text-align:center;
+}
+#lider:pointer{
+    background-color: red;
+   color:red;
+}

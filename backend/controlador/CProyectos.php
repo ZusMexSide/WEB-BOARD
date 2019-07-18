@@ -28,13 +28,14 @@ class CProyecto {
         $acu="";
         foreach ($proyectos as $proyecto){
             $acu.= '<div class="col-sm-3">
-                <div class="card text-white bg-dark mt-5" style="max-width: 18rem;"> 
+                <div class="card text-white bg-white mt-5" style="max-width: 18rem;"> 
                         <a class="card-header" href="verProyecto.php">'.$proyecto['nombre'].'</a>
                         <a class="lider" href="">Lider del proyecto: '.$this->modelo->mostrarLiderProyecto($proyecto['lider']).'</a>      
                         <div class="card-body">
-                            <a class="proyecto" href="#">'.$proyecto['fecha_exp'].'</a>
-                            <h5 class="card-title">Numero de colaboradores: '.$this->modelo->numeroColaboradores($proyecto['proyecto_id']).'</h5>
-                            <p class="card-text">'.substr(filter_var($proyecto['descripcion'], FILTER_SANITIZE_STRING),0,100).'...</p>
+                            <div class="proyecto" href="#"> Fecha:<br>'.$proyecto['fecha_exp'].'</div>
+                                <br>
+                            <div class="card-title">Numero de colaboradores: '.$this->modelo->numeroColaboradores($proyecto['proyecto_id']).'</div>
+                            <p class="card-text"> Descripcion: <br>'.substr(filter_var($proyecto['descripcion'], FILTER_SANITIZE_STRING),0,100).'...</p>
                         </div>
                     </div>
                     </div>';

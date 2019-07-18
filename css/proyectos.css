@@ -11,11 +11,14 @@
 
 
 body{
-    margin:0;
-    padding:0;
+    font-family:'Raleway',sans-serif;
+    font-size: 15px;
+    font-weight:400;
+    color:black;
 }
 
 h1{
+     font-family:'Raleway',sans-serif;
     margin-top:20px;
     text-align: center;
     color:#1a2537;
@@ -27,7 +30,8 @@ margin-left:50px;
 }
 
 .proyecto {
-    color:white;
+    text-align:center;
+    color:black;
     font-size:15px;
 }
 .proyecto:hover {
@@ -35,20 +39,21 @@ margin-left:50px;
     text-decoration: none;
 }
 .card-header{
-    color:white;
+    text-align:center;
+    color:black;
     font-size:25px;
     text-decoration: none;
+    background-color:orangered;
 }
 .card-header:hover{
-    color:orangered;
-    font-size:25px;
+   color:black;
     text-decoration: none;
 }
 .lider{
-    color:white;
+    color:black;
     font-size:15px;
     text-decoration: none;
-    text-align: center;
+    text-align:center;
 }
 .lider:hover{
     color:orangered;
@@ -73,6 +78,12 @@ margin-left:50px;
 .salir:hover{
     color:white;
 }
+.card-title{
+    color:black;
+}
 
+p{
+    color:black;
+}
 
 
