@@ -1,4 +1,7 @@
 <?php
+include_once '../backend/modelo/BD.php';
+include_once '../backend/modelo/MUsuarios.php';
+include_once '../backend/controlador/CUsuarios.php';
 session_start();
 if (!isset($_SESSION['autentificado'])) {
     header('Location: ../index.php');
@@ -7,6 +10,7 @@ if (!isset($_SESSION['autentificado'])) {
         header('Location: ../index.php');
     }
 }
+$usuarios = new CUsuarios();
 ?>
 <html lang="en">
     <head>
@@ -21,7 +25,7 @@ if (!isset($_SESSION['autentificado'])) {
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-             <a class="navbar-brand" href="proyectos.php">WebBoard</a>
+            <a class="navbar-brand" href="proyectos.php">WebBoard</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -33,146 +37,31 @@ if (!isset($_SESSION['autentificado'])) {
                     <a class="nav-item nav-link" href="personal.php">Personal</a>  
                 </div>
             </div>
-             <a class="salir" href="../backend/logica/cerrar_sesion.php"> <i class="fas fa-sign-out-alt" ></i></a>
+            <a class="salir" href="../backend/logica/cerrar_sesion.php"> <i class="fas fa-sign-out-alt" ></i></a>
         </nav>
         <div class="container">
             <div class="row">
-                <div class="col-sm">
+                <div class="col-12">
                     <div class="texto"> <h2> Selecione usuarios para el proyecto </h2> </div>
-                </div>
-
+                </div>    
             </div>
         </div>
-
         <div class="container">
             <div class="row">
-                <div class="col-sm">
-                    <div class="card mt-5" style="width: 15rem;">
-                        <div class="uno"> 
-                            <img src="../imagenes/uno.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <input type="checkbox">
-                                <h3 class="card-title">Informacion:</h3>
-                                <div class="informacion">
-                                    <h5>Nombre:Juan Torres </h5>
-                                    <h5>Puesto:Diseñador</h5>
-                                    <h5>Tareas:Proyectos </h5>
-                                </div>
-                            </div>
+                <form action="generarProyecto.php" method="post">
+                    <div class="col-12">
+                        <div class="row">
+                            <?php echo $usuarios->agregarPersonal() ?>
+                            
                         </div>
+                        <div class="boton  mt-5" >
+                            <button type="submit" class="boton btn btn-primary btn-lg btn-block">Agregar</button>
                     </div>
-                    <div class="card mt-5" style="width: 15rem;">
-                        <div class="uno"> 
-                            <img src="../imagenes/uno.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <input type="checkbox">
-                                <h3 class="card-title">Informacion:</h3>
-                                <div class="informacion">
-                                    <h5>Nombre:Juan Torres </h5>
-                                    <h5>Puesto:Diseñador</h5>
-                                    <h5>Tareas:Proyectos </h5>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card mt-5" style="width: 15rem;">
-                        <div class="uno"> 
-                            <img src="../imagenes/uno.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <input type="checkbox">
-                                <h3 class="card-title">Informacion:</h3>
-                                <div class="informacion">
-                                    <h5>Nombre:Juan Torres </h5>
-                                    <h5>Puesto:Diseñador</h5>
-                                    <h5>Tareas:Proyectos </h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mt-5" style="width: 15rem;">
-                        <div class="uno"> 
-                            <img src="../imagenes/uno.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <input type="checkbox">
-                                <h3 class="card-title">Informacion:</h3>
-                                <div class="informacion">
-                                    <h5>Nombre:Juan Torres </h5>
-                                    <h5>Puesto:Diseñador</h5>
-                                    <h5>Tareas:Proyectos </h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card mt-5 mr-150" style="width: 15rem;">
-                        <div class="uno"> 
-                            <img src="../imagenes/uno.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <input type="checkbox">
-                                <h3 class="card-title">Informacion:</h3>
-                                <div class="informacion">
-                                    <h5>Nombre:Juan Torres </h5>
-                                    <h5>Puesto:Diseñador</h5>
-                                    <h5>Tareas:Proyectos </h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mt-5" style="width: 15rem;">
-                        <div class="uno"> 
-                            <img src="../imagenes/uno.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <input type="checkbox">
-                                <h3 class="card-title">Informacion:</h3>
-                                <div class="informacion">
-                                    <h5>Nombre:Juan Torres </h5>
-                                    <h5>Puesto:Diseñador</h5>
-                                    <h5>Tareas:Proyectos </h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card mt-5 mr-150" style="width: 15rem;">
-                        <div class="uno"> 
-                            <img src="../imagenes/uno.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <input type="checkbox">
-                                <h3 class="card-title">Informacion:</h3>
-                                <div class="informacion">
-                                    <h5>Nombre:Juan Torres </h5>
-                                    <h5>Puesto:Diseñador</h5>
-                                    <h5>Tareas:Proyectos </h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mt-5" style="width: 15rem;">
-                        <div class="uno"> 
-                            <img src="../imagenes/uno.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <input type="checkbox">
-                                <h3 class="card-title">Informacion:</h3>
-                                <div class="informacion">
-                                    <h5>Nombre:Juan Torres </h5>
-                                    <h5>Puesto:Diseñador</h5>
-                                    <h5>Tareas:Proyectos </h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </form>
             </div>
         </div> 
-        <div class="boton">
-         <input type="button" value="Agregar Personal">   
-        </div>
-       
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>

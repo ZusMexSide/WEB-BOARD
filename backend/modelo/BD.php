@@ -3,7 +3,7 @@ class BD {
 
     private $servername = "localhost";
     private $username = "root";
-    private $passw = "herrera";
+    private $passw = "2511";
     private $database = "webboard";
     protected $conn;
 

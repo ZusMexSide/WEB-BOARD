@@ -1,4 +1,7 @@
 <?php
+include '../backend/modelo/BD.php';
+include '../backend/modelo/MProyectos.php';
+include '../backend/controlador/CProyectos.php';
 session_start();
 if (!isset($_SESSION['autentificado'])) {
     header('Location: ../index.php');
@@ -7,6 +10,9 @@ if (!isset($_SESSION['autentificado'])) {
         header('Location: ../index.php');
     }
 }
+$proyectos= new CProyecto();
+
+
 ?>
 <html lang="en">
     <head>
@@ -38,86 +44,8 @@ if (!isset($_SESSION['autentificado'])) {
         <div class="inicio"> <h1>PROYECTOS</h1></div>
         <div class="container">
             <div class="row">
-
-                <div class="col-sm">
-                    <div class="card text-white bg-dark mt-5" style="max-width: 18rem;"> 
-                        <a class="card-header" href="verProyecto.php">Base De Datos</a>
-                        <a class="lider" href="">Lider del proyecto: Jose Luis Perez</a>      
-                        <div class="card-body">
-                            <a class="proyecto" href="#">30/07/2019</a>
-                            <h5 class="card-title">5 Colaboradores</h5>
-                            <p class="card-text">Crear una base de datos de una tienda</p>
-                        </div>
-                    </div>
-                    <div class="card text-white bg-dark mt-5" style="max-width: 18rem;"> 
-                        <a class="card-header" href="#">Matematicas</a>
-                        <div class="card-body">
-                            <a class="proyecto" href="#">20/07/2019</a>
-                            <h5 class="card-title">5 Colaboradores</h5>
-                            <p class="card-text">Ingresar todas las actividades que se les solicitan.</p>
-                        </div>
-                    </div>
-
-                </div>
-
-
-                <div class="col-sm">
-                    <div class="card text-white bg-dark mt-5" style="max-width: 18rem;"> 
-                        <a class="card-header" href="#">Estadistica</a>
-                        <div class="card-body">
-                            <a class="proyecto" href="#">18/07/2019</a>
-                            <h5 class="card-title">5 Colaboradores</h5>
-                            <p class="card-text">Ingresar todas las actividades que se les solicitan.</p>
-                        </div>
-                    </div>
-                    <div class="card text-white bg-dark mt-5" style="max-width: 18rem;"> 
-                        <a class="card-header" href="#">Ingles</a>
-                        <div class="card-body">
-                            <a class="proyecto" href="#">21/07/2019</a>
-                            <h5 class="card-title">5 Colaboradores</h5>
-                            <p class="card-text">Ingresar todas las actividades que se les solicitan.</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-sm">
-                    <div class="card text-white bg-dark mt-5" style="max-width: 18rem;"> 
-                        <a class="card-header" href="#">Ciencias</a>
-                        <div class="card-body">
-                            <a class="proyecto" href="#">10/08/2019</a>
-                            <h5 class="card-title">6 Colaboradores</h5>
-                            <p class="card-text">Hacer un reporte de la lectura de la semana</p>
-                        </div>
-                    </div>
-                    <div class="card text-white bg-dark mt-5" style="max-width: 18rem;"> 
-                        <a class="card-header" href="#">Español</a>
-                        <div class="card-body">
-                            <a class="proyecto" href="#">15/07/2019</a>
-                            <h5 class="card-title">5 Colaboradores</h5>
-                            <p class="card-text">Ingresar todas las actividades que se les solicitan.</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-sm">
-                    <div class="card text-white bg-dark mt-5" style="max-width: 18rem;"> 
-                        <a class="card-header" href="#">Programaciòn</a>
-                        <div class="card-body">
-                            <a class="proyecto" href="#">22/07/2019</a>
-                            <h5 class="card-title">5 Colaboradores</h5>
-                            <p class="card-text">Crear una base de datos de una tienda</p>
-                        </div>
-                    </div>
-                    <div class="card text-white bg-dark mt-5" style="max-width: 18rem;"> 
-                        <a class="card-header" href="#">Probabilidad</a>
-                        <div class="card-body">
-                            <a class="proyecto" href="#">30/08/2019</a>
-                            <h5 class="card-title">5 Colaboradores</h5>
-                            <p class="card-text">Ingresar todas las actividades que se les solicitan.</p>
-                        </div>
-                    </div>      
-
-                </div>
+             <?php echo $proyectos->proyectosAdmin()?>
+        </div> 
 
 
             </div>
