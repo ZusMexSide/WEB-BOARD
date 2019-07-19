@@ -58,7 +58,7 @@ and open the template in the editor.
                     <div class="tabla"> 
                         <table class="table">
                             <thead>
-                                <tr> <th> Descripcion:</th></tr>
+                                <tr> <th> Descripcion:prueba</th></tr>
                                 <tr>
                                     <th>Proyecto:</th>
                                     <th><?php echo $proyecto['nombre'] ?></th>
