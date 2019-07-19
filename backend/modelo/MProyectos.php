@@ -99,6 +99,8 @@ public function consultarUltimoProyecto(){
       echo "Error: ".$e->getMessage();  
     }
 }
+// CARPETAS
+
 public function carpetas($id){
     try {
          $stmt = $this->conn->prepare("SELECT * from carpetas where proyecto_id=:id");
@@ -108,5 +110,28 @@ public function carpetas($id){
     } catch (PDOException $e) {
       echo "Error: ".$e->getMessage();  
     }
+}
+public function consultarStatus($id){
+    try {
+         $stmt = $this->conn->prepare("SELECT * from carpetas where carpeta_id=:id");
+         $stmt->bindParam(':id', $id);
+         $stmt->execute();
+        return $stmt->fetchAll();
+    } catch (PDOException $e) {
+      echo "Error: ".$e->getMessage();  
+    }
+}
+// TAREAS
+public function insertarTarea($carpeta,$descripcion){
+    $stmt=$this->conn->prepare("insert into tareas(carpeta_id,descripcion) values(:carpeta,:descripcion)");
+    $stmt->bindParam(':carpeta',$carpeta);
+    $stmt->bindParam(':descripcion',$descripcion);
+    $stmt->execute();
+}
+public function consultarTarea($id){
+    $stmt=$this->conn->prepare("select * from tareas where carpeta_id=:id");
+    $stmt->bindParam(':id',$id);
+    $stmt->execute();
+    return $stmt->fetchAll(); 
 }
 }

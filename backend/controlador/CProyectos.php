@@ -54,12 +54,61 @@ class CProyecto {
                     <div class="card text-white bg-dark mt-5" style="max-width: 18rem;"> 
                         <div class="card-header"><h2>'.$carpeta['status'].'</h2></div>
                         <div class="card-body">
-                            <a class="proyecto" href="descripcion.php">'.$this->modelo->mostrarNombreUsuario($carpeta['usuario_id']).'</a>
+                            <a class="proyecto" href="descripcion.php?id_carpeta='.$carpeta['carpeta_id'].'&id_proyecto='.$carpeta['proyecto_id'].'">'.$this->modelo->mostrarNombreUsuario($carpeta['usuario_id']).'</a>
                             <p class="card-text">Crear una base de datos de una tienda</p>
                         </div>
                     </div>
                     </div>';
         }
         return $acu;
+    }
+    public function mostrarDescripcionUsuario($id){
+        $carpetas=$this->modelo->consultarStatus($id);
+        foreach ($carpetas as $carpeta){
+           $respuesta[0]=$carpeta['status'];
+           $respuesta[1]=$this->modelo->mostrarNombreUsuario($carpeta['usuario_id']);
+        }
+        return $respuesta;
+    }
+    public function nuevaTarea($carpeta,$descripcion){
+        $this->modelo->insertarTarea($carpeta, $descripcion);
+    }
+    public function mostrarTareas($id){
+        $tareas=$this->modelo->consultarTarea($id);
+        foreach ($tareas as $tarea){
+        $devolver=$tarea['descripcion'];
+    }
+        if(empty($devolver)){
+            return $devolver='<h3>No hay tareas asignadas</h3>
+                   <button type="button" class="btn btn-primary btn-block mb-3" data-toggle="modal" data-target="#exampleModal">Asignar tareas</button>
+                  <form method="post"> 
+                   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-xl" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header ">
+                                        <strong class="modal-title text-dark"> Ingresa la tarea a asignar </strong> 
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <textarea class="ckeditor" name="descripcion"></textarea>
+                            <input type="hidden" name="carpeta_id" value="'.$_GET['id_carpeta'].'">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="submit" name="enviado">Asignar</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </form>';
+        } else {
+            return $devolver;
+        }
     }
 }

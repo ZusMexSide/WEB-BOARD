@@ -73,7 +73,6 @@ and open the template in the editor.
                                 <th>Expiracion:</th>
                                 <th><?php echo date('d-m-Y', strtotime($proyecto['fecha_exp'])) ?></th>
                             </tr>
-
                         </table>  
                     </div>       
                 </div>
