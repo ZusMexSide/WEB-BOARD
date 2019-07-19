@@ -65,6 +65,7 @@ class CUsuarios {
                                <p>'. $persona["nombre"] .'</p>
                                     <p>Puesto:'. $persona["nivel_estudios"] .'</p>
                                     <p>Tareas:Proyectos </p>
+                                     <input type="checkbox" name="casilla[]" value="'.$persona['usuario_id'].'">
                                     </div>
                                     <div class="d-flex flex-row justify-content-center">
                                     <div class="p-4">

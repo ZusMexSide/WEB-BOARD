@@ -2,6 +2,20 @@
 
 class MProyectos extends BD {
 
+    public function consultarProyecto($id){
+        try {
+            $stmt = $this->conn->prepare("select * from proyectos where proyecto_id=:id");
+            $stmt->bindParam(':id',$id);
+            $stmt->execute();
+           $proyectos= $stmt->fetchAll();
+            foreach ($proyectos as $proyecto){
+                $devolver=$proyecto;
+            }
+            return $devolver;
+        } catch (PDOException $ex) {
+          echo "Error: ".$ex->getMessage();  
+        }
+    }
     public function numeroColaboradores($id){
         try {
             $stmt = $this->conn->prepare("select count(proyecto_id) from proyectos_usuarios where proyecto_id=:id");
@@ -30,6 +44,20 @@ class MProyectos extends BD {
             echo "Error: " . $e->getMessage();
         }
     }
+    public function mostrarNombreUsuario($id){
+         try {
+            $stmt = $this->conn->prepare("select nombre from usuarios where usuario_id=:id");
+            $stmt->bindParam(':id',$id);
+            $stmt->execute();
+           $nombres= $stmt->fetchAll();
+            foreach ($nombres as $name){
+                $nombre=$name;
+            }
+            return $nombre['nombre'];
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
     public function mostrarProyectosAdmin(){
          try {
             $stmt = $this->conn->prepare("SELECT * FROM proyectos");
@@ -41,7 +69,7 @@ class MProyectos extends BD {
     }
     public function nuevoProyecto($nombre, $descripcion, $fecha, $lider) {
         try {
-            $stmt = $this->conn->prepare("INSERT into proyectos(nombre,descripcion,fecha_exp,lider) values(:nombre,:descripcion,:fecha,:lider)");
+            $stmt = $this->conn->prepare("INSERT into proyectos(nombre,descripcion,fecha,fecha_exp,lider) values(:nombre,:descripcion,now(),:fecha,:lider)");
             $stmt->bindParam(':nombre', $nombre);
             $stmt->bindParam(':descripcion', $descripcion);
             $stmt->bindParam(':fecha', $fecha);
@@ -65,6 +93,16 @@ class MProyectos extends BD {
 public function consultarUltimoProyecto(){
     try {
          $stmt = $this->conn->prepare("SELECT proyecto_id from proyectos order by proyecto_id desc limit 1");
+         $stmt->execute();
+        return $stmt->fetchAll();
+    } catch (PDOException $e) {
+      echo "Error: ".$e->getMessage();  
+    }
+}
+public function carpetas($id){
+    try {
+         $stmt = $this->conn->prepare("SELECT * from carpetas where proyecto_id=:id");
+         $stmt->bindParam(':id', $id);
          $stmt->execute();
         return $stmt->fetchAll();
     } catch (PDOException $e) {
