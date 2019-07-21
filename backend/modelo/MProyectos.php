@@ -67,6 +67,16 @@ class MProyectos extends BD {
             echo "Error: " . $e->getMessage();
         }
     }
+    public function mostrarProyectosEmpleado($id){
+         try {
+            $stmt = $this->conn->prepare("select * from proyectos p inner join proyectos_usuarios u on u.proyecto_id=p.proyecto_id where usuario_id=:usuario_id");
+            $stmt->bindParam(':usuario_id',$id);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
     public function nuevoProyecto($nombre, $descripcion, $fecha, $lider) {
         try {
             $stmt = $this->conn->prepare("INSERT into proyectos(nombre,descripcion,fecha,fecha_exp,lider) values(:nombre,:descripcion,now(),:fecha,:lider)");

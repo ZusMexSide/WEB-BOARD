@@ -52,7 +52,6 @@ if (isset($_POST['enviado'])) {
     if ($enviado){
         $proyectos->insertarProyecto($nombre, $descripcion, $fecha, $lider);
        $id= $proyectos->obtenerId();
-       $proyectos->asignarEmpleados($id, $lider);
         foreach ($_POST['casilla'] as $user){
             $proyectos->asignarEmpleados($id, $user);
         }

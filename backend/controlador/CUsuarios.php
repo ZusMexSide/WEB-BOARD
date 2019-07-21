@@ -65,7 +65,7 @@ class CUsuarios {
                                <p>'. $persona["nombre"] .'</p>
                                     <p>Puesto:'. $persona["nivel_estudios"] .'</p>
                                     <p>Tareas:Proyectos </p>
-                                     <input type="checkbox" name="casilla[]" value="'.$persona['usuario_id'].'">
+                                     <input type="checkbox" name="casilla[]" value="'.$persona['usuario_id'].'"> Añadir <br>
                                     </div>
                                     <div class="d-flex flex-row justify-content-center">
                                     <div class="p-4">
@@ -93,7 +93,7 @@ class CUsuarios {
         return $acu;
     }
 
-    public function liderProyecto(){
+    public function inputLiderProyecto(){
         $lideres= $this->modeloRegistro_usuarios->mostrarPersonal();
         $acu="";
         foreach ($lideres as $lider){

@@ -50,21 +50,21 @@ and open the template in the editor.
                     <form class="form-container"  method="post" >
                         <div class="form-group">
                             <label for="lider">Lider Del Proyecto:</label>
-                            <select class="form-control" id="lider" name="lider">
-                                <?php echo $imprimir->liderProyecto(); ?>
+                            <select class="form-control" id="lider" name="lider" required>
+                                <?php echo $imprimir->inputLiderProyecto(); ?>
                             </select>
                         </div>      
                         <div class="form-group">
                             <label for="nombreProyecto">Nombre Del Proyecto:</label>
-                            <input type="text" class="form-control" id="nombreProyecto" name="nombreProyecto">
+                            <input type="text" class="form-control" id="nombreProyecto" name="nombreProyecto" required>
                         </div>
                         <div class="form-group">
                             <label for="Descripcion">Descripcion:</label>
-                            <textarea  class="ckeditor" name="descripcion" id="descripcion"></textarea>
+                            <textarea  class="ckeditor" name="descripcion" id="descripcion" required></textarea>
                         </div>
                         <div class="form-group">
                             <label for="expiracion">Fecha De Expiracion:</label>
-                            <input type="Date" row=10 class="form-control" id="correo" name="fecha">
+                            <input type="Date" row=10 class="form-control" id="correo" name="fecha" required>
                         </div>
                         <button type="button" class="btn btn-primary btn-block mb-3" data-toggle="modal" data-target="#exampleModal">Agregar personal</button>
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

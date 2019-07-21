@@ -1,10 +1,19 @@
 <?php
+include '../backend/modelo/BD.php';
+include '../backend/modelo/MProyectos.php';
+include '../backend/controlador/CProyectos.php';
 session_start();
 if (!isset($_SESSION['autentificado'])) {
     header('Location: ../index.php');
+} else {
+    if ($_SESSION['autentificado']["privilegios"] == "Gerente") {
+        header('Location: ../index.php');
+    }else{
+    $proyectos=new CProyecto;
+    $proyecto=$proyectos->proyectosEmpleado($_SESSION['autentificado']['usuario_id']);
+}
 }
 ?>
-
 <html lang="en">
     <head>
         <!-- Required meta tags -->
@@ -28,58 +37,7 @@ if (!isset($_SESSION['autentificado'])) {
         <div class="inicio"> <h1>PROYECTOS</h1></div>
         <div class="container">
             <div class="row">
-
-                <div class="col-sm">
-                    <div class="card text-white bg-dark mt-5" style="max-width: 18rem;"> 
-                        <a class="card-header" href="descripcion_usuarios.php">Base De Datos</a>
-                        <a class="lider" href="">Lider del proyecto: Jose Luis Perez</a>      
-                        <div class="card-body">
-                            <a class="proyecto" href="#">30/07/2019</a>
-                            <h5 class="card-title">5 Colaboradores</h5>
-                            <p class="card-text">Crear una base de datos de una tienda</p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-sm">
-                    <div class="card text-white bg-dark mt-5" style="max-width: 18rem;"> 
-                        <a class="card-header" href="#">Estadistica</a>
-                        <a class="lider" href="">Lider del proyecto: Manuel Herrera</a>        
-                        <div class="card-body">
-                            <a class="proyecto" href="#">18/07/2019</a>
-                            <h5 class="card-title">5 Colaboradores</h5>
-                            <p class="card-text">Ingresar todas las actividades que se les solicitan.</p>
-                        </div>
-                    </div>
-
-
-                </div>
-                <div class="col-sm">
-                    <div class="card text-white bg-dark mt-5" style="max-width: 18rem;"> 
-                        <a class="card-header" href="#">Ciencias</a>
-                        <a class="lider" href="">Lider del proyecto: Joaquin torres</a>        
-                        <div class="card-body">
-                            <a class="proyecto" href="#">10/08/2019</a>
-                            <h5 class="card-title">6 Colaboradores</h5>
-                            <p class="card-text">Hacer un reporte de la lectura de la semana</p>
-                        </div>
-                    </div>
-
-
-                </div>
-                <div class="col-sm">
-                    <div class="card text-white bg-dark mt-5" style="max-width: 18rem;"> 
-                        <a class="card-header" href="#">Programaciòn</a>
-                        <a class="lider" href="">Lider del proyecto: Joel Flores</a>        
-                        <div class="card-body">
-                            <a class="proyecto" href="#">22/07/2019</a>
-                            <h5 class="card-title">5 Colaboradores</h5>
-                            <p class="card-text">Crear una base de datos de una tienda</p>
-                        </div>
-                    </div>
-
-                </div>
+                   <?php echo $proyecto?>
             </div>
         </div>
 

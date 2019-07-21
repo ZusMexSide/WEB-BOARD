@@ -42,7 +42,26 @@ class CProyecto {
         }
         return $acu;
     }
-
+    public function proyectosEmpleado($id) {
+        $proyectos = $this->modelo->mostrarProyectosEmpleado($id);
+        $acu = "";
+        foreach ($proyectos as $proyecto) {
+            $acu .= '<div class="col-sm-3">
+                <div class="card text-white bg-white mt-5" style="max-width: 18rem;"> 
+                        <a class="card-header" href="verProyecto.php?id='.$proyecto['proyecto_id'].'">' . strtoupper(substr($proyecto['nombre'],0,12)) . '</a>
+                        <a class="lider" href="">Lider del proyecto: ' . $this->modelo->mostrarLiderProyecto($proyecto['lider']) . '</a>      
+                        <div class="card-body">
+                            <div class="proyecto" href="#"> Fecha:<br>' .  date('d-m-Y',strtotime($proyecto['fecha_exp'])) . '</div>
+                                <br>
+                            <div class="card-title">Numero de colaboradores: ' . $this->modelo->numeroColaboradores($proyecto['proyecto_id']) . '</div>
+                            <p class="card-text"> Descripcion: <br>' . substr(filter_var($proyecto['descripcion'], FILTER_SANITIZE_STRING), 0, 100) . '...</p>
+                        </div>
+                    </div>
+                    </div>';
+        }
+        return $acu;
+    }
+    
     public function mostrarProyecto($id) {
         return $this->modelo->consultarProyecto($id);
     }
