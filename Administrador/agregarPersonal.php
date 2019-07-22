@@ -39,9 +39,9 @@ and open the template in the editor.
             </div>
             <a class="salir" href="../backend/logica/cerrar_sesion.php"> <i class="fas fa-sign-out-alt" ></i></a>
         </nav>
-        <div class="container-fluid">
+        <div class="container">
             <div class="row justify-content-center">
-                <div class="col-sm-5">
+                <div class="col-md-6-auto">
                     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data" class="form-container">
                         <div class="form-group">
                             <label for="exampleInputEmail1">
@@ -90,7 +90,7 @@ and open the template in the editor.
                         </div>
 
                         <?php if (!empty($errores)): ?>
-                            <div class="errores"> <?php echo $errores; ?> </div>
+                            <div class="error"> <?php echo $errores; ?> </div>
                         <?php elseif ($enviado): ?>
                             <div class="exitoso">Enviado correctamente</div>
                         <?php endif; ?>

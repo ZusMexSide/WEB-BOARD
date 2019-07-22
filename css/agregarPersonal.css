@@ -1,5 +1,13 @@
 
- 
+ @media all and (max-width: 500px){
+    .form-container{
+        width:auto;
+        height:auto;
+        margin:auto;
+        background-color:red;
+        
+    }
+}
 
 .uno{
     background-color:#1a2537 ;
@@ -14,25 +22,17 @@
      border-radius:20px;
     padding: 30px;
     height:auto;
-   
-     
- }
+  }
 
 form{
      padding:20px;
     color:white;
-    background-color:red;
+  
     background-color:#1a2537;
+    margin:auto;
+    width:400px;
 }
-form .errores{
-    text-align:center;
-    padding:20px;
-    color:white;
-    background-color:red;
-    background-color:#F50E3B;
-    text-decoration:#1a2537;
-   box-shadow: inset 0 0 1em gold;
-}
+
 
 
 
@@ -114,3 +114,18 @@ form .errores{
 label{
   color:#EA9A05;  
 }
+.navbar-toggler {
+    margin-left: auto;
+}
+/*form .errores {
+    -webkit-box-shadow:0 0 10px rgba(0,0,0,0.3);
+    -moz-box-shadow:0 0 10px rgba(0,0,0,0.3);
+    -o-box-shadow:0 0 10px rgba(0,0,0,0.3);
+    box-shadow:0 0 10px rgba(0,0,0,.3);
+    position:absolute;
+    text-align: center;
+    padding: 10px;
+    color:#fff;
+  background-color: red;
+   
+}*/
