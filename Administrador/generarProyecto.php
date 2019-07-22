@@ -53,7 +53,7 @@ and open the template in the editor.
                                     <div class="form-group">
                                         <label for="lider"> <p>Lider del proyecto</p></label>
                                         <select class="form-control" id="lider" name="lider">
-                                            <?php echo $imprimir->liderProyecto(); ?>
+                                            <?php echo $imprimir->inputLiderProyecto() ?>
                                         </select>
                                     </div>
                                 </div>
