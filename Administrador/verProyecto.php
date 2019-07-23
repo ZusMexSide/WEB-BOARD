@@ -5,15 +5,16 @@ include '../backend/controlador/CProyectos.php';
 session_start();
 if (!isset($_SESSION['autentificado'])) {
     header('Location: ../index.php');
-} else {
-    if ($_SESSION['autentificado']["privilegios"] == "Empleado") {
-        header('Location: ../index.php');
-    }
 }
 if (!empty($_GET['id'])) {
     $proyectos = new CProyecto();
     $proyecto = $proyectos->mostrarProyecto($_GET['id']);
     $carpeta = $proyectos->mostrarCarpetas($_GET['id']);
+    if ($_SESSION['autentificado']['privilegios'] == 'Empleado') {
+        if ($_SESSION['autentificado']['usuario_id'] <> $proyecto['lider']) {
+            header('Location: ../index.php');
+        }
+    }
 } else {
     header('Location: proyectos.php');
 }
@@ -54,27 +55,24 @@ and open the template in the editor.
         </nav>
         <div class="container mt-5">
             <div class="row">
-                <div class=""> 
-                    <div class="tabla"> 
-                        <table class="table">
-                            <thead>
-                                <tr> <th> Descripcion:prueba</th></tr>
-                                <tr>
-                                    <th>Proyecto:</th>
-                                    <th><?php echo $proyecto['nombre'] ?></th>
-                                </tr>
-                            </thead>
+                <div class="col-12">
+                    <h1><?php echo $proyecto['nombre'] ?></h1>
+                </div>
+                <div class="tabla"> 
+                    <table class="table">
+                        <thead>
+                            <tr> <th> Descripcion:</th></tr>
+                        </thead>
 
-                            <tr>
-                                <th>Inicio:</th>
-                                <th><?php echo date('d-m-Y', strtotime($proyecto['fecha'])) ?></th>
-                            </tr>
-                            <tr>
-                                <th>Expiracion:</th>
-                                <th><?php echo date('d-m-Y', strtotime($proyecto['fecha_exp'])) ?></th>
-                            </tr>
-                        </table>  
-                    </div>       
+                        <tr>
+                            <th>Inicio:</th>
+                            <th><?php echo date('d-m-Y', strtotime($proyecto['fecha'])) ?></th>
+                        </tr>
+                        <tr>
+                            <th>Expiracion:</th>
+                            <th><?php echo date('d-m-Y', strtotime($proyecto['fecha_exp'])) ?></th>
+                        </tr>
+                    </table>  
                 </div>
                 <div class="col-sm">
                     <div class="texto"> 

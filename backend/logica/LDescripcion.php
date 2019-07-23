@@ -2,15 +2,16 @@
 session_start();
 if (!isset($_SESSION['autentificado'])) {
     header('Location: ../index.php');
-} else {
-    if ($_SESSION['autentificado']["privilegios"] == "Empleado") {
-        header('Location: ../index.php');
-    }
 }
 $error="";
 if (!empty($_GET['id_proyecto']) && !empty($_GET['id_carpeta']) ) {
     $proyectos = new CProyecto();
     $proyecto = $proyectos->mostrarProyecto($_GET['id_proyecto']);
+    if ($_SESSION['autentificado']['privilegios'] == 'Empleado') {
+        if ($_SESSION['autentificado']['usuario_id'] <> $proyecto['lider']) {
+            header('Location: ../index.php');
+        }
+    }
     $carpeta = $proyectos->mostrarDescripcionUsuario($_GET['id_carpeta']);
     $tarea=$proyectos->mostrarTareas($_GET['id_carpeta']);
 } else {

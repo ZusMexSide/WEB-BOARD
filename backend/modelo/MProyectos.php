@@ -3,7 +3,7 @@
 class MProyectos extends BD {
 
     public function consultarProyecto($id){
-        try {
+         try {
             $stmt = $this->conn->prepare("select * from proyectos where proyecto_id=:id");
             $stmt->bindParam(':id',$id);
             $stmt->execute();
@@ -12,6 +12,17 @@ class MProyectos extends BD {
                 $devolver=$proyecto;
             }
             return $devolver;
+        } catch (PDOException $ex) {
+          echo "Error: ".$ex->getMessage();  
+        }
+    }
+    public function consultarProyectoDondeEsLider($id){
+        try {
+            $stmt = $this->conn->prepare("select * from proyectos where lider=:id");
+            $stmt->bindParam(':id',$id);
+            $stmt->execute();
+           return $proyectos= $stmt->fetchAll();
+            
         } catch (PDOException $ex) {
           echo "Error: ".$ex->getMessage();  
         }

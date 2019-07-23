@@ -10,6 +10,7 @@ if (!isset($_SESSION['autentificado'])) {
         header('Location: ../index.php');
     }else{
     $proyectos=new CProyecto;
+    $proyecto_lider=$proyectos->proyectosEmpleadoDondeEsLider($_SESSION['autentificado']['usuario_id']);
     $proyecto=$proyectos->proyectosEmpleado($_SESSION['autentificado']['usuario_id']);
 }
 }
@@ -37,7 +38,8 @@ if (!isset($_SESSION['autentificado'])) {
         <div class="inicio"> <h1>PROYECTOS</h1></div>
         <div class="container">
             <div class="row">
-                   <?php echo $proyecto?>
+                   <?php echo $proyecto_lider;
+                   echo $proyecto;?>
             </div>
         </div>
 
