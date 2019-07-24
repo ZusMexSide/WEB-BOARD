@@ -2,22 +2,7 @@
 include '../backend/modelo/BD.php';
 include '../backend/modelo/MProyectos.php';
 include '../backend/controlador/CProyectos.php';
-session_start();
-if (!isset($_SESSION['autentificado'])) {
-    header('Location: ../index.php');
-}
-if (!empty($_GET['id'])) {
-    $proyectos = new CProyecto();
-    $proyecto = $proyectos->mostrarProyecto($_GET['id']);
-    $carpeta = $proyectos->mostrarCarpetas($_GET['id']);
-    if ($_SESSION['autentificado']['privilegios'] == 'Empleado') {
-        if ($_SESSION['autentificado']['usuario_id'] <> $proyecto['lider']) {
-            header('Location: ../index.php');
-        }
-    }
-} else {
-    header('Location: proyectos.php');
-}
+include '../backend/logica/LVer_proyecto.php';
 ?>
 <!DOCTYPE html>
 <!--
@@ -37,22 +22,7 @@ and open the template in the editor.
         <title>Usuarios</title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="proyectos.php">WebBoard</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse p-2" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="proyectos.php">Proyectos</a>
-                    <a class="nav-item nav-link" href="generarProyecto.php"> Generar Proyecto</a>
-                    <a class="nav-item nav-link" href="agregarPersonal.php">Agregar Personal</a>
-                    <a class="nav-item nav-link" href="personal.php">Personal</a>
-
-                </div>
-            </div>
-            <a class="salir" href="../backend/logica/cerrar_sesion.php"> <i class="fas fa-sign-out-alt" ></i></a>
-        </nav>
+        <?php echo $navegacion?>
         <div class="container mt-5">
             <div class="row">
                 <div class="col-12">

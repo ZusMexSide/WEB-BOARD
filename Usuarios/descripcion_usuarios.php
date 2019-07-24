@@ -1,8 +1,8 @@
 <?php
-session_start();
-if (!isset($_SESSION['autentificado'])) {
-    header('Location: ../index.php');
-}
+include '../backend/modelo/BD.php';
+include '../backend/modelo/MProyectos.php';
+include '../backend/controlador/CProyectos.php';
+include '../backend/logica/LDescripcionUsuarios.php';
 ?>
 <!DOCTYPE html>
 <!--
@@ -37,27 +37,32 @@ and open the template in the editor.
         </nav>
         <div class="container">
             <div class="row">
+                <div class="col-12"><h1><?php echo $carpeta[1] ?></h1></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
                 <div class=""> 
                     <div class="tabla"> 
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th>Status:</th>
-                                    <th>Aprobado</th>
+                                    <th><?php echo $carpeta[0] ?></th>
                                 </tr>
                                 <tr>
-                                    <th>Actividad:</th>
-                                    <th>Base De Datos</th>
+                                    <th>Proyecto:</th>
+                                    <th><?php echo $proyecto['nombre'] ?></th>
                                 </tr>
                             </thead>
 
                             <tr>
                                 <th>Inicio:</th>
-                                <th>15/06/2019</th>
+                                <th><?php echo date('d-m-Y', strtotime($proyecto['fecha'])) ?></th>
                             </tr>
                             <tr>
                                 <th>Expiracion:</th>
-                                <th>15/07/2019</th>
+                                <th><?php echo date('d-m-Y', strtotime($proyecto['fecha_exp'])) ?></th>
                             </tr>
 
                         </table>  
@@ -65,22 +70,53 @@ and open the template in the editor.
                             <button>
                                 Solicitar aprobación
                             </button>  
-                            <button>
-                                Subir archivo
-                            </button> 
                         </div>
-
                     </div>       
                 </div>
                 <div class="col-sm">
                     <div class="texto"> 
-                        <p>Una base de datos es un conjunto de datos pertenecientes a un mismo contexto y almacenados sistemáticamente para su posterior uso. En este sentido; una biblioteca puede considerarse una base de datos compuesta en su mayoría por documentos y textos impresos en papel e indexados para su consulta. Actualmente, y debido al desarrollo tecnológico de campos como la informática y la electrónica, la mayoría de las bases de datos están en formato digital, siendo este un componente electrónico, por tanto se ha desarrollado y se ofrece un amplio rango de soluciones al problema del almacenamiento de datos.
-
-                            Hay programas denominados sistemas gestores de bases de datos, abreviado SGBD (del inglés Database Management System o DBMS), que permiten almacenar y posteriormente acceder a los datos de forma rápida y estructurada. Las propiedades de estos DBMS, así como su utilización y administración, se estudian dentro del ámbito de la informática.</p>
+                        <p><?php echo $tarea ?></p>
                     </div>
-
                 </div>
-
+            </div>
+        </div>
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-sm">
+                    <div class="svg"> 
+                        <img src="imagenes/record.svg">
+                        <a href="">Trabajo 1</a> 
+                    </div>
+                    <div class="svg"> 
+                        <img src="imagenes/record.svg">
+                        <a href="">Trabajo 1</a> 
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="svg"> 
+                        <img src="imagenes/record.svg">
+                        <a href="">Trabajo 1</a> 
+                    </div>
+                    <div class="svg"> 
+                        <img src="imagenes/record.svg">
+                        <a href="">Trabajo 1</a> 
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="svg"> 
+                        <img src="imagenes/record.svg">
+                        <a href="">Trabajo 1</a> 
+                    </div>
+                    <div class="svg"> 
+                        <img src="imagenes/record.svg">
+                        <a href="">Trabajo 1</a> 
+                    </div>
+                    <div class="botones1">
+                        <button>
+                            Subir Archivo
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 

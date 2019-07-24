@@ -142,6 +142,20 @@ public function consultarStatus($id){
       echo "Error: ".$e->getMessage();  
     }
 }
+public function consultarIdCarpeta($id,$id_proyecto){
+    try {
+        $stmt=$this->conn->prepare("select carpeta_id from carpetas where usuario_id=:id and proyecto_id=:id_proyecto");
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':id_proyecto',$id_proyecto);
+         $stmt->execute();
+         $array=$stmt->fetchAll();
+         foreach ($array as $carpeta){
+             return $carpeta[0];
+         }
+    } catch (PDOException $ex) {
+       echo "Error: ".$ex->getMessage(); 
+    }
+}
 // TAREAS
 public function insertarTarea($carpeta,$descripcion){
     $stmt=$this->conn->prepare("insert into tareas(carpeta_id,descripcion) values(:carpeta,:descripcion)");

@@ -42,13 +42,13 @@ class CProyecto {
         }
         return $acu;
     }
-    public function proyectosEmpleado($id) {
-        $proyectos = $this->modelo->mostrarProyectosEmpleado($id);
+    public function proyectosEmpleado($usuario_id) {
+        $proyectos = $this->modelo->mostrarProyectosEmpleado($usuario_id);
         $acu = "";
         foreach ($proyectos as $proyecto) {
             $acu .= '<div class="col-sm-3">
                 <div class="card text-dark bg-white mt-5" style="max-width: 18rem;"> 
-                        <a class="card-header" href="descripcion_usuarios.php?id='.$proyecto['proyecto_id'].'">' . strtoupper(substr($proyecto['nombre'],0,12)) . '</a>
+                        <a class="card-header" href="descripcion_usuarios.php?id_carpeta='.$this->modelo->consultarIdCarpeta($usuario_id, $proyecto['proyecto_id']).'&id_proyecto='.$proyecto['proyecto_id'].'">' . strtoupper(substr($proyecto['nombre'],0,12)) . '</a>
                         <a class="lider" href="">Lider del proyecto: ' . $this->modelo->mostrarLiderProyecto($proyecto['lider']) . '</a>      
                         <div class="card-body">
                             <div class="proyecto" href="#"> Fecha límite:<br>' .  date('d-m-Y',strtotime($proyecto['fecha_exp'])) . '</div>
@@ -83,6 +83,7 @@ class CProyecto {
     public function mostrarProyecto($id) {
         return $this->modelo->consultarProyecto($id);
     }
+//    CARPETAS--------------------------------------------------------------------------------------------
     public function mostrarCarpetas($id){
         $carpetas= $this->modelo->carpetas($id);
         $acu="";
@@ -107,8 +108,19 @@ class CProyecto {
         }
         return $respuesta;
     }
+//  TAREAS---------------------------------------------------------------------------------------------
     public function nuevaTarea($carpeta,$descripcion){
         $this->modelo->insertarTarea($carpeta, $descripcion);
+    }
+    public function mostrarTareaEmpleado($id){
+        $tareas=$this->modelo->consultarTarea($id);
+        foreach ($tareas as $tarea){
+        $devolver=$tarea['descripcion'];
+    } if (empty($devolver)){
+        return $devolver="<h3>No hay tareas asignadas</h3>";
+    } else {
+    return $devolver;    
+    }
     }
     public function mostrarTareas($id){
         $tareas=$this->modelo->consultarTarea($id);
