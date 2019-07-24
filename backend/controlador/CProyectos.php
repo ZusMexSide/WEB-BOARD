@@ -88,15 +88,28 @@ class CProyecto {
         $carpetas= $this->modelo->carpetas($id);
         $acu="";
         foreach ($carpetas as $carpeta){
+            $tareas= $this->modelo->consultarTarea($carpeta['carpeta_id']);
+            if (!empty($tareas)){
             $acu.='<div class="col-sm-3">
                     <div class="card text-white bg-dark mt-5" style="max-width: 18rem;"> 
                         <div class="card-header"><h2>'.$carpeta['status'].'</h2></div>
                         <div class="card-body">
                             <a class="proyecto" href="descripcion.php?id_carpeta='.$carpeta['carpeta_id'].'&id_proyecto='.$carpeta['proyecto_id'].'">'.$this->modelo->mostrarNombreUsuario($carpeta['usuario_id']).'</a>
-                            <p class="card-text">Crear una base de datos de una tienda</p>
+                            <p class="card-text">'. substr(filter_var($tareas[0]["descripcion"],FILTER_SANITIZE_STRING),0,100).'...</p>
                         </div>
                     </div>
                     </div>';
+            } else {
+                 $acu.='<div class="col-sm-3">
+                    <div class="card text-white bg-dark mt-5" style="max-width: 18rem;"> 
+                        <div class="card-header"><h2>'.$carpeta['status'].'</h2></div>
+                        <div class="card-body">
+                            <a class="proyecto" href="descripcion.php?id_carpeta='.$carpeta['carpeta_id'].'&id_proyecto='.$carpeta['proyecto_id'].'">'.$this->modelo->mostrarNombreUsuario($carpeta['usuario_id']).'</a>
+                            <p class="card-text">No hay tareas asignadas</p>
+                        </div>
+                    </div>
+                    </div>';
+            }
         }
         return $acu;
     }
@@ -107,6 +120,9 @@ class CProyecto {
            $respuesta[1]=$this->modelo->mostrarNombreUsuario($carpeta['usuario_id']);
         }
         return $respuesta;
+    }
+    public function cambiarElStatus($carpeta_id,$status){
+        $this->modelo->actualizarStatus($carpeta_id, $status);
     }
 //  TAREAS---------------------------------------------------------------------------------------------
     public function nuevaTarea($carpeta,$descripcion){

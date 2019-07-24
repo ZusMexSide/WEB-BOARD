@@ -48,7 +48,7 @@ and open the template in the editor.
                             <thead>
                                 <tr>
                                     <th>Status:</th>
-                                    <th><?php echo $carpeta[0] ?></th>
+                                    <th><?php  echo ($carpeta[0]=="Revisar") ? 'En revision' : $carpeta[0] ?></th>
                                 </tr>
                                 <tr>
                                     <th>Proyecto:</th>
@@ -66,10 +66,34 @@ and open the template in the editor.
                             </tr>
 
                         </table>  
-                        <div class="botones"> 
-                            <button>
+                        <div class="botones">  
+                            <!-- Modal Aprobar-->
+                            <button type="button" data-toggle="modal" data-target="#exampleModal">
                                 Solicitar aprobación
-                            </button>  
+                            </button>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title text-dark" id="exampleModalLabel">Confirmar</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="text-dark">Desea solicitar la revisión</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form method="post">
+                                                <input type="hidden" value="<?php echo $_GET['id_carpeta'] ?>" name="carpeta">
+                                                <input type="hidden" value="3" name="status">
+                                                <button type="submit" name="aprobar" class="btn btn-primary">Solicitar</button>
+                                            </form>   
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>       
                 </div>

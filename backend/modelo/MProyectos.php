@@ -142,6 +142,16 @@ public function consultarStatus($id){
       echo "Error: ".$e->getMessage();  
     }
 }
+public function actualizarStatus($carpeta_id,$status){
+    try {
+       $stmt=$this->conn->prepare("UPDATE carpetas set status=:status where carpeta_id=:carpeta_id");
+       $stmt->bindParam(':status',$status);
+       $stmt->bindParam(':carpeta_id',$carpeta_id);
+       $stmt->execute();
+    } catch (PDOException $ex) {
+     echo "Error: ".$ex->getMessage();   
+    }
+}
 public function consultarIdCarpeta($id,$id_proyecto){
     try {
         $stmt=$this->conn->prepare("select carpeta_id from carpetas where usuario_id=:id and proyecto_id=:id_proyecto");

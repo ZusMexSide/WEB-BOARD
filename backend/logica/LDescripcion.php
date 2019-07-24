@@ -54,3 +54,7 @@ if (!empty($_POST['descripcion'])){
    $error.="No se insertó tarea";
 }
 }
+if (isset($_POST['aprobar']) or isset($_POST['desaprobar'])){
+    $proyectos->cambiarElStatus($_POST['carpeta'], $_POST['status']);
+    header('Location: descripcion.php?id_carpeta='.$_GET['id_carpeta'].'&id_proyecto='.$_GET['id_proyecto'].'');
+}

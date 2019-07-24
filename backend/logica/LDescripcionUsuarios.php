@@ -11,3 +11,7 @@ if (!empty($_GET['id_proyecto']) && !empty($_GET['id_carpeta']) ) {
 } else {
     header('Location: proyectos_usuarios.php');
 }
+if (isset($_POST['aprobar'])){
+    $proyectos->cambiarElStatus($_POST['carpeta'], $_POST['status']);
+    header('Location: ../Usuarios/descripcion_usuarios.php?id_carpeta='.$_GET['id_carpeta'].'&id_proyecto='.$_GET['id_proyecto'].'');
+}
