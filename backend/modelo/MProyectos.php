@@ -3,7 +3,7 @@
 class MProyectos extends BD {
 
     public function consultarProyecto($id){
-        try {
+         try {
             $stmt = $this->conn->prepare("select * from proyectos where proyecto_id=:id");
             $stmt->bindParam(':id',$id);
             $stmt->execute();
@@ -12,6 +12,17 @@ class MProyectos extends BD {
                 $devolver=$proyecto;
             }
             return $devolver;
+        } catch (PDOException $ex) {
+          echo "Error: ".$ex->getMessage();  
+        }
+    }
+    public function consultarProyectoDondeEsLider($id){
+        try {
+            $stmt = $this->conn->prepare("select * from proyectos where lider=:id");
+            $stmt->bindParam(':id',$id);
+            $stmt->execute();
+           return $proyectos= $stmt->fetchAll();
+            
         } catch (PDOException $ex) {
           echo "Error: ".$ex->getMessage();  
         }
@@ -129,6 +140,30 @@ public function consultarStatus($id){
         return $stmt->fetchAll();
     } catch (PDOException $e) {
       echo "Error: ".$e->getMessage();  
+    }
+}
+public function actualizarStatus($carpeta_id,$status){
+    try {
+       $stmt=$this->conn->prepare("UPDATE carpetas set status=:status where carpeta_id=:carpeta_id");
+       $stmt->bindParam(':status',$status);
+       $stmt->bindParam(':carpeta_id',$carpeta_id);
+       $stmt->execute();
+    } catch (PDOException $ex) {
+     echo "Error: ".$ex->getMessage();   
+    }
+}
+public function consultarIdCarpeta($id,$id_proyecto){
+    try {
+        $stmt=$this->conn->prepare("select carpeta_id from carpetas where usuario_id=:id and proyecto_id=:id_proyecto");
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':id_proyecto',$id_proyecto);
+         $stmt->execute();
+         $array=$stmt->fetchAll();
+         foreach ($array as $carpeta){
+             return $carpeta[0];
+         }
+    } catch (PDOException $ex) {
+       echo "Error: ".$ex->getMessage(); 
     }
 }
 // TAREAS

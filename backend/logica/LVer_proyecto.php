@@ -3,10 +3,10 @@ session_start();
 if (!isset($_SESSION['autentificado'])) {
     header('Location: ../index.php');
 }
-$error="";
-if (!empty($_GET['id_proyecto']) && !empty($_GET['id_carpeta']) ) {
+if (!empty($_GET['id'])) {
     $proyectos = new CProyecto();
-    $proyecto = $proyectos->mostrarProyecto($_GET['id_proyecto']);
+    $proyecto = $proyectos->mostrarProyecto($_GET['id']);
+    $carpeta = $proyectos->mostrarCarpetas($_GET['id']);
     if ($_SESSION['autentificado']['privilegios'] == 'Empleado') {
         $navegacion=' <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="proyectos.php">WebBoard</a>
@@ -24,7 +24,7 @@ if (!empty($_GET['id_proyecto']) && !empty($_GET['id_carpeta']) ) {
             header('Location: ../index.php');
         }
     } else {
-            $navegacion=' <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        $navegacion=' <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="proyectos.php">WebBoard</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -40,21 +40,6 @@ if (!empty($_GET['id_proyecto']) && !empty($_GET['id_carpeta']) ) {
              <a class="salir" href="../backend/logica/cerrar_sesion.php"> <i class="fas fa-sign-out-alt" ></i></a>
         </nav>';
     }
-    $carpeta = $proyectos->mostrarDescripcionUsuario($_GET['id_carpeta']);
-    $tarea=$proyectos->mostrarTareas($_GET['id_carpeta']);
 } else {
     header('Location: proyectos.php');
-
-}
-if (isset($_POST['enviado'])){
-if (!empty($_POST['descripcion'])){
-    $proyectos->nuevaTarea($_POST['carpeta_id'],$_POST['descripcion']);
-    header('Location: descripcion.php?id_carpeta='.$_GET['id_carpeta'].'&id_proyecto='.$_GET['id_proyecto'].'');
-}else{
-   $error.="No se insertó tarea";
-}
-}
-if (isset($_POST['aprobar']) or isset($_POST['desaprobar'])){
-    $proyectos->cambiarElStatus($_POST['carpeta'], $_POST['status']);
-    header('Location: descripcion.php?id_carpeta='.$_GET['id_carpeta'].'&id_proyecto='.$_GET['id_proyecto'].'');
 }

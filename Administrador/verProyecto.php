@@ -2,21 +2,19 @@
 include '../backend/modelo/BD.php';
 include '../backend/modelo/MProyectos.php';
 include '../backend/controlador/CProyectos.php';
-session_start();
-if (!isset($_SESSION['autentificado'])) {
-    header('Location: ../index.php');
-} else {
-    if ($_SESSION['autentificado']["privilegios"] == "Empleado") {
-        header('Location: ../index.php');
-    }
-}
-if (!empty($_GET['id'])) {
-    $proyectos = new CProyecto();
-    $proyecto = $proyectos->mostrarProyecto($_GET['id']);
-    $carpeta = $proyectos->mostrarCarpetas($_GET['id']);
-} else {
-    header('Location: proyectos.php');
-}
+include '../backend/logica/LVer_proyecto.php';
+?>
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<?php
+include '../backend/modelo/BD.php';
+include '../backend/modelo/MProyectos.php';
+include '../backend/controlador/CProyectos.php';
+include '../backend/logica/LVer_proyecto.php';
 ?>
 <!DOCTYPE html>
 <!--
@@ -36,56 +34,31 @@ and open the template in the editor.
         <title>Usuarios</title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="proyectos.php">WebBoard</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse p-2" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="proyectos.php">Proyectos</a>
-                    <a class="nav-item nav-link" href="generarProyecto.php"> Generar Proyecto</a>
-                    <a class="nav-item nav-link" href="agregarPersonal.php">Agregar Personal</a>
-                    <a class="nav-item nav-link" href="personal.php">Personal</a>
-
-                </div>
-            </div>
-            <a class="salir" href="../backend/logica/cerrar_sesion.php"> <i class="fas fa-sign-out-alt" ></i></a>
-        </nav>
+        <?php echo $navegacion?>
         <div class="container mt-5">
             <div class="row">
+                <div class="col-12">
+                    <h1><?php echo $proyecto['nombre'] ?></h1>
+                </div>
                 <div class="tabla"> 
-                    <div class="col"> 
-                        <table class="table">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col">
-                                        <thead>
-                                            <tr> <th> Descripcion:prueba</th></tr>
-                                            <tr>
-                                                <th>Proyecto:</th>
-                                                <th><?php echo $proyecto['nombre'] ?></th>
-                                            </tr>
-                                        </thead>
+                    <table class="table">
+                        <thead>
+                            <tr> <th> Descripcion:</th></tr>
+                        </thead>
 
-                                        <tr>
-                                            <th>Inicio:</th>
-                                            <th><?php echo date('d-m-Y', strtotime($proyecto['fecha'])) ?></th>
-                                        </tr>
-                                        <tr>
-                                            <th>Expiracion:</th>
-                                            <th><?php echo date('d-m-Y', strtotime($proyecto['fecha_exp'])) ?></th>
-                                        </tr>
-                                    </div>
-                                </div>
-                            </div>
-                        </table>  
-                    </div>       
+                        <tr>
+                            <th>Inicio:</th>
+                            <th><?php echo date('d-m-Y', strtotime($proyecto['fecha'])) ?></th>
+                        </tr>
+                        <tr>
+                            <th>Expiracion:</th>
+                            <th><?php echo date('d-m-Y', strtotime($proyecto['fecha_exp'])) ?></th>
+                        </tr>
+                    </table>  
                 </div>
                 <div class="col-sm">
                     <div class="texto"> 
                         <?php echo $proyecto['descripcion'] ?>
-                    
                     </div>
 
                 </div>
@@ -94,7 +67,6 @@ and open the template in the editor.
         </div>  
         <div class="container">
             <div class="row">
-              
                 <?php echo $carpeta ?>
             </div>
         </div>

@@ -23,28 +23,12 @@ and open the template in the editor.
         <title>    Administrador</title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="proyectos.php">WebBoard</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse p-2" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="proyectos.php">Proyectos</a>
-                    <a class="nav-item nav-link" href="generarProyecto.php"> Generar Proyecto</a>
-                    <a class="nav-item nav-link" href="agregarPersonal.php">Agregar Personal</a>
-                    <a class="nav-item nav-link" href="personal.php">Personal</a>
-
-                </div>
-            </div>
-             <a class="salir" href="../backend/logica/cerrar_sesion.php"> <i class="fas fa-sign-out-alt" ></i></a>
-        </nav>
+        <?php echo $navegacion ?>
         <div class="container">
             <div class="row">
-                <div class="col-12"><h1><?php echo $carpeta[1]?></h1></div>
-                </div>
+                <div class="col-12"><h1><?php echo $carpeta[1] ?></h1></div>
             </div>
-
+        </div>
         <div class="container">
             <div class="row">
                 <div class=""> 
@@ -53,14 +37,13 @@ and open the template in the editor.
                             <thead>
                                 <tr>
                                     <th>Status:</th>
-                                    <th><?php echo $carpeta[0]?></th>
+                                    <th><?php echo $carpeta[0] ?></th>
                                 </tr>
                                 <tr>
                                     <th>Proyecto:</th>
                                     <th><?php echo $proyecto['nombre'] ?></th>
                                 </tr>
                             </thead>
-
                             <tr>
                                 <th>Inicio:</th>
                                 <th><?php echo date('d-m-Y', strtotime($proyecto['fecha'])) ?></th>
@@ -69,14 +52,63 @@ and open the template in the editor.
                                 <th>Expiracion:</th>
                                 <th><?php echo date('d-m-Y', strtotime($proyecto['fecha_exp'])) ?></th>
                             </tr>   
-
                         </table>  
-                        <div class=" botones"> 
-                            <button>
+                        <div class=" botones "> 
+                            <!-- Modal Aprobar-->
+                            <button type="button" data-toggle="modal" data-target="#exampleModal">
                                 Aprobar
-                            </button>          
+                            </button>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title text-dark" id="exampleModalLabel">Confirmar</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="text-dark">Desea aprobar la tarea asignada</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form method="post">
+                                                <input type="hidden" value="<?php echo $_GET['id_carpeta'] ?>" name="carpeta">
+                                                <input type="hidden" value="2" name="status">
+                                                <button type="submit" name="aprobar" class="btn btn-primary">Aprobar</button>
+                                            </form>   
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal desaprobar -->
+                            <button type="button" data-toggle="modal" data-target="#exampleModal2">
+                                Desaprobar
+                            </button>
+                            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title text-dark" id="exampleModalLabel">Confirmar</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="text-dark">Desea desaprobar la tarea asignada</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form method="post">
+                                                <input type="hidden" value="<?php echo $_GET['id_carpeta'] ?>" name="carpeta">
+                                                <input type="hidden" value="1" name="status">
+                                                <button type="submit" name="desaprobar" class="btn btn-primary">Desaprobar</button>
+                                            </form>   
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
                     </div>       
                 </div>
                 <div class="col-sm">
@@ -84,9 +116,7 @@ and open the template in the editor.
                         <p><?php echo $tarea ?></p>
                         <h6><?php echo $error ?></h6> 
                     </div>
-
                 </div>
-
             </div>
         </div>
         <div class="container">
@@ -126,7 +156,6 @@ and open the template in the editor.
                         </button>
                     </div>
                 </div>
-
             </div>
         </div> 
 
