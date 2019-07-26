@@ -43,13 +43,13 @@ $proyectos= new CProyecto();
         </nav>
         <div class="inicio"> <h1>PROYECTOS</h1></div>
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-center">
              <?php echo $proyectos->proyectosAdmin()?>
         </div> 
 
 
             </div>
-        </div>
+        
 
 
 

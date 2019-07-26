@@ -13,13 +13,14 @@ body{
     font-size: 14px;
     font-weight:400;
     color:#777;
+    height:auto;
 }
 .card-body{
    margin-top:10px;
-    box-shadow:5px 5px 5px orangered;
+   
     text-align:center;
-    color:black;
-    background-color:white;
+    color:white;
+    background-color:#2a6478;
      width:auto;
     height:320px;
     display:block;  
@@ -31,21 +32,21 @@ body{
  
 }
 
-.card-body:hover{
+/*.card-body:hover{
     background-color:orangered;
     color:white;
     border-radius:5px;
     border:none;
     box-shadow:5px 5px 10px #9e9e9e;
-}
-.card img{
+}*/
+/*.card img{
     margin-top:-100px;
  margin:auto;
     width:180px;
     height:150px;
     display:block; 
 
-}
+}*/
 
 .card{
   
@@ -56,9 +57,9 @@ body{
 
 
 
-.div.card-body{
+/*.div.card-body{
    color:red; 
-}
+}*/
 .navbar-dark .navbar-brand {
     color: #fff;
     font-size: 35px;
@@ -103,8 +104,15 @@ i{
     margin-top:10px;
     height:140px;
     font-size:15px;
+font-family:'Raleway',sans-serif;
 }
-
+/*
 .col-sm{
     margin:auto;
+}*/
+
+.card-body img{
+   margin-top:-10px;
+    width:60%;
 }
+

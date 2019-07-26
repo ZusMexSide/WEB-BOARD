@@ -27,10 +27,11 @@ class CProyecto {
         $proyectos = $this->modelo->mostrarProyectosAdmin();
         $acu = "";
         foreach ($proyectos as $proyecto) {
-            $acu .= '<div class="col-sm-3">
+            $acu .= '<div class="col-auto">
                 <div class="card text-white bg-white mt-5" style="max-width: 18rem;"> 
                         <a class="card-header" href="verProyecto.php?id='.$proyecto['proyecto_id'].'">' . strtoupper(substr($proyecto['nombre'],0,12)) . '</a>
-                        <a class="lider" href="">Lider del proyecto: ' . $this->modelo->mostrarLiderProyecto($proyecto['lider']) . '</a>      
+                            <br>
+                        <p class="lider" href="">Lider del proyecto: ' . $this->modelo->mostrarLiderProyecto($proyecto['lider']) . '</P>      
                         <div class="card-body">
                             <div class="proyecto" href="#"> Fecha:<br>' .  date('d-m-Y',strtotime($proyecto['fecha_exp'])) . '</div>
                                 <br>
@@ -46,7 +47,7 @@ class CProyecto {
         $proyectos = $this->modelo->mostrarProyectosEmpleado($id);
         $acu = "";
         foreach ($proyectos as $proyecto) {
-            $acu .= '<div class="col-sm-3">
+            $acu .= '<div class="col-3">
                 <div class="card text-white bg-white mt-5" style="max-width: 18rem;"> 
                         <a class="card-header" href="verProyecto.php?id='.$proyecto['proyecto_id'].'">' . strtoupper(substr($proyecto['nombre'],0,12)) . '</a>
                         <a class="lider" href="">Lider del proyecto: ' . $this->modelo->mostrarLiderProyecto($proyecto['lider']) . '</a>      
@@ -69,7 +70,7 @@ class CProyecto {
         $carpetas= $this->modelo->carpetas($id);
         $acu="";
         foreach ($carpetas as $carpeta){
-            $acu.='<div class="col-sm-3">
+            $acu.='<div class="col-3">
                     <div class="card text-white bg-dark mt-5" style="max-width: 18rem;"> 
                         <div class="card-header"><h2>'.$carpeta['status'].'</h2></div>
                         <div class="card-body">

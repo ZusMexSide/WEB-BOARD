@@ -20,30 +20,13 @@ class CUsuarios {
                     <div class="card mt-5" style="width: 15rem;">
                         <div class="uno"> 
                             <div class="card-body">
-                             <img src=../'.$persona["imagen"]. ' class="img-fluid rounded-circle w-60 sm-3" alt="...">
+                             <img src=../'.$persona["imagen"]. ' class="img-fluid  w-60 sm-3" alt="...">
                               <div class="card-title"> <strong>información</strong>
                               <br>
                                <p>'. $persona["nombre"] .'</p>
                                     <p>Puesto:'. $persona["nivel_estudios"] .'</p>
                                     <p>Tareas:Proyectos </p>
                                     </div>
-                                    <div class="d-flex flex-row justify-content-center">
-                                    <div class="p-4">
-                                    <a>
-                                 <i class="fab fa-twitter"></i>
-                                    </a href="#">
-                                    </div>
-                                    <div class="p-4">
-                                    <a>
-                                    <i class="fab fa-facebook-f"></i>
-                                    </a href="#">
-                                    </div>
-                                    <div class="p-4">
-                                    <a>
-                                   <i class="fab fa-whatsapp"></i>
-                                    </a href="#">
-                                    </div>
-                                     </div>
                                 </div>
                             </div>
                         </div>

@@ -54,31 +54,38 @@ and open the template in the editor.
         </nav>
         <div class="container mt-5">
             <div class="row">
-                <div class=""> 
-                    <div class="tabla"> 
+                <div class="tabla"> 
+                    <div class="col"> 
                         <table class="table">
-                            <thead>
-                                <tr> <th> Descripcion:prueba</th></tr>
-                                <tr>
-                                    <th>Proyecto:</th>
-                                    <th><?php echo $proyecto['nombre'] ?></th>
-                                </tr>
-                            </thead>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <thead>
+                                            <tr> <th> Descripcion:prueba</th></tr>
+                                            <tr>
+                                                <th>Proyecto:</th>
+                                                <th><?php echo $proyecto['nombre'] ?></th>
+                                            </tr>
+                                        </thead>
 
-                            <tr>
-                                <th>Inicio:</th>
-                                <th><?php echo date('d-m-Y', strtotime($proyecto['fecha'])) ?></th>
-                            </tr>
-                            <tr>
-                                <th>Expiracion:</th>
-                                <th><?php echo date('d-m-Y', strtotime($proyecto['fecha_exp'])) ?></th>
-                            </tr>
+                                        <tr>
+                                            <th>Inicio:</th>
+                                            <th><?php echo date('d-m-Y', strtotime($proyecto['fecha'])) ?></th>
+                                        </tr>
+                                        <tr>
+                                            <th>Expiracion:</th>
+                                            <th><?php echo date('d-m-Y', strtotime($proyecto['fecha_exp'])) ?></th>
+                                        </tr>
+                                    </div>
+                                </div>
+                            </div>
                         </table>  
                     </div>       
                 </div>
                 <div class="col-sm">
                     <div class="texto"> 
                         <?php echo $proyecto['descripcion'] ?>
+                    
                     </div>
 
                 </div>
@@ -87,6 +94,7 @@ and open the template in the editor.
         </div>  
         <div class="container">
             <div class="row">
+              
                 <?php echo $carpeta ?>
             </div>
         </div>

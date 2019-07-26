@@ -40,7 +40,7 @@ $personal=new CUsuarios();
              <a class="salir" href="../backend/logica/cerrar_sesion.php"> <i class="fas fa-sign-out-alt" ></i></a>
         </nav>
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-center">
              <?php echo $personal->personalCompleto()?>
             </div>
         </div> 
