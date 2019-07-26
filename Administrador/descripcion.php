@@ -23,6 +23,7 @@ and open the template in the editor.
         <title>    Administrador</title>
     </head>
     <body>
+        <div id = "fb-root" > </div> <script async defer crossorigin = "anonymous" src = "https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.3" ></script> 
         <?php echo $navegacion ?>
         <div class="container">
             <div class="row">
@@ -123,7 +124,7 @@ and open the template in the editor.
             <div class="row mt-5">
                 <div class="col-12">
                     <div class="row">
-                        <?php echo $archivo?>
+                        <?php echo $archivo ?>
                     </div>
                 </div>
                 <div class="col-12">
@@ -158,12 +159,16 @@ and open the template in the editor.
                     </div>
                 </div>
             </div>
-        </div> 
-
-
-
-
-
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-10" style="background-color:#212529;">
+                    <div class="fb-comments" data-href="http://web-board.test:81/Usuarios/descripcion_usuarios.php?id_carpeta=<?php echo $_GET['id_carpeta'] ?>&amp;id_proyecto=<?php echo $_GET['id_proyecto'] ?>" data-width="100%" data-numposts="5" data-order-by="reverse_time" data-colorscheme="dark"></div>
+                </div>
+                <div class="col-1"></div>
+            </div>
+        </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
