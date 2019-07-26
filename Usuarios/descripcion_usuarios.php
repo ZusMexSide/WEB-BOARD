@@ -48,7 +48,7 @@ and open the template in the editor.
                             <thead>
                                 <tr>
                                     <th>Status:</th>
-                                    <th><?php  echo ($carpeta[0]=="Revisar") ? 'En revision' : $carpeta[0] ?></th>
+                                    <th><?php echo ($carpeta[0] == "Revisar") ? 'En revision' : $carpeta[0] ?></th>
                                 </tr>
                                 <tr>
                                     <th>Proyecto:</th>
@@ -106,39 +106,40 @@ and open the template in the editor.
         </div>
         <div class="container">
             <div class="row mt-5">
-                <div class="col-sm">
-                    <div class="svg"> 
-                        <img src="imagenes/record.svg">
-                        <a href="">Trabajo 1</a> 
-                    </div>
-                    <div class="svg"> 
-                        <img src="imagenes/record.svg">
-                        <a href="">Trabajo 1</a> 
+                <div class="col-12">
+                    <div class="row">
+                        <?php echo $archivo?>
                     </div>
                 </div>
-                <div class="col-sm">
-                    <div class="svg"> 
-                        <img src="imagenes/record.svg">
-                        <a href="">Trabajo 1</a> 
-                    </div>
-                    <div class="svg"> 
-                        <img src="imagenes/record.svg">
-                        <a href="">Trabajo 1</a> 
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="svg"> 
-                        <img src="imagenes/record.svg">
-                        <a href="">Trabajo 1</a> 
-                    </div>
-                    <div class="svg"> 
-                        <img src="imagenes/record.svg">
-                        <a href="">Trabajo 1</a> 
-                    </div>
+                <div class="col-12 mt-5">
                     <div class="botones1">
-                        <button>
+                        <?php echo $error; ?>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                             Subir Archivo
                         </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <form method="post" enctype="multipart/form-data">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">Subir nuevo archivo</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <input required type="file" name="archivo">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" name="enviado" class="btn btn-primary">Subir</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
