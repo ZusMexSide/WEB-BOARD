@@ -4,9 +4,15 @@ if (!isset($_SESSION['autentificado'])) {
     header('Location: ../index.php');
 }
 if (!empty($_GET['id'])) {
+    $error="";
     $proyectos = new CProyecto();
+    $usuarios= new CUsuarios();
     $proyecto = $proyectos->mostrarProyecto($_GET['id']);
     $carpeta = $proyectos->mostrarCarpetas($_GET['id']);
+    $imprimir=$usuarios->mostrarPersonalQueNoEstaEnElProyecto($_GET['id'],$proyectos,$proyecto['lider']);
+    if (empty($imprimir)){
+        $imprimir='<h2>No hay mas empleados disponibles</h2>';
+    }
     if ($_SESSION['autentificado']['privilegios'] == 'Empleado') {
         $navegacion=' <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="proyectos.php">WebBoard</a>
@@ -42,4 +48,20 @@ if (!empty($_GET['id'])) {
     }
 } else {
     header('Location: proyectos.php');
+}
+if (isset($_POST['eliminar'])){
+    $proyectos->eliminarUnProyecto($_GET['id']);
+    header('Location: proyectos.php');
+}
+if (isset($_POST['agregar'])){
+    if (!empty($_POST['casilla'])){
+    foreach ($_POST['casilla'] as $user){
+            $proyectos->asignarEmpleados($_GET['id'], $user);
+        }
+    header('Location: verProyecto.php?id='.$_GET['id'].'');
+    }else{
+        $error='<script type="text/javascript">
+    alert("No se selecciono ningun empleado.");
+    </script>';
+    }
 }

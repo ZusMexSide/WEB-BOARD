@@ -30,5 +30,15 @@ class MUsuarios extends BD {
             echo "Error: " . $ex->getMessage();
         }
     }
+    public function consultarUsuariosDentroDeProyecto($proyecto_id){
+        try {
+            $stmt = $this->conn->prepare("select * from usuarios u inner join carpetas c on c.usuario_id=u.usuario_id where c.proyecto_id in(:id)");
+            $stmt->bindParam('id',$proyecto_id);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (PDOException $ex) {
+            echo "Error: " . $ex->getMessage();
+        }
+    }
 
 }
