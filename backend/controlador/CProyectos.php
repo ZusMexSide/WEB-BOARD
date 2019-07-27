@@ -86,7 +86,12 @@ class CProyecto {
     public function mostrarProyecto($id) {
         return $this->modelo->consultarProyecto($id);
     }
-
+public function eliminarUnProyecto($proyecto_id){
+    $this->modelo->eliminarProyecto($proyecto_id);
+}
+public function mostrarElLiderDelProyecto($usuario_id){
+   return $this->modelo->mostrarLiderProyecto($usuario_id);
+}
 //    CARPETAS--------------------------------------------------------------------------------------------
     public function mostrarCarpetas($id) {
         $carpetas = $this->modelo->carpetas($id);

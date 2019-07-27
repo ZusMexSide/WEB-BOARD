@@ -50,9 +50,8 @@ class MProyectos extends BD {
             $stmt->execute();
             $nombres = $stmt->fetchAll();
             foreach ($nombres as $name) {
-                $nombre = $name;
+                 return $name['nombre'];
             }
-            return $nombre['nombre'];
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
@@ -127,7 +126,15 @@ class MProyectos extends BD {
             echo "Error: " . $e->getMessage();
         }
     }
-
+public function eliminarProyecto($proyecto_id){
+    try {
+         $stmt = $this->conn->prepare("DELETE from proyectos where proyecto_id=:id");
+         $stmt->bindParam(':id',$proyecto_id);
+         $stmt->execute();
+    } catch (PDOException $ex) {
+        echo "Error: " . $ex->getMessage();
+    }
+}
 // CARPETAS
 
     public function carpetas($id) {
