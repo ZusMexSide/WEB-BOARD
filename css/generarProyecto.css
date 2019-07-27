@@ -15,7 +15,7 @@
 }
 
 
-@media all and (min-width: 500px){
+@media all and (min-width:430px){
     .form-container{
         display:block;
         background-color:white;
@@ -27,7 +27,7 @@
 
     }
 }
-@media all and (max-width: 500px){
+@media all and (max-width:430px){
     .form-container{
         display:block;
         background-color:white;
@@ -39,7 +39,7 @@
 
     }
 }
-@media all and (min-width: 500px){
+@media all and (min-width: 430px){
     p{
         margin:auto;
         font-family:'Raleway',sans-serif;
@@ -47,7 +47,7 @@
 
     }
 }
-@media all and (max-width: 500px){
+@media all and (max-width: 430px){
     p{
         margin:auto;
         font-family:'Raleway',sans-serif;
@@ -58,7 +58,7 @@
 
 
 
-@media all and (min-width: 500px){
+@media all and (min-width:430px){
     .btn-primary{
         color:white;
         background-color:#18293A;
@@ -67,7 +67,7 @@
         font-size:16px; 
     }
 }
-@media all and (max-width:500px){
+@media all and (max-width:430px){
     .btn-primary{
         color:white;
         width:auto;;

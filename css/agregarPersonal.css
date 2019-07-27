@@ -1,13 +1,5 @@
 
-@media all and (max-width:500px){
-    .form-container{
-        width:auto;
-        height:auto;
-        margin:auto;
 
-
-    }
-}
 
 .uno{
     background-color:#1a2537 ;
@@ -123,7 +115,7 @@ body{
     margin-left: auto;
 }
 
-@media all and (max-width:350px){
+@media all and (max-width:430px){
     .form-control {
         display: block;
         width: 100%;
@@ -141,7 +133,7 @@ body{
     }
 }
 
-@media all and (min-width:350px){
+@media all and (min-width:430px){
     .form-control {
         display: block;
         width: 100%;
@@ -159,15 +151,43 @@ body{
     }
 }
 
-@media all and (max-width:350px){
+@media all and (max-width:4300px){
     label{
         color:#1a2537;
-        font-size:5px;
+        font-size:11px;
         text-align:center;
+        height:auto;
     }
 }
-@media all and (min-width:350px){
+@media all and (min-width:430px){
     label{
        color:#1a2537;
+       font-size:15px;
+        text-align:center;
+        height:auto;
+    }
+}
+@media all and (min-width:430px){
+    .form-container{
+        display:block;
+        background-color:white;
+        width:500px;
+        margin-top:10px;
+        border-radius:20px;
+        padding: 30px;
+        height:auto;
+
+    }
+}
+@media all and (max-width:430px){
+    .form-container{
+        display:block;
+        background-color:white;
+        width:auto;
+        margin-top:10px;
+        border-radius:20px;
+        padding: 30px;
+        height:auto;
+
     }
 }

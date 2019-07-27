@@ -10,18 +10,6 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<?php
-include '../backend/modelo/BD.php';
-include '../backend/modelo/MProyectos.php';
-include '../backend/controlador/CProyectos.php';
-include '../backend/logica/LVer_proyecto.php';
-?>
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html lang="en">
     <head>
         <!-- Required meta tags -->
@@ -34,29 +22,32 @@ and open the template in the editor.
         <title>Usuarios</title>
     </head>
     <body>
-        <?php echo $navegacion?>
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-12">
-                    <h1><?php echo $proyecto['nombre'] ?></h1>
-                </div>
-                <div class="tabla"> 
-                    <table class="table">
-                        <thead>
-                            <tr> <th> Descripcion:</th></tr>
-                        </thead>
+        <?php echo $navegacion ?>
+        <div class="section-title-wr  style-2 base base-al">
+            <br>
+            <h3 class="section-title left"> <span><?php echo $proyecto['nombre'] ?></span></h3>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="tabla"> 
+                        <table class="table">
+                            <thead>
+                                <tr> <th> Descripcion:</th></tr>
+                            </thead>
 
-                        <tr>
-                            <th>Inicio:</th>
-                            <th><?php echo date('d-m-Y', strtotime($proyecto['fecha'])) ?></th>
-                        </tr>
-                        <tr>
-                            <th>Expiracion:</th>
-                            <th><?php echo date('d-m-Y', strtotime($proyecto['fecha_exp'])) ?></th>
-                        </tr>
-                    </table>  
+                            <tr>
+                                <th>Inicio:</th>
+                                <th><?php echo date('d-m-Y', strtotime($proyecto['fecha'])) ?></th>
+                            </tr>
+                            <tr>
+                                <th>Expiracion:</th>
+                                <th><?php echo date('d-m-Y', strtotime($proyecto['fecha_exp'])) ?></th>
+                            </tr>
+                        </table>  
+                    </div>
                 </div>
-                <div class="col-sm">
+                <div class="col-md-4">
                     <div class="texto"> 
                         <?php echo $proyecto['descripcion'] ?>
                     </div>
@@ -64,9 +55,9 @@ and open the template in the editor.
                 </div>
 
             </div>
-        </div>  
-        <div class="container">
-            <div class="row">
+        </div>
+        <div class="container-fluid">
+            <div class="row justify-content-center">
                 <?php echo $carpeta ?>
             </div>
         </div>

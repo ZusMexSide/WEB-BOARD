@@ -89,7 +89,7 @@ and open the template in the editor.
                              </div>
                         </div>
                          <div class="form-div">
-                                    <label for="foto" class="input-label">
+                                    <label for="foto" class="input-label" class="fotito">
                                         <i class="fas fa-upload" ></i>
                                         <span id="label_span">Ingresar foto del usuario</span>
                                     </label>

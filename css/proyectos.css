@@ -83,28 +83,54 @@ h3{
 
 .card-title{
     color:black;
-     font-family:'Raleway',sans-serif;
-     
-    
+    font-family:'Raleway',sans-serif;
+
+
+}
+.card{
+    margin:auto;
+    width:390px;
+    height:380px;
+    font-family:'Raleway',sans-serif;
+    border:1px solid #2851A3;
+
 }
 
 
 
+.card-body {
+    color:black;
+    font-family:'Raleway',sans-serif;  
+    font-size:15px;
 
-    .card{
-       margin:auto;
-       width:390px;
-       height:380px;
-    font-family:'Raleway',sans-serif;
-    border: 3px solid #2851A3;
-    
-    }
+}
 
+.vermas a{
+    margin-left:28%;
+    margin-right:20%;
+    padding:5px;
+    background-color:#2851A3;
+    color:white;
+    width:120px;
+    text-align:center;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
    
-    
-    .card-body {
-        color:black;
-       font-family:'Raleway',sans-serif;  
-       font-size:15px;
-     
-    }
+}
+.vermas a:hover{
+    margin-left:28%;
+    margin-right:20%;
+    padding:5px;
+    background-color:white;
+    color:#2851A3;
+    width:120px;
+    text-align:center;
+/*    -webkit-appearance: button;
+    -moz-appearance: button;*/
+    appearance: button;
+    text-decoration: none;
+    border:2px solid #2851A3;
+}
+

@@ -35,9 +35,13 @@ if (!isset($_SESSION['autentificado'])) {
             </div>
             <a class="salir" href="../backend/logica/cerrar_sesion.php"> <i class="fas fa-sign-out-alt" ></i></a>
         </nav>
-        <div class="inicio"> <h1>PROYECTOS</h1></div>
+        <div class="section-title-wr  style-2 base base-al">
+            <br>
+            <h3 class="section-title left"> <span>Proyectos</span></h3>
+        </div>
+       
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-center">
                    <?php echo $proyecto_lider;
                    echo $proyecto;?>
             </div>

@@ -16,19 +16,19 @@ if (isset($_POST['ingresar'])) {
         $usuario = stripslashes(htmlspecialchars(trim($usuario)));
         $usuario = filter_var($usuario, FILTER_SANITIZE_STRING);
     } else {
-        $error .= "<p>Inserta un nombre de usuario</p><br>";
+        $error .= "<h3>Inserta un nombre de usuario</h3><br>";
     }
     if (!empty($pass)) {
         $pass = stripslashes(htmlspecialchars(trim($pass)));
         $pass = filter_var($pass, FILTER_SANITIZE_STRING);
     } else {
-        $error .= "<br><p>Inserta una contraseña</p>";
+        $error .= "<h3>Inserta una contraseña</h3><br>";
     }
     if (empty($error)) {
         $respuesta = $consulta->validarUsuario($usuario);
 
         if (empty($respuesta)) {
-            $error = "<p>El usuario no existe</p>";
+            $error = "<h3>El usuario no existe";
         } else {
             $hash = $respuesta['contrasenia'];
             if (password_verify($pass, $hash)) {
@@ -40,7 +40,7 @@ if (isset($_POST['ingresar'])) {
                     header('Location: Administrador/proyectos.php');
                 }
             } else {
-                $error = "<p>Contraseña incorrecta</p> <br>";
+                $error = "<h3>Contraseña incorrecta";
             }
         }
     }

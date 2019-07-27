@@ -27,18 +27,20 @@ class CProyecto {
         $proyectos = $this->modelo->mostrarProyectosAdmin();
         $acu = "";
         foreach ($proyectos as $proyecto) {
-            $acu .= '<div class="col-auto">
+            $acu .= '<div class="col-md-auto">
                 <div class="card text-white bg-white mt-5" style="max-width: 18rem;"> 
-                        <a class="card-header" href="verProyecto.php?id='.$proyecto['proyecto_id'].'">' . strtoupper(substr($proyecto['nombre'],0,12)) . '</a>
-                            <br>
-                        <p class="lider" href="">Lider del proyecto: ' . $this->modelo->mostrarLiderProyecto($proyecto['lider']) . '</P>      
+                        <a class="card-header">' . strtoupper(substr($proyecto['nombre'],0,12)) . '</a>
+                        <a class="lider" href="">Lider del proyecto: ' . $this->modelo->mostrarLiderProyecto($proyecto['lider']) . '</a>      
                         <div class="card-body">
                             <div class="proyecto" href="#"> Fecha límite:<br>' .  date('d-m-Y',strtotime($proyecto['fecha_exp'])) . '</div>
                                 <br>
                             <div class="card-title">Numero de colaboradores: ' . $this->modelo->numeroColaboradores($proyecto['proyecto_id']) . '</div>
                             <p class="card-text"> Descripcion: <br>' . substr(filter_var($proyecto['descripcion'], FILTER_SANITIZE_STRING), 0, 100) . '...</p>
-                        </div>
-                    </div>
+                      </div>
+                   <div class="vermas">  <a href="verProyecto.php?id='.$proyecto['proyecto_id'].'"> Ver Proyecto</a> </div>
+                     <br>
+                     </div>
+                     <br>
                     </div>';
         }
         return $acu;
@@ -47,12 +49,7 @@ class CProyecto {
         $proyectos = $this->modelo->mostrarProyectosEmpleado($usuario_id);
         $acu = "";
         foreach ($proyectos as $proyecto) {
-<<<<<<< HEAD
-            $acu .= '<div class="col-3">
-                <div class="card text-white bg-white mt-5" style="max-width: 18rem;"> 
-                        <a class="card-header" href="verProyecto.php?id='.$proyecto['proyecto_id'].'">' . strtoupper(substr($proyecto['nombre'],0,12)) . '</a>
-=======
-            $acu .= '<div class="col-sm-3">
+            $acu .= '<div class="col-md-auto">
                 <div class="card text-dark bg-white mt-5" style="max-width: 18rem;"> 
                         <a class="card-header" href="descripcion_usuarios.php?id_carpeta='.$this->modelo->consultarIdCarpeta($usuario_id, $proyecto['proyecto_id']).'&id_proyecto='.$proyecto['proyecto_id'].'">' . strtoupper(substr($proyecto['nombre'],0,12)) . '</a>
                         <a class="lider" href="">Lider del proyecto: ' . $this->modelo->mostrarLiderProyecto($proyecto['lider']) . '</a>      
@@ -62,7 +59,10 @@ class CProyecto {
                             <div class="card-title">Numero de colaboradores: ' . $this->modelo->numeroColaboradores($proyecto['proyecto_id']) . '</div>
                             <p class="card-text"> Descripcion: <br>' . substr(filter_var($proyecto['descripcion'], FILTER_SANITIZE_STRING), 0, 100) . '...</p>
                         </div>
+                        <div class="vermas"> <a href="descripcion_usuarios.php?id_carpeta='.$this->modelo->consultarIdCarpeta($usuario_id, $proyecto['proyecto_id']).'&id_proyecto='.$proyecto['proyecto_id'].'"> Ver Proyecto</a> </div>
+                        <br>
                     </div>
+                    <br>
                     </div>';
         }
         return $acu;
@@ -74,7 +74,6 @@ class CProyecto {
             $acu .= '<div class="col-sm-3">
                 <div class="card text-dark bg-white mt-5" style="max-width: 18rem;"> 
                         <a class="card-header" href="../Administrador/verProyecto.php?id='.$proyecto['proyecto_id'].'">' . strtoupper(substr($proyecto['nombre'],0,12)) . '</a>
->>>>>>> 55ef731793d5e9817471ff6a553ac28b5f3f1974
                         <a class="lider" href="">Lider del proyecto: ' . $this->modelo->mostrarLiderProyecto($proyecto['lider']) . '</a>      
                         <div class="card-body">
                             <div class="proyecto" href="#"> Fecha límite:<br>' .  date('d-m-Y',strtotime($proyecto['fecha_exp'])) . '</div>
@@ -95,15 +94,11 @@ class CProyecto {
         $carpetas= $this->modelo->carpetas($id);
         $acu="";
         foreach ($carpetas as $carpeta){
-<<<<<<< HEAD
-            $acu.='<div class="col-3">
-=======
             $tareas= $this->modelo->consultarTarea($carpeta['carpeta_id']);
             if (!empty($tareas)){
-            $acu.='<div class="col-sm-3">
->>>>>>> 55ef731793d5e9817471ff6a553ac28b5f3f1974
-                    <div class="card text-white bg-dark mt-5" style="max-width: 18rem;"> 
-                        <div class="card-header"><h2>'.$carpeta['status'].'</h2></div>
+            $acu.='<div class="col-sm-4">
+             <div class="card text-white bg-dark mt-5" style="max-width: 18rem;"> 
+            <div class="card-header"><h2>'.$carpeta['status'].'</h2></div>
                         <div class="card-body">
                             <a class="proyecto" href="descripcion.php?id_carpeta='.$carpeta['carpeta_id'].'&id_proyecto='.$carpeta['proyecto_id'].'">'.$this->modelo->mostrarNombreUsuario($carpeta['usuario_id']).'</a>
                             <p class="card-text">'. substr(filter_var($tareas[0]["descripcion"],FILTER_SANITIZE_STRING),0,100).'...</p>
@@ -111,12 +106,18 @@ class CProyecto {
                     </div>
                     </div>';
             } else {
-                 $acu.='<div class="col-sm-3">
-                    <div class="card text-white bg-dark mt-5" style="max-width: 18rem;"> 
-                        <div class="card-header"><h2>'.$carpeta['status'].'</h2></div>
+                 $acu.='<div class="col-md-auto">
+                     <div class="container">
+  <div class="row">
+    <div class="col-md-auto">
+                    <div class="card text-white bg-white mt-5" style="max-width: 18rem;"> 
+                <div class="card-header"><h2>'.$carpeta['status'].'</h2></div>
                         <div class="card-body">
                             <a class="proyecto" href="descripcion.php?id_carpeta='.$carpeta['carpeta_id'].'&id_proyecto='.$carpeta['proyecto_id'].'">'.$this->modelo->mostrarNombreUsuario($carpeta['usuario_id']).'</a>
                             <p class="card-text">No hay tareas asignadas</p>
+                        </div>
+                        </div>
+                        </div>
                         </div>
                     </div>
                     </div>';
