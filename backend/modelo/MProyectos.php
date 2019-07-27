@@ -135,6 +135,17 @@ public function eliminarProyecto($proyecto_id){
         echo "Error: " . $ex->getMessage();
     }
 }
+public function actualizarProyecto($proyecto_id,$fecha_exp,$descripcion){
+    try {
+         $stmt = $this->conn->prepare("UPDATE proyectos set fecha_exp=:fecha, descripcion=:descripcion where proyecto_id=:id");
+         $stmt->bindParam(':id',$proyecto_id);
+         $stmt->bindParam(':fecha',$fecha_exp);
+         $stmt->bindParam(':descripcion',$descripcion);
+         $stmt->execute();
+    } catch (PDOException $ex) {
+        echo "Error: " . $ex->getMessage();
+    } 
+}
 // CARPETAS
 
     public function carpetas($id) {
@@ -184,7 +195,16 @@ public function eliminarProyecto($proyecto_id){
             echo "Error: " . $ex->getMessage();
         }
     }
-
+    public function eliminarCarpetasDeUnProyecto($proyecto_id,$usuario_id){
+        try {
+            $stmt = $this->conn->prepare("DELETE from carpetas where usuario_id=:id and proyecto_id=:id_proyecto");
+            $stmt->bindParam(':id', $usuario_id);
+            $stmt->bindParam(':id_proyecto', $proyecto_id);
+            $stmt->execute();
+        } catch (PDOException $ex) {
+            echo "Error: ".$ex->getMessage();
+        }
+    }
 // TAREAS
     public function insertarTarea($carpeta, $descripcion) {
         try {

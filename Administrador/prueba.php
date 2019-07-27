@@ -1,7 +1,9 @@
 <?php
 include_once '../backend/modelo/BD.php';
-include_once '../backend/modelo/MUsuarios.php';
-$arhivos=new MUsuarios();
-$analizar=$arhivos->consultarUsuariosDentroDeProyectomostrarArchivos(22);
-echo print_r($analizar);
+include_once '../backend/modelo/MProyectos.php';
+include '../backend/controlador/CProyectos.php';
+if (isset($_POST['editarProyecto'])){
+    echo $_POST['fecha'].'<br>';
+    echo $_POST['descripcion'].'<br>';
+}
 ?>

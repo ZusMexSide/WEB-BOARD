@@ -10,6 +10,7 @@ if (!empty($_GET['id'])) {
     $proyecto = $proyectos->mostrarProyecto($_GET['id']);
     $carpeta = $proyectos->mostrarCarpetas($_GET['id']);
     $imprimir=$usuarios->mostrarPersonalQueNoEstaEnElProyecto($_GET['id'],$proyectos,$proyecto['lider']);
+    $eliminar_empleados=$proyectos->mostrarEmpleadosParaELiminarDentroDeProyecto($_GET['id']);
     if (empty($imprimir)){
         $imprimir='<h2>No hay mas empleados disponibles</h2>';
     }
@@ -63,5 +64,27 @@ if (isset($_POST['agregar'])){
         $error='<script type="text/javascript">
     alert("No se selecciono ningun empleado.");
     </script>';
+    }
+}
+if (isset($_POST['eliminarEmpleados'])){
+    if (!empty($_POST['empleados'])){
+        foreach ($_POST['empleados'] as $empleado){
+            $proyectos->eliminarEmpleadosDelProyecto($_GET['id'], $empleado);
+             header('Location: verProyecto.php?id='.$_GET['id'].'');
+        }
+    } else {
+       $error='<script type="text/javascript">
+    alert("No se selecciono ningun empleado.");
+    </script>'; 
+    }
+}
+if (isset($_POST['editarProyecto'])){
+    if (!empty($_POST['fecha']) && !empty($_POST['descripcion'] )){
+        $proyectos->modificarProyecto($_GET['id'], $_POST['fecha'], $_POST['descripcion']);
+         header('Location: verProyecto.php?id='.$_GET['id'].'');
+    } else {
+         $error='<script type="text/javascript">
+    alert("No se insertaron datos a modificar del proyecto.");
+    </script>'; 
     }
 }

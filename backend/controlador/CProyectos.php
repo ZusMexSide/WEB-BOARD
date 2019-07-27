@@ -92,6 +92,17 @@ public function eliminarUnProyecto($proyecto_id){
 public function mostrarElLiderDelProyecto($usuario_id){
    return $this->modelo->mostrarLiderProyecto($usuario_id);
 }
+public function mostrarEmpleadosParaELiminarDentroDeProyecto($proyecto_id) {
+        $carpetas = $this->modelo->carpetas($proyecto_id);
+        $acu = "";
+        foreach ($carpetas as $carpeta) {
+                $acu .='<input type="checkbox" name="empleados[]" value="'.$carpeta['usuario_id'].'">'. $this->modelo->mostrarNombreUsuario($carpeta['usuario_id']).'<br>';
+        }
+        return $acu;
+    }
+    public function modificarProyecto($proyecto_id,$fecha_exp,$descripcion){
+        $this->modelo->actualizarProyecto($proyecto_id, $fecha_exp, $descripcion);
+    }
 //    CARPETAS--------------------------------------------------------------------------------------------
     public function mostrarCarpetas($id) {
         $carpetas = $this->modelo->carpetas($id);
@@ -135,7 +146,9 @@ public function mostrarElLiderDelProyecto($usuario_id){
     public function cambiarElStatus($carpeta_id, $status) {
         $this->modelo->actualizarStatus($carpeta_id, $status);
     }
-
+    public function eliminarEmpleadosDelProyecto($proyecto_id,$usuario_id){
+        $this->modelo->eliminarCarpetasDeUnProyecto($proyecto_id, $usuario_id);
+    }
 //  TAREAS---------------------------------------------------------------------------------------------
     public function nuevaTarea($carpeta, $descripcion) {
         $this->modelo->insertarTarea($carpeta, $descripcion);
