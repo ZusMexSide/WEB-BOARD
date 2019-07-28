@@ -50,7 +50,7 @@ class MProyectos extends BD {
             $stmt->execute();
             $nombres = $stmt->fetchAll();
             foreach ($nombres as $name) {
-                 return $name['nombre'];
+                return $name['nombre'];
             }
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
@@ -126,26 +126,29 @@ class MProyectos extends BD {
             echo "Error: " . $e->getMessage();
         }
     }
-public function eliminarProyecto($proyecto_id){
-    try {
-         $stmt = $this->conn->prepare("DELETE from proyectos where proyecto_id=:id");
-         $stmt->bindParam(':id',$proyecto_id);
-         $stmt->execute();
-    } catch (PDOException $ex) {
-        echo "Error: " . $ex->getMessage();
+
+    public function eliminarProyecto($proyecto_id) {
+        try {
+            $stmt = $this->conn->prepare("DELETE from proyectos where proyecto_id=:id");
+            $stmt->bindParam(':id', $proyecto_id);
+            $stmt->execute();
+        } catch (PDOException $ex) {
+            echo "Error: " . $ex->getMessage();
+        }
     }
-}
-public function actualizarProyecto($proyecto_id,$fecha_exp,$descripcion){
-    try {
-         $stmt = $this->conn->prepare("UPDATE proyectos set fecha_exp=:fecha, descripcion=:descripcion where proyecto_id=:id");
-         $stmt->bindParam(':id',$proyecto_id);
-         $stmt->bindParam(':fecha',$fecha_exp);
-         $stmt->bindParam(':descripcion',$descripcion);
-         $stmt->execute();
-    } catch (PDOException $ex) {
-        echo "Error: " . $ex->getMessage();
-    } 
-}
+
+    public function actualizarProyecto($proyecto_id, $fecha_exp, $descripcion) {
+        try {
+            $stmt = $this->conn->prepare("UPDATE proyectos set fecha_exp=:fecha, descripcion=:descripcion where proyecto_id=:id");
+            $stmt->bindParam(':id', $proyecto_id);
+            $stmt->bindParam(':fecha', $fecha_exp);
+            $stmt->bindParam(':descripcion', $descripcion);
+            $stmt->execute();
+        } catch (PDOException $ex) {
+            echo "Error: " . $ex->getMessage();
+        }
+    }
+
 // CARPETAS
 
     public function carpetas($id) {
@@ -195,16 +198,18 @@ public function actualizarProyecto($proyecto_id,$fecha_exp,$descripcion){
             echo "Error: " . $ex->getMessage();
         }
     }
-    public function eliminarCarpetasDeUnProyecto($proyecto_id,$usuario_id){
+
+    public function eliminarCarpetasDeUnProyecto($proyecto_id, $usuario_id) {
         try {
             $stmt = $this->conn->prepare("DELETE from carpetas where usuario_id=:id and proyecto_id=:id_proyecto");
             $stmt->bindParam(':id', $usuario_id);
             $stmt->bindParam(':id_proyecto', $proyecto_id);
             $stmt->execute();
         } catch (PDOException $ex) {
-            echo "Error: ".$ex->getMessage();
+            echo "Error: " . $ex->getMessage();
         }
     }
+
 // TAREAS
     public function insertarTarea($carpeta, $descripcion) {
         try {
@@ -227,6 +232,18 @@ public function actualizarProyecto($proyecto_id,$fecha_exp,$descripcion){
             echo "Error: " . $ex->getMessage();
         }
     }
+
+    public function actulizarTarea($carpeta_id, $tarea) {
+        try {
+            $stmt = $this->conn->prepare("UPDATE tareas set descripcion=:tarea where carpeta_id=:carpeta_id");
+            $stmt->bindParam(':tarea', $tarea);
+            $stmt->bindParam(':carpeta_id', $carpeta_id);
+            $stmt->execute();
+        } catch (PDOException $ex) {
+            echo "Error: " . $ex->getMessage();
+        }
+    }
+
 //    ARCHIVOS
     public function insertarArchivo($carpeta_id, $url) {
         try {
@@ -238,8 +255,9 @@ public function actualizarProyecto($proyecto_id,$fecha_exp,$descripcion){
             echo "Error: " . $ex->getMessage();
         }
     }
-public function consultarArchivos($carpeta_id){
-    try {
+
+    public function consultarArchivos($carpeta_id) {
+        try {
             $stmt = $this->conn->prepare("SELECT * from archivos where carpeta_id=:id");
             $stmt->bindParam(':id', $carpeta_id);
             $stmt->execute();
@@ -247,5 +265,15 @@ public function consultarArchivos($carpeta_id){
         } catch (PDOException $ex) {
             echo "Error: " . $ex->getMessage();
         }
-}
+    }
+    public function eliminarArchivos($carpeta_id,$url){
+        try {
+            $stmt = $this->conn->prepare("DELETE from archivos where carpeta_id=:id and url=:url");
+            $stmt->bindParam(':id', $carpeta_id);
+            $stmt->bindParam(':url',$url);
+            $stmt->execute();
+        } catch (PDOException $ex) {
+            echo "Error: " . $ex->getMessage();
+        }
+    }
 }

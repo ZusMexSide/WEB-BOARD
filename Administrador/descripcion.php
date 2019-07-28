@@ -32,7 +32,7 @@ and open the template in the editor.
         </div>
         <div class="container">
             <div class="row">
-                <div class=""> 
+                <div class="col"> 
                     <div class="tabla"> 
                         <table class="table">
                             <thead>
@@ -53,13 +53,21 @@ and open the template in the editor.
                                 <th>Expiracion:</th>
                                 <th><?php echo date('d-m-Y', strtotime($proyecto['fecha_exp'])) ?></th>
                             </tr>   
-                        </table>  
+                        </table>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Opciones
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#"data-toggle="modal" data-target="#aprobar">Aprobar</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#desaprobar">Desaprobar</a>
+                                <?php echo !empty($tarea['item'])? $tarea['item'] : "";?>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalEliminarArchivos">Eliminar archivos</a>
+                            </div>
+                        </div>
                         <div class=" botones "> 
                             <!-- Modal Aprobar-->
-                            <button type="button" data-toggle="modal" data-target="#exampleModal">
-                                Aprobar
-                            </button>
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="aprobar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -83,10 +91,7 @@ and open the template in the editor.
                                 </div>
                             </div>
                             <!-- Modal desaprobar -->
-                            <button type="button" data-toggle="modal" data-target="#exampleModal2">
-                                Desaprobar
-                            </button>
-                            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="desaprobar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -109,12 +114,37 @@ and open the template in the editor.
                                     </div>
                                 </div>
                             </div>
+                            <!-- Modal editar tarea -->
+                                <div class="modal fade" id="modalEditarTarea" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-xl" role="document">
+                                    <div class="modal-content">
+                                        <form method="post" >
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-dark" id="exampleModalLabel">Ingrese los cambios en la tarea</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label for="Descripcion">Descripcion:</label>
+                                                    <textarea  class="ckeditor" name="descripcion"> <?php echo !empty($tarea['item'])? $tarea['tarea'] : "";?></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" name="editarTarea" class="btn btn-primary">Modificar</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>       
                 </div>
                 <div class="col-sm">
                     <div class="texto"> 
-                        <p><?php echo $tarea ?></p>
+                        <p><?php echo $tarea['tarea'] ?></p>
                         <h6><?php echo $error ?></h6> 
                     </div>
                 </div>
@@ -125,11 +155,34 @@ and open the template in the editor.
                 <div class="col-12">
                     <div class="row">
                         <?php echo $archivo ?>
+                        <!-- Modal eliminar archivos-->
+                            <div class="modal fade" id="modalEliminarArchivos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                     <div class="modal-content">
+                                        <form method="post" >
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-dark" id="exampleModalLabel">Seleccione los archivos a eliminar</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <?php echo $archivos_eliminar?>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" name="eliminarArchivo" class="btn btn-primary">Eliminar</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="botones1">
-                        <?php echo $error; ?>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                             Subir Archivo
@@ -169,6 +222,13 @@ and open the template in the editor.
                 <div class="col-1"></div>
             </div>
         </div>
+        <script>
+        function SetContents() {
+      var editor = CKEDITOR;
+      var value = document.getElementById('htmlArea').value;
+      editor.setData(value);
+    }
+        </script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

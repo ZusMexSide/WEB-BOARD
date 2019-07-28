@@ -65,37 +65,64 @@ and open the template in the editor.
                                 <th>Expiracion:</th>
                                 <th><?php echo date('d-m-Y', strtotime($proyecto['fecha_exp'])) ?></th>
                             </tr>
-
-                        </table>  
-                        <div class="botones">  
-                            <!-- Modal Aprobar-->
-                            <button type="button" data-toggle="modal" data-target="#exampleModal">
-                                Solicitar aprobación
+                        </table> 
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Opciones
                             </button>
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title text-dark" id="exampleModalLabel">Confirmar</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p class="text-dark">Desea solicitar la revisión</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <form method="post">
-                                                <input type="hidden" value="<?php echo $_GET['id_carpeta'] ?>" name="carpeta">
-                                                <input type="hidden" value="3" name="status">
-                                                <button type="submit" name="aprobar" class="btn btn-primary">Solicitar</button>
-                                            </form>   
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                        </div>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#solicitarAprobacion">Solicitar aprobación</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalEliminarArchivos">Eliminar archivos</a>
+                            </div>
+                        </div> 
+                        <!-- Modal solicitar aprobacion-->
+                        <div class="modal fade"  tabindex="-1" id="solicitarAprobacion" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title text-dark" id="exampleModalLabel">Confirmar</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="text-dark">Desea solicitar la revisión</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form method="post">
+                                            <input type="hidden" value="<?php echo $_GET['id_carpeta'] ?>" name="carpeta">
+                                            <input type="hidden" value="3" name="status">
+                                            <button type="submit" name="aprobar" class="btn btn-primary">Solicitar</button>
+                                        </form>   
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- Modal eliminar archivos-->
+                            <div class="modal fade" id="modalEliminarArchivos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                     <div class="modal-content">
+                                        <form method="post" >
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-dark" id="exampleModalLabel">Seleccione los archivos a eliminar</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <?php echo $archivos_eliminar?>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" name="eliminarArchivo" class="btn btn-primary">Eliminar</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                     </div>       
                 </div>
                 <div class="col-sm">

@@ -87,6 +87,15 @@ class CProyecto {
         return $this->modelo->consultarProyecto($id);
     }
 public function eliminarUnProyecto($proyecto_id){
+    $carpetas=$this->modelo->carpetas($proyecto_id);
+    foreach ($carpetas as $carpeta){
+        $archivos= $this->modelo->consultarArchivos($carpeta['carpeta_id']);
+        foreach ($archivos as $archivo){
+            unlink($archivo['url']);
+        }
+        rmdir('../archivos/'.$proyecto_id.'/'.$carpeta['carpeta_id']);
+    }
+    rmdir('../archivos/'.$proyecto_id);
     $this->modelo->eliminarProyecto($proyecto_id);
 }
 public function mostrarElLiderDelProyecto($usuario_id){
@@ -147,6 +156,14 @@ public function mostrarEmpleadosParaELiminarDentroDeProyecto($proyecto_id) {
         $this->modelo->actualizarStatus($carpeta_id, $status);
     }
     public function eliminarEmpleadosDelProyecto($proyecto_id,$usuario_id){
+        $carpetas=$this->modelo->carpetas($proyecto_id);
+    foreach ($carpetas as $carpeta){
+        $archivos= $this->modelo->consultarArchivos($carpeta['carpeta_id']);
+        foreach ($archivos as $archivo){
+            unlink($archivo['url']);
+        }
+        rmdir('../archivos/'.$proyecto_id.'/'.$carpeta['carpeta_id']);
+    }
         $this->modelo->eliminarCarpetasDeUnProyecto($proyecto_id, $usuario_id);
     }
 //  TAREAS---------------------------------------------------------------------------------------------
@@ -167,11 +184,12 @@ public function mostrarEmpleadosParaELiminarDentroDeProyecto($proyecto_id) {
 
     public function mostrarTareas($id) {
         $tareas = $this->modelo->consultarTarea($id);
+        $devolver=array();
         foreach ($tareas as $tarea) {
-            $devolver = $tarea['descripcion'];
+            $devolver['tarea'] = $tarea['descripcion'];
         }
-        if (empty($devolver)) {
-            return $devolver = '<h3>No hay tareas asignadas</h3>
+        if (empty($devolver['tarea'])) {
+           $devolver['tarea'] = '<h3>No hay tareas asignadas</h3>
                    <button type="button" class="btn btn-primary btn-block mb-3" data-toggle="modal" data-target="#exampleModal">Asignar tareas</button>
                   <form method="post"> 
                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -200,10 +218,13 @@ public function mostrarEmpleadosParaELiminarDentroDeProyecto($proyecto_id) {
                         </div>
                         </form>';
         } else {
-            return $devolver;
+           $devolver['item']='<a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalEditarTarea"onclick="SetContents();">Editar tarea</a>';
         }
+        return $devolver;
     }
-
+    public function modificarTarea($carpeta_id, $tarea){
+        $this->modelo->actulizarTarea($carpeta_id, $tarea);
+    }
 //    ARCHIVOS
     public function subirArchivo($carpeta_id, $archivo, $proyecto_id) {
         $ruta = '../archivos/' . $proyecto_id . '/' . $carpeta_id;
@@ -228,5 +249,20 @@ public function mostrarEmpleadosParaELiminarDentroDeProyecto($proyecto_id) {
         }
         return $acu;
     }
-
-}
+    public function mostrarArchivosEliminar($carpeta_id){
+        $arrays = $this->modelo->consultarArchivos($carpeta_id);
+         $acu = "";
+        if (!empty($arrays)) {
+            foreach ($arrays as $archivo) {
+                $acu .= '<input type="checkbox" name="archivos[]" value="'. $archivo['url'] . '"><i class="fa fa-file" aria-hidden="true">' . pathinfo($archivo["url"], PATHINFO_BASENAME) . '</i><br>';
+            }
+        } else {
+            $acu = '<div class="col-12"><h3>No hay archivos existentes</h1></div>';
+        }
+        return $acu;
+    }
+    public function borrarArchivos($carpeta_id,$url){
+        unlink($url);
+        $this->modelo->eliminarArchivos($carpeta_id, $url);
+    }
+    }
