@@ -20,7 +20,7 @@ and open the template in the editor.
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="../css/agregarPersonal.css">
         <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-     <title>Usuarios</title>
+        <title>Usuarios</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -42,65 +42,18 @@ and open the template in the editor.
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6-auto">
-                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data" class="form-container">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">
-                                <i class="fas fa-user" ></i>
-                                Nombre
-                            </label>
-                            <input  name="nombre" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">
-                                <i class="fas fa-school" ></i>
-                                Nivel de estudios</label>
-                         <input name="nivel_estudios" type="text" class="form-control" id="puesto" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">
-                               <i class="fas fa-envelope" ></i> 
-                                Correo Electronico</label>
-                            <input name="email" type="email" class="form-control" id="correo" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">
-                            <i class="fas fa-phone" ></i>    
-                                Numero De Telefono</label>
-                            <input name="tel" type="tel" class="form-control" id="telefono" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">
-                                <i class="fas fa-user" ></i>
-                                Usuario</label>
-                            <input type="text" name="usuario" class="form-control" id="usuario" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">
-                                <i class="fas fa-key" ></i>
-                                Password</label>
-                            <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="">
-                        </div>
-                        <div class="form-div">
-                         <label for="foto" class="input-label">
-                           <i class="fas fa-upload" ></i>
-                           <span id="label_span">Ingresar foto del usuario</span>
-                            </label>
-                            <input name="foto" multiple="true" type="file" accept="images/*" id="foto" >
-                        </div>
-
+                    <form method="post" enctype="multipart/form-data" class="form-container">
+                        <?php echo $formulario ?>
                         <?php if (!empty($errores)): ?>
                             <div class="error"> <?php echo $errores; ?> </div>
-                        <?php elseif ($enviado): ?>
-                            <div class="exitoso">Enviado correctamente</div>
                         <?php endif; ?>
-                        <button name="submit" type="submit" class="btn btn-primary btn-block ">Ingresar</button>
+                        <?php echo $boton ?>
                     </form>
 
                 </div>
             </div>
         </div>
-        <script src="../js/agregarImagen.js"> </script>
+        <script src="../js/agregarImagen.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

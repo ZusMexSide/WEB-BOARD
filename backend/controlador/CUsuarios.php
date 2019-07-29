@@ -3,7 +3,6 @@
 class CUsuarios {
 
     private $modeloRegistro_usuarios;
-    private $modelo_proyectos;
 
     public function __construct() {
         $this->modeloRegistro_usuarios = new MUsuarios();
@@ -155,9 +154,85 @@ class CUsuarios {
         $lideres = $this->modeloRegistro_usuarios->mostrarPersonal();
         $acu = "";
         foreach ($lideres as $lider) {
-            $acu .= "<option value='" . $lider['usuario_id'] . "'>" . $lider['nombre'] . "</option> ";
+            $acu .= "<option value='" . $lider['usuario_id'] . "'>" . " " . $lider['nombre'] . "</option> ";
         }
         return $acu;
     }
 
+    public function inputEliminarEmpleados() {
+        $empleados = $this->modeloRegistro_usuarios->mostrarPersonal();
+        $acu = "";
+        foreach ($empleados as $empleado) {
+            $acu .= '<input class="" type="checkbox" name="empleados[]" value="' . $empleado['usuario_id'] . '">' . " " . $empleado['nombre'] . '<br>';
+        }
+        return $acu;
+    }
+
+    public function borrarEmpleados($array) {
+        foreach ($array as $usuario_id) {
+            $datos=$this->modeloRegistro_usuarios->mostrarEmpleado($usuario_id);
+            foreach ($datos as $dato){
+                unlink('../'.$dato['imagen']);
+            }
+            $this->modeloRegistro_usuarios->eliminarPersonal($usuario_id);
+        }
+    }
+
+    public function datosDeEmpleado($usuario_id) {
+        $empleados = $this->modeloRegistro_usuarios->mostrarEmpleado($usuario_id);
+        foreach ($empleados as $empleado) {
+            return $acu = '<div class="form-group">
+                            <label for="exampleInputEmail1">
+                                <i class="fas fa-user" ></i>
+                                Nombre</label>
+                            <input  name="nombre" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="' . $empleado['nombre'] . '">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">
+                                <i class="fas fa-school" ></i>
+                                Nivel de estudios</label>
+                            <input name="nivel_estudios" type="text" class="form-control" id="puesto" value="' . $empleado['nivel_estudios'] . '">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">
+                                <i class="fas fa-envelope" ></i> 
+                                Correo Electronico</label>
+                            <input name="email" type="email" class="form-control" id="correo" value="' . $empleado['correo'] . '">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">
+                                <i class="fas fa-phone" ></i>    
+                                Numero De Telefono</label>
+                            <input name="tel" type="tel" class="form-control" id="telefono" value="' . $empleado['tel'] . '">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">
+                                <i class="fas fa-user" ></i>
+                                Usuario</label>
+                            <input type="text" name="usuario" class="form-control" id="usuario" value="' . $empleado['usuario'] . '">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">
+                                <i class="fas fa-key" ></i>
+                                Password</label>
+                            <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="">
+                        </div>
+                        <div class="form-div">
+                        <img class="img-fluid" src="../' . $empleado['imagen'] . '"><br>
+                            <label for="foto" class="input-label">
+                                <i class="fas fa-upload" ></i>
+                                <span id="label_span">Ingresar foto del usuario</span>
+                            </label>
+                            <input name="foto" type="file" accept="images/*" id="foto"></div>';
+        }
+    }
+public function datosDeEmpleadoArray($usuario_id) {
+        $empleados = $this->modeloRegistro_usuarios->mostrarEmpleado($usuario_id);
+        foreach ($empleados as $empleado) {
+            return $empleado;
+        }
+    }
+    public function modificarEmpleado($nombre, $nivel_estudios, $correo, $tel, $usuario, $contrasenia, $imagen, $usuario_id){
+        $this->modeloRegistro_usuarios->actualizarUsuario($nombre, $nivel_estudios, $correo, $tel, $usuario, $contrasenia, $imagen, $usuario_id);
+    }
 }

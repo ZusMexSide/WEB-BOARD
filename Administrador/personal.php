@@ -10,7 +10,20 @@ if (!isset($_SESSION['autentificado'])) {
         header('Location: ../index.php');
     }
 }
-$personal=new CUsuarios();
+$personal = new CUsuarios();
+if (isset($_POST['eliminarEmpleados'])){
+    if (!empty($_POST['empleados'])){
+        $personal->borrarEmpleados($_POST['empleados']);
+        header('Location: personal.php');
+    }else{
+       $error = '<script type="text/javascript">
+    alert("No se seleccionaron archivos");
+    </script>'; 
+    }
+}
+if (isset($_POST['editarEmpleados'])){
+    header('Location: agregarPersonal.php?id='.$_POST['empleado'].'');
+}
 ?>
 <html lang="en">
     <head>
@@ -25,7 +38,7 @@ $personal=new CUsuarios();
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-             <a class="navbar-brand" href="proyectos.php">WebBoard</a>
+            <a class="navbar-brand" href="proyectos.php">WebBoard</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -37,11 +50,66 @@ $personal=new CUsuarios();
                     <a class="nav-item nav-link active" href="personal.php">Personal<span class="sr-only">(current)</span></a>
                 </div>
             </div>
-             <a class="salir" href="../backend/logica/cerrar_sesion.php"> <i class="fas fa-sign-out-alt" ></i></a>
+            <a class="salir" href="../backend/logica/cerrar_sesion.php"> <i class="fas fa-sign-out-alt" ></i></a>
         </nav>
         <div class="container">
             <div class="row">
-             <?php echo $personal->personalCompleto()?>
+                <div class="col-12">
+                    <button type="button" class="btn btn-primary btn-block"  data-toggle="modal" data-target="#modalEditarEmpleados">Editar empleado</button>
+                    <a href="agregarPersonal.php" class="btn btn-primary btn-block">Agregar mas empleados</a>
+                    <button type="button" class="btn btn-primary btn-block"  data-toggle="modal" data-target="#modalEliminarEmpleados">Eliminar empleados</button>
+                    <!--Modal eliminar empleados-->
+                    <div class="modal fade" id="modalEliminarEmpleados" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <form method="post">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title text-dark" id="exampleModalLabel">Selecciona los empleados que desea eliminar</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <?php echo $personal->inputEliminarEmpleados() ?>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" name="eliminarEmpleados" class="btn btn-primary">Eliminar</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Modal editar empleados-->
+                    <div class="modal fade" id="modalEditarEmpleados" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <form method="post">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title text-dark" id="exampleModalLabel">Selecciona el empleado que desea editar</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <select name="empleado" id="">
+                                        <?php echo $personal->inputLiderProyecto() ?>
+                                            </select>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" name="editarEmpleados" class="btn btn-primary">Editar</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="container">
+            <div class="row">
+                <?php echo $personal->personalCompleto() ?>
             </div>
         </div> 
 
