@@ -22,7 +22,6 @@ and open the template in the editor.
         <title>Usuarios</title>
     </head>
     <body>
-        <div id = "fb-root" > </div> <script async defer crossorigin = "anonymous" src = "https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.3" ></script> 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="proyectos_usuarios.php">WebBoard</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,58 +70,33 @@ and open the template in the editor.
                                 Opciones
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#solicitarAprobacion">Solicitar aprobación</a>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalEliminarArchivos">Eliminar archivos</a>
-                            </div>
-                        </div> 
-                        <!-- Modal solicitar aprobacion-->
-                        <div class="modal fade"  tabindex="-1" id="solicitarAprobacion" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title text-dark" id="exampleModalLabel">Confirmar</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p class="text-dark">Desea solicitar la revisión</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <form method="post">
-                                            <input type="hidden" value="<?php echo $_GET['id_carpeta'] ?>" name="carpeta">
-                                            <input type="hidden" value="3" name="status">
-                                            <button type="submit" name="aprobar" class="btn btn-primary">Solicitar</button>
-                                        </form>   
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <!-- Modal eliminar archivos-->
-                            <div class="modal fade" id="modalEliminarArchivos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                     <div class="modal-content">
-                                        <form method="post" >
-                                            <div class="modal-header">
-                                                <h5 class="modal-title text-dark" id="exampleModalLabel">Seleccione los archivos a eliminar</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
+                        <div class="modal fade" id="modalEliminarArchivos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <form method="post" >
+                                        <div class="modal-header">
+                                            <h5 class="modal-title text-dark" id="exampleModalLabel">Seleccione los archivos a eliminar</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <?php echo $archivos_eliminar ?>
                                             </div>
-                                            <div class="modal-body">
-                                                <div class="form-group">
-                                                    <?php echo $archivos_eliminar?>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="submit" name="eliminarArchivo" class="btn btn-primary">Eliminar</button>
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                            </div>
-                                        </form>
-                                    </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" name="eliminarArchivo" class="btn btn-primary">Eliminar</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
+                        </div>
                     </div>       
                 </div>
                 <div class="col-sm">
@@ -135,8 +109,15 @@ and open the template in the editor.
         <div class="container">
             <div class="row mt-5">
                 <div class="col-12">
-                    <div class="row">
-                        <?php echo $archivo ?>
+                    <div class="row text-center">
+                        <h2>Contenido compartido</h2>
+                        <?php echo!empty($archivo['no_propietario']) ? $archivo['no_propietario'] : '<p>No se compartieron archivos<p>'; ?>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row text-center">
+                        <h2>Mis archivos</h2>
+                        <?php echo!empty($archivo['propios']) ? $archivo['propios'] : '<p>No tienes archivos<p>'; ?>
                     </div>
                 </div>
                 <div class="col-12 mt-5">
@@ -158,6 +139,8 @@ and open the template in the editor.
                                             </button>
                                         </div>
                                         <div class="modal-body">
+                                            <input type="hidden" value="<?php echo $_GET['id_carpeta'] ?>" name="carpeta">
+                                            <input type="hidden" value="3" name="status">
                                             <input required type="file" name="archivo">
                                         </div>
                                         <div class="modal-footer">
@@ -172,11 +155,24 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12">
+                    <form action="<?php echo 'descripcion_usuarios.php?id_carpeta=' . $_GET['id_carpeta'] . '&id_proyecto=' . $_GET['id_proyecto'].''?>" method="post">
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Comentar</label>
+                            <textarea name="comentario" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <input type="submit" name="comentar" class="btn btn-primary">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-5">
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col-10">
-                    <div class="fb-comments" data-href="http://web-board.test:81/Usuarios/descripcion_usuarios.php?id_carpeta=<?php echo $_GET['id_carpeta'] ?>&amp;id_proyecto=<?php echo $_GET['id_proyecto'] ?>" data-width="100%" data-numposts="5" data-order-by="reverse_time"></div>
+                    <?php echo $comentarios?>
                 </div>
                 <div class="col-1"></div>
             </div>

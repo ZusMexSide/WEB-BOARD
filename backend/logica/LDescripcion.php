@@ -43,21 +43,36 @@ if (!empty($_GET['id_proyecto']) && !empty($_GET['id_carpeta'])) {
     }
     $carpeta = $proyectos->mostrarDescripcionUsuario($_GET['id_carpeta']);
     $tarea = $proyectos->mostrarTareas($_GET['id_carpeta']);
-    $archivo = $proyectos->mostrarArchivos($_GET['id_carpeta']);
-    $archivos_eliminar = $proyectos->mostrarArchivosEliminar($_GET['id_carpeta']);
+    $archivo = $proyectos->mostrarArchivos($_GET['id_carpeta'], $_SESSION['autentificado']['nombre']);
+    $archivos_eliminar = $proyectos->mostrarArchivosEliminar($_GET['id_carpeta'], $_SESSION['autentificado']['nombre']);
+    $comentarios = $proyectos->mostrarComentarios($_GET['id_carpeta']);
+    $destino = $proyectos->mostrarCorreoUsuario($_GET['id_carpeta']);
 } else {
     header('Location: proyectos.php');
 }
 if (isset($_POST['enviado'])) {
     if (!empty($_POST['descripcion'])) {
         $proyectos->nuevaTarea($_POST['carpeta_id'], $_POST['descripcion']);
+        $asunto = 'Asignacion de tarea';
+        $contenido = 'El lider del proyecto ' . $proyecto['nombre'] . ' te asigno una tarea' . \n . 'en tu carpeta personal.';
+        mail($destino, $asunto, $contenido);
         header('Location: descripcion.php?id_carpeta=' . $_GET['id_carpeta'] . '&id_proyecto=' . $_GET['id_proyecto'] . '');
     } else {
         $error .= "No se insertó tarea";
     }
 }
-if (isset($_POST['aprobar']) or isset($_POST['desaprobar'])) {
+if (isset($_POST['aprobar'])) {
     $proyectos->cambiarElStatus($_POST['carpeta'], $_POST['status']);
+    $asunto = 'Tarea Aprobada';
+    $contenido = 'El lider del proyecto ' . $proyecto['nombre'] . ' ha aprobado tu tarea';
+    mail($destino, $asunto, $contenido);
+    header('Location: descripcion.php?id_carpeta=' . $_GET['id_carpeta'] . '&id_proyecto=' . $_GET['id_proyecto'] . '');
+}
+if (isset($_POST['desaprobar'])) {
+    $proyectos->cambiarElStatus($_POST['carpeta'], $_POST['status']);
+    $asunto = 'Tarea Desaprobada';
+    $contenido = 'El lider del proyecto ' . $proyecto['nombre'] . ' desaprobó tu tarea e hizo la siguiente observacion: \n ' . $_POST['motivo'];
+    mail($destino, $asunto, $contenido);
     header('Location: descripcion.php?id_carpeta=' . $_GET['id_carpeta'] . '&id_proyecto=' . $_GET['id_proyecto'] . '');
 }
 if (isset($_POST['subir'])) {
@@ -71,7 +86,7 @@ if (isset($_POST['subir'])) {
         $enviar = true;
     }
     if ($enviar) {
-        $proyectos->subirArchivo($_GET['id_carpeta'], $archivo, $_GET['id_proyecto']);
+        $proyectos->subirArchivo($_GET['id_carpeta'], $archivo, $_GET['id_proyecto'], $_SESSION['autentificado']['nombre']);
         header('Location: ../Administrador/descripcion.php?id_carpeta=' . $_GET['id_carpeta'] . '&id_proyecto=' . $_GET['id_proyecto'] . '');
     }
 }
@@ -85,9 +100,23 @@ if (isset($_POST['eliminarArchivo'])) {
             $proyectos->borrarArchivos($_GET['id_carpeta'], $archivo);
         }
         header('Location: ../Administrador/descripcion.php?id_carpeta=' . $_GET['id_carpeta'] . '&id_proyecto=' . $_GET['id_proyecto'] . '');
-        } else {
+    } else {
         $error = '<script type="text/javascript">
     alert("No se seleccionaron archivos");
+    </script>';
+    }
+}
+if (isset($_POST['comentar'])) {
+    if (!empty($_POST['comentario'])) {
+        $comentario = filter_var(htmlspecialchars(trim($_POST['comentario'])), FILTER_SANITIZE_STRING);
+        $proyectos->comentar($_SESSION['autentificado']['usuario_id'], $_GET['id_carpeta'], $comentario);
+        $asunto = 'Comentario del lider de proyecto';
+        $contenido = 'El lider del proyecto ' . $proyecto['nombre'] . ' ha hecho un comentario \n en tu carpeta personal.';
+        mail($destino, $asunto, $contenido);
+        header('Location: ../Administrador/descripcion.php?id_carpeta=' . $_GET['id_carpeta'] . '&id_proyecto=' . $_GET['id_proyecto'] . '');
+    } else {
+        $error = '<script type="text/javascript">
+    alert("El comentario no puede estar vacio");
     </script>';
     }
 }

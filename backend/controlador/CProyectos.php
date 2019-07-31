@@ -9,7 +9,7 @@ class CProyecto {
     }
 
     public function insertarProyecto($nombre, $descripcion, $fecha, $lider) {
-        $this->modelo->nuevoProyecto($nombre, $descripcion, $fecha, $lider);
+       return $this->modelo->nuevoProyecto($nombre, $descripcion, $fecha, $lider);
     }
 
     public function obtenerId() {
@@ -86,32 +86,37 @@ class CProyecto {
     public function mostrarProyecto($id) {
         return $this->modelo->consultarProyecto($id);
     }
-public function eliminarUnProyecto($proyecto_id){
-    $carpetas=$this->modelo->carpetas($proyecto_id);
-    foreach ($carpetas as $carpeta){
-        $archivos= $this->modelo->consultarArchivos($carpeta['carpeta_id']);
-        foreach ($archivos as $archivo){
-            unlink($archivo['url']);
+
+    public function eliminarUnProyecto($proyecto_id) {
+        $carpetas = $this->modelo->carpetas($proyecto_id);
+        foreach ($carpetas as $carpeta) {
+            $archivos = $this->modelo->consultarArchivos($carpeta['carpeta_id']);
+            foreach ($archivos as $archivo) {
+                unlink($archivo['url']);
+            }
+            rmdir('../archivos/' . $proyecto_id . '/' . $carpeta['carpeta_id']);
         }
-        rmdir('../archivos/'.$proyecto_id.'/'.$carpeta['carpeta_id']);
+        rmdir('../archivos/' . $proyecto_id);
+        $this->modelo->eliminarProyecto($proyecto_id);
     }
-    rmdir('../archivos/'.$proyecto_id);
-    $this->modelo->eliminarProyecto($proyecto_id);
-}
-public function mostrarElLiderDelProyecto($usuario_id){
-   return $this->modelo->mostrarLiderProyecto($usuario_id);
-}
-public function mostrarEmpleadosParaELiminarDentroDeProyecto($proyecto_id) {
+
+    public function mostrarElLiderDelProyecto($usuario_id) {
+        return $this->modelo->mostrarLiderProyecto($usuario_id);
+    }
+
+    public function mostrarEmpleadosParaELiminarDentroDeProyecto($proyecto_id) {
         $carpetas = $this->modelo->carpetas($proyecto_id);
         $acu = "";
         foreach ($carpetas as $carpeta) {
-                $acu .='<input type="checkbox" name="empleados[]" value="'.$carpeta['usuario_id'].'">'. $this->modelo->mostrarNombreUsuario($carpeta['usuario_id']).'<br>';
+            $acu .= '<input type="checkbox" name="empleados[]" value="' . $carpeta['usuario_id'] . '">' . $this->modelo->mostrarNombreUsuario($carpeta['usuario_id']) . '<br>';
         }
         return $acu;
     }
-    public function modificarProyecto($proyecto_id,$fecha_exp,$descripcion){
+
+    public function modificarProyecto($proyecto_id, $fecha_exp, $descripcion) {
         $this->modelo->actualizarProyecto($proyecto_id, $fecha_exp, $descripcion);
     }
+
 //    CARPETAS--------------------------------------------------------------------------------------------
     public function mostrarCarpetas($id) {
         $carpetas = $this->modelo->carpetas($id);
@@ -151,21 +156,29 @@ public function mostrarEmpleadosParaELiminarDentroDeProyecto($proyecto_id) {
         }
         return $respuesta;
     }
-
+public function mostrarCorreoUsuario($carpeta_id) {
+        $carpetas = $this->modelo->consultarStatus($carpeta_id);
+        foreach ($carpetas as $carpeta) {
+            $respuesta = $this->modelo->consultarUsuario($carpeta['usuario_id']);
+        }
+        return $respuesta['correo'];
+    }
     public function cambiarElStatus($carpeta_id, $status) {
         $this->modelo->actualizarStatus($carpeta_id, $status);
     }
-    public function eliminarEmpleadosDelProyecto($proyecto_id,$usuario_id){
-        $carpetas=$this->modelo->carpetas($proyecto_id);
-    foreach ($carpetas as $carpeta){
-        $archivos= $this->modelo->consultarArchivos($carpeta['carpeta_id']);
-        foreach ($archivos as $archivo){
-            unlink($archivo['url']);
+
+    public function eliminarEmpleadosDelProyecto($proyecto_id, $usuario_id) {
+        $carpetas = $this->modelo->carpetas($proyecto_id);
+        foreach ($carpetas as $carpeta) {
+            $archivos = $this->modelo->consultarArchivos($carpeta['carpeta_id']);
+            foreach ($archivos as $archivo) {
+                unlink($archivo['url']);
+            }
+            rmdir('../archivos/' . $proyecto_id . '/' . $carpeta['carpeta_id']);
         }
-        rmdir('../archivos/'.$proyecto_id.'/'.$carpeta['carpeta_id']);
-    }
         $this->modelo->eliminarCarpetasDeUnProyecto($proyecto_id, $usuario_id);
     }
+
 //  TAREAS---------------------------------------------------------------------------------------------
     public function nuevaTarea($carpeta, $descripcion) {
         $this->modelo->insertarTarea($carpeta, $descripcion);
@@ -184,12 +197,12 @@ public function mostrarEmpleadosParaELiminarDentroDeProyecto($proyecto_id) {
 
     public function mostrarTareas($id) {
         $tareas = $this->modelo->consultarTarea($id);
-        $devolver=array();
+        $devolver = array();
         foreach ($tareas as $tarea) {
             $devolver['tarea'] = $tarea['descripcion'];
         }
         if (empty($devolver['tarea'])) {
-           $devolver['tarea'] = '<h3>No hay tareas asignadas</h3>
+            $devolver['tarea'] = '<h3>No hay tareas asignadas</h3>
                    <button type="button" class="btn btn-primary btn-block mb-3" data-toggle="modal" data-target="#exampleModal">Asignar tareas</button>
                   <form method="post"> 
                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -218,51 +231,106 @@ public function mostrarEmpleadosParaELiminarDentroDeProyecto($proyecto_id) {
                         </div>
                         </form>';
         } else {
-           $devolver['item']='<a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalEditarTarea"onclick="SetContents();">Editar tarea</a>';
+            $devolver['item'] = '<a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalEditarTarea"onclick="SetContents();">Editar tarea</a>';
         }
         return $devolver;
     }
-    public function modificarTarea($carpeta_id, $tarea){
+
+    public function modificarTarea($carpeta_id, $tarea) {
         $this->modelo->actulizarTarea($carpeta_id, $tarea);
     }
+
 //    ARCHIVOS
-    public function subirArchivo($carpeta_id, $archivo, $proyecto_id) {
+    public function subirArchivo($carpeta_id, $archivo, $proyecto_id, $propietario) {
         $ruta = '../archivos/' . $proyecto_id . '/' . $carpeta_id;
         if (!file_exists($ruta)) {
             mkdir($ruta, 0777, true);
         }
         copy($archivo['tmp_name'], $ruta . '/' . $archivo['name']);
-        $this->modelo->insertarArchivo($carpeta_id, $ruta . '/' . $archivo['name']);
+        $this->modelo->insertarArchivo($carpeta_id, $ruta . '/' . $archivo['name'], $propietario);
     }
 
-    public function mostrarArchivos($carpeta_id) {
+    public function mostrarArchivos($carpeta_id, $nombre) {
+        $arrays = $this->modelo->consultarArchivos($carpeta_id);
+        $acu = array('propios' => "", 'no_propietario' => "");
+        if (!empty($arrays)) {
+            foreach ($arrays as $archivo) {
+                if ($archivo['propietario'] == $nombre) {
+                    $acu['propios'] .= '<div class="col-2">
+                            <a  href="' . $archivo['url'] . '"><i class="fa fa-file" aria-hidden="true">' . pathinfo($archivo["url"], PATHINFO_BASENAME) . '</i></a> 
+                        </div>';
+                } else {
+                    $acu['no_propietario'] .= '<div class="col-2">
+                            <a  href="' . $archivo['url'] . '"><i class="fa fa-file" aria-hidden="true">' . pathinfo($archivo["url"], PATHINFO_BASENAME) . '</i></a> 
+                        </div>';
+                }
+            }
+        } else {
+            $acu['propios'] = "";
+            $acu['no_propietario'] = "";
+        }
+        return $acu;
+    }
+
+    public function mostrarArchivosEliminar($carpeta_id, $nombre) {
         $arrays = $this->modelo->consultarArchivos($carpeta_id);
         $acu = "";
         if (!empty($arrays)) {
             foreach ($arrays as $archivo) {
-                $acu .= '<div class="col-2">
-                            <a  href="' . $archivo['url'] . '"><i class="fa fa-file" aria-hidden="true">' . pathinfo($archivo["url"], PATHINFO_BASENAME) . '</i></a> 
-                        </div>';
+                if ($archivo['propietario'] == $nombre) {
+                    $acu .= '<input type="checkbox" name="archivos[]" value="' . $archivo['url'] . '"><i class="fa fa-file" aria-hidden="true">' . pathinfo($archivo["url"], PATHINFO_BASENAME) . '</i><br>';
+                }
             }
         } else {
             $acu = '<div class="col-12"><h3>No hay archivos existentes</h1></div>';
         }
         return $acu;
     }
-    public function mostrarArchivosEliminar($carpeta_id){
-        $arrays = $this->modelo->consultarArchivos($carpeta_id);
-         $acu = "";
-        if (!empty($arrays)) {
-            foreach ($arrays as $archivo) {
-                $acu .= '<input type="checkbox" name="archivos[]" value="'. $archivo['url'] . '"><i class="fa fa-file" aria-hidden="true">' . pathinfo($archivo["url"], PATHINFO_BASENAME) . '</i><br>';
-            }
-        } else {
-            $acu = '<div class="col-12"><h3>No hay archivos existentes</h1></div>';
-        }
-        return $acu;
-    }
-    public function borrarArchivos($carpeta_id,$url){
+
+    public function borrarArchivos($carpeta_id, $url) {
         unlink($url);
         $this->modelo->eliminarArchivos($carpeta_id, $url);
     }
+
+//    COMENTARIOS
+    public function comentar($usuario_id, $carpeta_id, $contenido) {
+        $this->modelo->insertarComentario($usuario_id, $carpeta_id, $contenido);
     }
+
+    public function mostrarComentarios($carpeta_id) {
+        $comentarios = $this->modelo->consultarComentario($carpeta_id);
+        $acu = "";
+        foreach ($comentarios as $comentario) {
+            $fecha = date('d-m-Y', strtotime($comentario['fecha']));
+            $hora = date('H:i', strtotime($comentario['fecha']));
+            $usuario = $this->modelo->consultarUsuario($comentario['usuario_id']);
+            $acu .= '<div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="../' . $usuario['imagen'] . '" class="card-img" alt="USUARIO">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">' . $usuario['nombre'] . '</h5>
+        <p class="card-text">' . $comentario['contenido'] . '</p>
+        <p class="card-text"><small class="text-muted">Comentado el ' . $fecha . ' a las ' . $hora . '</small></p>
+      </div>
+    </div>
+  </div>
+</div>';
+        }
+        return $acu;
+    }
+
+    public function mostrarDatosUsuario($usuario_id) {
+        return $this->modelo->consultarUsuario($usuario_id);
+    }
+
+// MOVIMIENTOS
+    public function nuevoMovimiento($proyecto_id, $carpeta_id, $nombre, $descripcion) {
+        $this->modelo->insertarMovimiento($proyecto_id, $carpeta_id, $nombre, $descripcion);
+    }
+public function imprimirDashboard(){
+    return $this->modelo->mostrarUltimosMovimientos();
+}
+}

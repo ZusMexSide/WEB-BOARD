@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 if (!isset($_SESSION['autentificado'])) {
     header('Location: ../index.php');
@@ -32,8 +33,8 @@ if (isset($_POST['enviado'])) {
     } else {
         $errores .= " Inserta un nombre al proyecto. <br>";
     }
-    if(empty($descripcion)){
-        $errores.= " Inserta una descripcion del proyecto. <br>";
+    if (empty($descripcion)) {
+        $errores .= " Inserta una descripcion del proyecto. <br>";
     }
     if (!empty($fecha)) {
         $fecha = trim($fecha);
@@ -43,17 +44,32 @@ if (isset($_POST['enviado'])) {
     } else {
         $errores .= " Inserta una fecha de vencimiento. <br>";
     }
-    if(empty($_POST['casilla'])){
+    if (empty($_POST['casilla'])) {
         $errores .= " Selecciona los empleados a asignar. <br>";
     }
-    if (empty($errores)){
-        $enviado=true;
+    if (empty($errores)) {
+        $enviado = true;
     }
-    if ($enviado){
-        $proyectos->insertarProyecto($nombre, $descripcion, $fecha, $lider);
-       $id= $proyectos->obtenerId();
-        foreach ($_POST['casilla'] as $user){
-            $proyectos->asignarEmpleados($id, $user);
+    if ($enviado) {
+        $stmt = $proyectos->insertarProyecto($nombre, $descripcion, $fecha, $lider);
+        $id = $proyectos->obtenerId();
+        $acu = "";
+        if ($stmt) {
+            foreach ($_POST['casilla'] as $user) {
+                $proyectos->asignarEmpleados($id, $user);
+                $usuario = $imprimir->datosDeEmpleadoArray($user);
+                $destino = $usuario['correo'];
+                $asunto = 'Asignacion de proyecto';
+                $contenido = 'Se te ha asignado a el proyecto ' . $nombre . ' que expira el ' . $fecha;
+                mail($destino, $asunto, $contenido);
+                $acu .= $usuario['nombre'] . ", ";
+            }
+            $usuario = $imprimir->datosDeEmpleadoArray($lider);
+            $destino = $usuario['correo'];
+            $asunto = 'Asignacion de privilegios';
+            $contenido = 'Se te ha asignado como lider del proyecto ' . $nombre . 'con los siguientes empleados \n ' . $acu . '\n que expira el ' . $fecha;
+            mail($destino, $asunto, $contenido);
+            header('Location: proyectos.php');
         }
     }
 }

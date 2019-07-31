@@ -71,8 +71,21 @@ class MProyectos extends BD {
             echo "Error: " . $e->getMessage();
         }
     }
+public function consultarUsuario($usuario_id){
+    try {
+            $stmt = $this->conn->prepare("SELECT * FROM usuarios WHERE usuario_id=:id");
+            $stmt->bindParam(':id', $usuario_id);
+            $stmt->execute();
+            $usuarios = $stmt->fetchAll();
+            foreach ($usuarios as $usuario) {
+                return $usuario;
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+}
 
-    public function mostrarProyectosAdmin() {
+public function mostrarProyectosAdmin() {
         try {
             $stmt = $this->conn->prepare("SELECT * FROM proyectos");
             $stmt->execute();
@@ -100,7 +113,7 @@ class MProyectos extends BD {
             $stmt->bindParam(':descripcion', $descripcion);
             $stmt->bindParam(':fecha', $fecha);
             $stmt->bindParam(':lider', $lider);
-            $stmt->execute();
+            return $stmt->execute();
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
@@ -245,11 +258,12 @@ class MProyectos extends BD {
     }
 
 //    ARCHIVOS
-    public function insertarArchivo($carpeta_id, $url) {
+    public function insertarArchivo($carpeta_id, $url,$propietario) {
         try {
-            $stmt = $this->conn->prepare("INSERT INTO archivos(carpeta_id,url) values(:carpeta,:ruta)");
+            $stmt = $this->conn->prepare("INSERT INTO archivos(carpeta_id,url,propietario) values(:carpeta,:ruta,:propietario)");
             $stmt->bindParam(':carpeta', $carpeta_id);
             $stmt->bindParam(':ruta', $url);
+            $stmt->bindParam(':propietario', $propietario);
             $stmt->execute();
         } catch (PDOException $ex) {
             echo "Error: " . $ex->getMessage();
@@ -274,6 +288,50 @@ class MProyectos extends BD {
             $stmt->execute();
         } catch (PDOException $ex) {
             echo "Error: " . $ex->getMessage();
+        }
+    }
+//    COMENTARIO
+    public function insertarComentario($usuario_id, $carpeta_id, $contenido){
+        try {
+             $stmt = $this->conn->prepare("INSERT INTO comentarios(usuario_id,carpeta_id,contenido) values(:usuario_id,:carpeta_id,:contenido)");
+            $stmt->bindParam(':usuario_id', $usuario_id);
+            $stmt->bindParam(':carpeta_id', $carpeta_id);
+             $stmt->bindParam(':contenido', $contenido);
+            $stmt->execute();
+        } catch (PDOException $ex) {
+          echo "Error: " . $ex->getMessage();  
+        }
+    }
+    public function consultarComentario($carpeta_id){
+         try {
+            $stmt = $this->conn->prepare("SELECT * from comentarios where carpeta_id=:id");
+            $stmt->bindParam(':id', $carpeta_id);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (PDOException $ex) {
+            echo "Error: " . $ex->getMessage();
+        }
+    }
+//    MOVIMIENTOS
+    public function insertarMovimiento($proyecto_id,$carpeta_id,$nombre,$descripcion){
+        try {
+           $stmt= $this->conn->prepare("INSERT INTO movimientos(proyecto_id,carpeta_id,nombre,descripcion,fecha,hora) values(:proyecto_id,:carpeta_id,:nombre,:descripcion,now(),now())");
+           $stmt->bindParam(':proyecto_id',$proyecto_id);
+           $stmt->bindParam(':carpeta_id',$carpeta_id);
+           $stmt->bindParam(':nombre',$nombre);
+           $stmt->bindParam(':descripcion',$descripcion);
+           $stmt->execute();
+        } catch (PDOException $ex) {
+          echo "Error: " . $ex->getMessage();
+        }
+    }
+    public function mostrarUltimosMovimientos(){
+        try {
+           $stmt= $this->conn->prepare("SELECT * FROM movimientos order by movimiento_id desc limit 25");
+           $stmt->execute();
+           return $stmt->fetchAll();
+        } catch (PDOException $ex) {
+          echo "Error: " . $ex->getMessage();
         }
     }
 }

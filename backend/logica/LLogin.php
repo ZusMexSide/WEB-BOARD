@@ -13,14 +13,12 @@ if (isset($_POST['ingresar'])) {
     $pass = $_POST['password'];
     $error = "";
     if (!empty($usuario)) {
-        $usuario = stripslashes(htmlspecialchars(trim($usuario)));
-        $usuario = filter_var($usuario, FILTER_SANITIZE_STRING);
+        $usuario = filter_var(stripslashes(htmlspecialchars(trim($usuario))), FILTER_SANITIZE_STRING);
     } else {
         $error .= "<h3>Inserta un nombre de usuario</h3><br>";
     }
     if (!empty($pass)) {
-        $pass = stripslashes(htmlspecialchars(trim($pass)));
-        $pass = filter_var($pass, FILTER_SANITIZE_STRING);
+        $pass = filter_var(stripslashes(htmlspecialchars(trim($pass))), FILTER_SANITIZE_STRING);
     } else {
         $error .= "<h3>Inserta una contraseña</h3><br>";
     }

@@ -21,7 +21,7 @@ and open the template in the editor.
         <link rel="stylesheet" href="../css/descripcion.css">  
         <script src="../ckeditor/ckeditor.js"></script>
         <title>    Administrador</title>
-    </head>
+    </head> 
     <body>
         <div id = "fb-root" > </div> <script async defer crossorigin = "anonymous" src = "https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.3" ></script> 
         <?php echo $navegacion ?>
@@ -59,11 +59,13 @@ and open the template in the editor.
                                 Opciones
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#"data-toggle="modal" data-target="#aprobar">Aprobar</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#desaprobar">Desaprobar</a>
-                                <?php echo !empty($tarea['item'])? $tarea['item'] : "";?>
+                                <?php if($carpeta[0]=='Revisar'){
+                               echo '<a class="dropdown-item" href="#"data-toggle="modal" data-target="#aprobar">Aprobar</a>'.
+                                '<a class="dropdown-item" href="#" data-toggle="modal" data-target="#desaprobar">Desaprobar</a>'; }?>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalCenter">Subir Archivo </a>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalEliminarArchivos">Eliminar archivos</a>
-                            </div>
+                                <?php echo !empty($tarea['item'])? $tarea['item'] : "";?>
+                                </div>
                         </div>
                         <div class=" botones "> 
                             <!-- Modal Aprobar-->
@@ -94,23 +96,24 @@ and open the template in the editor.
                             <div class="modal fade" id="desaprobar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
+                                         <form method="post">
                                         <div class="modal-header">
-                                            <h5 class="modal-title text-dark" id="exampleModalLabel">Confirmar</h5>
+                                            <h5 class="modal-title text-dark" id="exampleModalLabel">¿Desea desaprobar la tarea asignada?</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <p class="text-dark">Desea desaprobar la tarea asignada</p>
+                                            <label for="Descripcion">Descripcion:</label>
+                                                    <textarea  class="ckeditor" name="motivo"> </textarea>
                                         </div>
                                         <div class="modal-footer">
-                                            <form method="post">
                                                 <input type="hidden" value="<?php echo $_GET['id_carpeta'] ?>" name="carpeta">
                                                 <input type="hidden" value="1" name="status">
                                                 <button type="submit" name="desaprobar" class="btn btn-primary">Desaprobar</button>
-                                            </form>   
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                         </div>
+                                         </form>  
                                     </div>
                                 </div>
                             </div>
@@ -139,23 +142,7 @@ and open the template in the editor.
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>       
-                </div>
-                <div class="col-sm">
-                    <div class="texto"> 
-                        <p><?php echo $tarea['tarea'] ?></p>
-                        <h6><?php echo $error ?></h6> 
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row mt-5">
-                <div class="col-12">
-                    <div class="row">
-                        <?php echo $archivo ?>
-                        <!-- Modal eliminar archivos-->
+                              <!-- Modal eliminar archivos-->
                             <div class="modal fade" id="modalEliminarArchivos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                      <div class="modal-content">
@@ -179,15 +166,34 @@ and open the template in the editor.
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>       
+                </div>
+                <div class="col-sm">
+                    <div class="texto"> 
+                        <p><?php echo $tarea['tarea'] ?></p>
+                        <h6><?php echo $error ?></h6> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="row text-center">
+                        <h2>Contenido compartido</h2>
+                        <?php echo !empty($archivo['propios'])?  $archivo['propios']:'<p>No se compartieron archivos<p>'; ?>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row text-center">
+                        <h2>Archivos de <?php echo $carpeta[1] ?></h2>
+                         <?php echo !empty($archivo['no_propietario'])?  $archivo['no_propietario']:'<p>No tienes archivos<p>'; ?>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="botones1">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                            Subir Archivo
-                        </button>
-                        <!-- Modal -->
+                        <!-- Modal subir archivo-->
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -213,11 +219,24 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
-        <div class="container">
+         <div class="container mt-5">
+            <div class="row">
+                <div class="col-12">
+                    <form action="<?php echo 'descripcion.php?id_carpeta=' . $_GET['id_carpeta'] . '&id_proyecto=' . $_GET['id_proyecto'].''?>" method="post">
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Comentar</label>
+                            <textarea name="comentario" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <input type="submit" name="comentar" class="btn btn-primary">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-5">
             <div class="row">
                 <div class="col-1"></div>
-                <div class="col-10" style="background-color:#212529;">
-                    <div class="fb-comments" data-href="http://web-board.test:81/Usuarios/descripcion_usuarios.php?id_carpeta=<?php echo $_GET['id_carpeta'] ?>&amp;id_proyecto=<?php echo $_GET['id_proyecto'] ?>" data-width="100%" data-numposts="5" data-order-by="reverse_time" data-colorscheme="dark"></div>
+                <div class="col-10">
+                    <?php echo $comentarios?>
                 </div>
                 <div class="col-1"></div>
             </div>
