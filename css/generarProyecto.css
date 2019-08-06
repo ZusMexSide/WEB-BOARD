@@ -6,10 +6,10 @@
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #495057;
+    color:black;
     background-color: #fff;
     background-clip: padding-box;
-    border: 3px solid #18293A;
+    border: 2px solid #2851A3;
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
@@ -18,19 +18,19 @@
 @media all and (min-width:430px){
     .form-container{
         display:block;
-        background-color:white;
         width:500px;
-        margin-top:10px;
+        margin-top:100px;
         border-radius:20px;
         padding: 30px;
         height:auto;
+      
 
     }
 }
 @media all and (max-width:430px){
     .form-container{
         display:block;
-        background-color:white;
+         background-color:#03658c;
         width:auto;
         margin-top:10px;
         border-radius:20px;
@@ -43,7 +43,8 @@
     p{
         margin:auto;
         font-family:'Raleway',sans-serif;
-        font-size:16px;
+        font-size:18px;
+        color:black;
 
     }
 }
@@ -52,6 +53,7 @@
         margin:auto;
         font-family:'Raleway',sans-serif;
         font-size:15px;
+        color:#2851A3;
 
     }
 }
@@ -106,7 +108,7 @@ a:hover{
 .btn-primary:hover{
     color:#18293A;
     background-color:white;
-    border: 3px solid #1a2537;
+    border: 2px solid #1a2537;
     font-family:'Raleway',sans-serif;
     font-size:16px; 
 }
@@ -120,10 +122,10 @@ a:hover{
     color: rgba(255,255,255,.5);
     font-size:19px;
 }
-.salir{
+.salir {
     font-size:25px;
     color: rgba(255,255,255,.5);
-    float:right;
+    float:left;
     padding-right:10px;
     padding-left:10px;
 }

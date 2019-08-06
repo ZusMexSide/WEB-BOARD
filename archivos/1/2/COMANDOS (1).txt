@@ -1,0 +1,108 @@
+*******TRABAJANDO RAMA PRINCIPAL O EL FLUJO DE TRABAJO NORMAL**********
+
+<<GIT INIT>>  inicia el repositorio el comando tambien puede crear una carpeta si se 
+le añade un nombre (git init repositorio).
+
+<<git status>> muestra el estado en el que se encuentran los archivos
+rojo significa estan en working directory y verde staging area
+
+<<git add>> mueve el archivo del working directory al staging area, si se le añade el 
+argumento -A se añaden todos los archivos
+
+<<git rm --cached>> para mover de staging area a working directory
+
+<<git rm -f >> borra el archivo añadiendole el nombre de éste,completamente de la carpeta 
+
+<<git commit -m "llenar con texto">> una vez los archivos esten en staging area este 
+comando confirma el archivo para moverlo al repositorio hace un comentario acerca de
+los cambios que se realizaron
+
+<<git commit --amend>> para añadir otro archivo con el commit anterior
+	
+<<git tag>> etiqueta el ultimo commit 
+NOTA:existe etiquetas anotadas y ligeras
+etiqueta ligera es simplemente la version (git tag 2.0)
+version anotada necesita una referencia (git tag -a 2.0 -m "version estable")
+<<git tag -l>> muestra los tags realizados
+<<git tag -d>> borra el tag indicado (git tag -d 2.0)
+<<git tag -f -a>> renombra el tag 
+
+<<git log>> el rastro que deja en el tiempo el proyecto
+<<git log --oneline>> no pone de manera mas resumida los hash
+<<git log --oneline --graph>> grafico de como avanza el proyecto en el tiempo
+<<git log -(numero) >> muestra el commit indicado con numero ejemplo git log -3
+
+<<git diff (sha )>> git diff 8db33... muestra que cambia entre el estado actual y el commit
+<<git diff sha1 sha2>> compara los dos commits tomando en cuenta que el sha izquierdo es el que se comparara
+con el de la derecha (version1,version2)
+
+<<git reset --soft sha1>>quitar el ultimo commit moviendo al staging area
+sin necesidad de borrar nada mas que el commit
+<<git reset --mixed sha>>quita el commit y tambien los cambios preparados (staging),
+nos lleva hasta el working diretory de nuevo. Con este podemos volver a modificar
+nuestros archivos y volverlos a preparar para mandar al repositorio
+<<git reset --hard>> borra todo cuando esten en staging area o cuando 
+se le indique el sha hasta el cual se eliminara todo
+NOTA: si borrasemos todo ocupariamos el sha desde el que queremos
+recuperar ejemplo git reset --hard 19bee87, para ello es bueno manejar 
+dos consolas para realizar el hard
+
+<<git config --global(todos) ó --local(solo repositorio) 
+core.editor "atom(el editor que elijamos) --wait">> para cambiar el editor.
+Tomando en cuenta que deberemos cerrar el editor para que guarde.
+
+
+**********TRABAJO CON RAMAS******************
+<<git branch (nombre)>> creamos una nueva rama ej: git branch otra
+<<git branch -l>> lista las ramas creadas
+<<git branch -d (nombre)>> borra la rama siempre y cuando no tenga commiits
+<<git branch -D (nombre)>>borra forzadamente la rama
+<< git branch -m (nombreactual) (nuevonombre)>> renombra una rama
+
+<<git checkout (nombre)>> cambiar de rama indicandole al nombre
+<<git checkout (sha)>> cambia a un commit, se movió en el tiempo. 
+Deshace los cambios sin borrarlos para regresarte en el tiempo 
+creando una rama virtual.
+<<git checkout -b (nombre)>> crea y posiciona sobre la rama creada
+
+<<git merge (rama a mezclar>> para mezclar debemos posicionarnos en la rama en la que 
+los cambios se veran reflejados ej: git merge hotfix
+  
+<<git stash>> nos sirve para esconder los cambios si  no los queremos commitear
+<<git stash list>> para listar los cambios que se ocultaron en el stash
+<<git stash apply>> aplicamos los cambios del stash
+<<git stash drop>> borra el stash 
+NOTA: a todos los comandos de manipulacion le podemos agregar el nombre del stash para
+borrarlo, aplicarlo
+
+<<git cherry-pick (sha del commit)>> selecciona un commit de otra rama para evitar combinar cambios 
+no deseados 
+
+***************COMANDOS GIT HUB ******************************************************
+<<git clone (link)>> clona un repositorio de git hub
+<<git remote add origin (ssh o http)>> enlaza un repo local git
+con uno remoto existente git hub
+<<git remote remove origin>> para quitar el enlace 
+
+<<git fetch origin master>> se trae los cambios de master en repo remoto
+<<git pull origin master>> trae los cambios 
+--allow-unrelated-histories sirve para quitar el error
+
+<<git  push origin master>> envia los cambios locales al branch master del
+repo origin (remoto)
+<<git push origin master --tags>> para enviarlo con tags
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

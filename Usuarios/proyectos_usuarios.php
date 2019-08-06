@@ -8,11 +8,11 @@ if (!isset($_SESSION['autentificado'])) {
 } else {
     if ($_SESSION['autentificado']["privilegios"] == "Gerente") {
         header('Location: ../index.php');
-    }else{
-    $proyectos=new CProyecto;
-    $proyecto_lider=$proyectos->proyectosEmpleadoDondeEsLider($_SESSION['autentificado']['usuario_id']);
-    $proyecto=$proyectos->proyectosEmpleado($_SESSION['autentificado']['usuario_id']);
-}
+    } else {
+        $proyectos = new CProyecto;
+        $proyecto_lider = $proyectos->proyectosEmpleadoDondeEsLider($_SESSION['autentificado']['usuario_id']);
+        $proyecto = $proyectos->proyectosEmpleado($_SESSION['autentificado']['usuario_id']);
+    }
 }
 ?>
 <html lang="en">
@@ -22,8 +22,8 @@ if (!isset($_SESSION['autentificado'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="../css/proyectos_usuarios.css"> 
+        <link rel="stylesheet" href="../css/bootstrap.css"> 
+        <link rel="stylesheet" href="../css/full.css"> 
         <title>Usuarios</title>
     </head>
     <body>
@@ -32,18 +32,19 @@ if (!isset($_SESSION['autentificado'])) {
             <div class="collapse navbar-collapse p-2" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                 </div>
+                <a class="salir" href="../backend/logica/cerrar_sesion.php"> <i class="fas fa-sign-out-alt" ></i></a>
             </div>
-            <a class="salir" href="../backend/logica/cerrar_sesion.php"> <i class="fas fa-sign-out-alt" ></i></a>
         </nav>
-        <div class="section-title-wr  style-2 base base-al">
+       <div class="section-title-wr  style-2 base base-al">
             <br>
             <h3 class="section-title left"> <span>Proyectos</span></h3>
         </div>
-       
         <div class="container">
             <div class="row justify-content-center">
-                   <?php echo $proyecto_lider;
-                   echo $proyecto;?>
+                <?php
+                echo $proyecto_lider;
+                echo $proyecto;
+                ?>
             </div>
         </div>
 

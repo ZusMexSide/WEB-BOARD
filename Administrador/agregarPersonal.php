@@ -17,8 +17,10 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="../css/bootstrap.css">  
         <link rel="stylesheet" href="../css/agregarPersonal.css">
+<!--        <link rel="stylesheet" href="../css/full.css"> -->
+
         <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
         <title>Usuarios</title>
     </head>
@@ -34,74 +36,26 @@ and open the template in the editor.
                     <a class="nav-item nav-link" href="generarProyecto.php">Generar Proyecto</a>
                     <a class="nav-item nav-link active" href="agregarPersonal.php">Agregar Personal<span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="personal.php">Personal</a>
+                    <a class="nav-item nav-link" href="notificaciones.php">Notificaciones</a>
 
                 </div>
+                <a class="salir" href="../backend/logica/cerrar_sesion.php"> <i class="fas fa-sign-out-alt" ></i></a>
             </div>
-            <a class="salir" href="../backend/logica/cerrar_sesion.php"> <i class="fas fa-sign-out-alt" ></i></a>
         </nav>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6-auto">
-                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data" class="form-container">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">
-                                            <i class="fas fa-user" ></i>
-                                            Nombre
-                                        </label>
-                                        <input  name="nombre" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">
-                                            <i class="fas fa-envelope" ></i> 
-                                            Correo Electronico</label>
-                                        <input name="email" type="email" class="form-control" id="correo" placeholder="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">
-                                            <i class="fas fa-user" ></i>
-                                            Usuario</label>
-                                        <input type="text" name="usuario" class="form-control" id="usuario" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">
-                                            <i class="fas fa-school" ></i>
-                                            Nivel de estudios</label>
-                                        <input name="nivel_estudios" type="text" class="form-control" id="puesto" placeholder="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">
-                                            <i class="fas fa-phone" ></i>    
-                                            Numero De Telefono</label>
-                                        <input name="tel" type="tel" class="form-control" id="telefono" placeholder="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">
-                                            <i class="fas fa-key" ></i>
-                                            Password</label>
-                                        <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="">
-                                    </div>
-                                </div>
-                             </div>
-                        </div>
-                         <div class="form-div">
-                                    <label for="foto" class="input-label" class="fotito">
-                                        <i class="fas fa-upload" ></i>
-                                        <span id="label_span">Ingresar foto del usuario</span>
-                                    </label>
-                                    <input name="foto" multiple="true" type="file" accept="images/*" id="foto" >
-                                </div>
-                                <button name="submit" type="submit" class="btn btn-primary btn-block ">Guardar Usuario</button>
+                    <form method="post" enctype="multipart/form-data" class="form-container">
+                        <?php echo $formulario ?>
+                        <?php echo $boton ?>
+                        <?php if (!empty($errores)): ?>
+                            <div class="error"> <?php echo $errores; ?> </div>
+                        <?php elseif ($enviado): ?>
+                            <div class="error">Enviado correctamente</div>
+                        <?php endif; ?>
+
                     </form>
-                    <?php if (!empty($errores)): ?>
-                        <div class="error"> <?php echo $errores; ?> </div>
-                    <?php elseif ($enviado): ?>
-                        <div class="exitoso">Enviado correctamente</div>
-                    <?php endif; ?>
+
                 </div>
             </div>
         </div>
