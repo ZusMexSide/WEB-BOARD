@@ -28,9 +28,9 @@ class CProyecto {
         $acu = "";
         foreach ($proyectos as $proyecto) {
             $acu .= '<div class="col-md-auto">
-                <div class="card text-white bg-white mt-5" style="max-width: 18rem;"> 
+                <div class="card text-white bg-white mt-5" style="max-width: 18rem;">
                         <a class="card-header">' . strtoupper(substr($proyecto['nombre'],0,12)) . '</a>
-                        <span class="lider" href="">Lider del proyecto: ' . $this->modelo->mostrarLiderProyecto($proyecto['lider']) . '</span>      
+                        <span class="lider" href="">Lider del proyecto: ' . $this->modelo->mostrarLiderProyecto($proyecto['lider']) . '</span>
                         <div class="card-body">
                             <div class="proyecto" href="#"> Fecha límite:<br>' .  date('d-m-Y',strtotime($proyecto['fecha_exp'])) . '</div>
                                 <br>
@@ -51,9 +51,9 @@ class CProyecto {
         $acu = "";
         foreach ($proyectos as $proyecto) {
             $acu .= '<div class="col-md-auto">
-                <div class="card text-dark bg-white mt-5" style="max-width: 18rem;"> 
+                <div class="card text-dark bg-white mt-5" style="max-width: 18rem;">
                         <a class="card-header" href="descripcion_usuarios.php?id_carpeta=' . $this->modelo->consultarIdCarpeta($usuario_id, $proyecto['proyecto_id']) . '&id_proyecto=' . $proyecto['proyecto_id'] . '">' . strtoupper(substr($proyecto['nombre'], 0, 12)) . '</a>
-                        <a class="lider" href="">Lider del proyecto: ' . $this->modelo->mostrarLiderProyecto($proyecto['lider']) . '</a>      
+                        <a class="lider" href="">Lider del proyecto: ' . $this->modelo->mostrarLiderProyecto($proyecto['lider']) . '</a>
                         <div class="card-body">
                             <div class="proyecto" href="#"> Fecha límite:<br>' . date('d-m-Y', strtotime($proyecto['fecha_exp'])) . '</div>
                                 <br>
@@ -71,9 +71,9 @@ class CProyecto {
         $acu = "";
         foreach ($proyectos as $proyecto) {
             $acu .= '<div class="col-md-auto">
-                <div class="card text-dark bg-white mt-5" style="max-width: 18rem;"> 
+                <div class="card text-dark bg-white mt-5" style="max-width: 18rem;">
                         <a class="card-header" href="../Administrador/verProyecto.php?id=' . $proyecto['proyecto_id'] . '">' . strtoupper(substr($proyecto['nombre'], 0, 12)) . '</a>
-                        <a class="lider" href="">Lider del proyecto: ' . $this->modelo->mostrarLiderProyecto($proyecto['lider']) . '</a>      
+                        <a class="lider" href="">Lider del proyecto: ' . $this->modelo->mostrarLiderProyecto($proyecto['lider']) . '</a>
                         <div class="card-body">
                             <div class="proyecto" href="#"> Fecha límite:<br>' . date('d-m-Y', strtotime($proyecto['fecha_exp'])) . '</div>
                                 <br>
@@ -128,7 +128,7 @@ class CProyecto {
             $tareas = $this->modelo->consultarTarea($carpeta['carpeta_id']);
             if (!empty($tareas)) {
                 $acu .= '<div class="col-md-auto">
-                    <div class="cardv text-white bg-white mt-5" style="max-width: 18rem;"> 
+                    <div class="cardv text-white bg-white mt-5" style="max-width: 18rem;">
                         <div class="card-header"><h2>' . $carpeta['status'] . '</h2></div>
                         <div class="card-body">
                          <a class="proyecto" href="descripcion.php?id_carpeta=' . $carpeta['carpeta_id'] . '&id_proyecto=' . $carpeta['proyecto_id'] . '">' . $this->modelo->mostrarNombreUsuario($carpeta['usuario_id']) . '</a>
@@ -138,7 +138,7 @@ class CProyecto {
                     </div>';
             } else {
                 $acu .= '<div class="col-md-auto">
-                    <div class="cardv text-white bg-white mt-5" style="max-width: 18rem;"> 
+                    <div class="cardv text-white bg-white mt-5" style="max-width: 18rem;">
                         <div class="card-header"><h2>' . $carpeta['status'] . '</h2></div>
                         <div class="card-body">
                          <a class="proyecto" href="descripcion.php?id_carpeta=' . $carpeta['carpeta_id'] . '&id_proyecto=' . $carpeta['proyecto_id'] . '">' . $this->modelo->mostrarNombreUsuario($carpeta['usuario_id']) . '</a>
@@ -207,12 +207,12 @@ public function mostrarCorreoUsuario($carpeta_id) {
         if (empty($devolver['tarea'])) {
             $devolver['tarea'] = '<h3>No hay tareas asignadas</h3>
                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal">Asignar tareas</button>
-                  <form method="post"> 
+                  <form method="post">
                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-xl" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header ">
-                                        <strong class="modal-title text-dark"> Ingresa la tarea a asignar </strong> 
+                                        <strong class="modal-title text-dark"> Ingresa la tarea a asignar </strong>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -260,11 +260,11 @@ public function mostrarCorreoUsuario($carpeta_id) {
             foreach ($arrays as $archivo) {
                 if ($archivo['propietario'] == $nombre) {
                     $acu['propios'] .= '<div class="col-2">
-                            <a  href="' . $archivo['url'] . '"><i class="fa fa-file" aria-hidden="true">' . pathinfo($archivo["url"], PATHINFO_BASENAME) . '</i></a> 
+                            <a  href="' . $archivo['url'] . '"><i class="fa fa-file" aria-hidden="true">' . pathinfo($archivo["url"], PATHINFO_BASENAME) . '</i></a>
                         </div>';
                 } else {
                     $acu['no_propietario'] .= '<div class="col-2">
-                            <a  href="' . $archivo['url'] . '"><i class="fa fa-file" aria-hidden="true">' . pathinfo($archivo["url"], PATHINFO_BASENAME) . '</i></a> 
+                            <a  href="' . $archivo['url'] . '"><i class="fa fa-file" aria-hidden="true">' . pathinfo($archivo["url"], PATHINFO_BASENAME) . '</i></a>
                         </div>';
                 }
             }
@@ -340,6 +340,22 @@ public function mostrarCorreoUsuario($carpeta_id) {
         $this->modelo->insertarMovimiento($proyecto_id, $carpeta_id, $nombre, $descripcion);
     }
 public function imprimirDashboard(){
-    return $this->modelo->mostrarUltimosMovimientos();
-}
+    $eventos= $this->modelo->mostrarUltimosMovimientos();
+    $acu="";
+foreach ($eventos as $evento) {
+  $proyecto=$this->modelo->consultarProyecto($evento['proyecto_id']);
+  $acu.='<div class="col">
+  <div class="card text-center text-white bg-primary">
+  <div class="card-header">'.
+     date('d-m-Y',strtotime($evento['fecha'])).' a las '.$evento['hora'].'
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">'.$proyecto['nombre'].'</h5>
+    <p class="card-text">'.$evento['nombre'].' '.$evento['descripcion'].'</p>
+    <a href="descripcion.php?id_carpeta='.$evento['carpeta_id'].'&id_proyecto='.$evento['proyecto_id'].'" class="btn btn-primary">Revisar</a>
+  </div></div>
+</div>';
+    }
+return $acu;
+  }
 }

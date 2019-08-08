@@ -6,7 +6,6 @@ include '../backend/modelo/MUsuarios.php';
 include '../backend/controlador/CUsuarios.php';
 $controlador= new CProyecto();
 $tarea=$controlador->imprimirDashboard();
-print_r($tarea);
 ?>
 <html>
     <head>
@@ -15,8 +14,8 @@ print_r($tarea);
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-        <link rel="stylesheet" href="../css/bootstrap.css">  
-        <link rel="stylesheet" href="../css/full.css">  
+        <link rel="stylesheet" href="../css/bootstrap.css">
+        <link rel="stylesheet" href="../css/full.css">
         <title>Usuarios</title>
     </head>
     <body>
@@ -36,28 +35,14 @@ print_r($tarea);
                 <a class="salir" href="../backend/logica/cerrar_sesion.php"> <i class="fas fa-sign-out-alt" ></i></a>
             </div>
         </nav>
-        <br>
-        <br>
-        <table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Proyecto</th>
-      <th scope="col">Carpeta</th>
-      <th scope="col">Descripcion</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-        <th> </th>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="row">
+              <?php echo $tarea ?>
+            </div>
+          </div>
+        </div>
+      </div>
     </body>
 </html>

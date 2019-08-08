@@ -82,7 +82,7 @@ if (isset($_GET['id'])) {
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">
-                                            <i class="fas fa-envelope" ></i> 
+                                            <i class="fas fa-envelope" ></i>
                                             Correo Electronico</label>
                                         <input name="email" type="email" class="form-control" id="correo" placeholder="">
                                     </div>
@@ -98,13 +98,13 @@ if (isset($_GET['id'])) {
                                         <label for="exampleInputPassword1">
                                             <i class="fas fa-school" ></i>
                                             Nivel de estudios</label>
-                                        <input name="nivel_estudios" type="text" class="form-control" id="puesto" placeholder="">
+                                        <input name="nivel_estudios"  type="text" class="form-control" id="puesto" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">
-                                            <i class="fas fa-phone" ></i>    
+                                            <i class="fas fa-phone" ></i>
                                             Numero De Telefono</label>
-                                        <input name="tel" type="tel" class="form-control" id="telefono" placeholder="">
+                                        <input name="tel" type="number" max="10" class="form-control" id="telefono" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">
