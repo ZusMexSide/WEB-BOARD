@@ -618,3 +618,8 @@ body {
 .secund th{
     color:#2851A3;
 }
+
+.table{
+    width:90%;
+    margin:auto;
+}
