@@ -36,7 +36,28 @@ print_r($tarea);
                 <a class="salir" href="../backend/logica/cerrar_sesion.php"> <i class="fas fa-sign-out-alt" ></i></a>
             </div>
         </nav>
-        
-        
+        <br>
+        <br>
+        <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Proyecto</th>
+      <th scope="col">Carpeta</th>
+      <th scope="col">Descripcion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <th> </th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
     </body>
 </html>
