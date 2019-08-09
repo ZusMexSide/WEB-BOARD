@@ -36,6 +36,7 @@ if (!empty($_GET['id_proyecto']) && !empty($_GET['id_carpeta'])) {
                     <a class="nav-item nav-link" href="generarProyecto.php"> Generar Proyecto</a>
                     <a class="nav-item nav-link" href="agregarPersonal.php">Agregar Personal</a>
                     <a class="nav-item nav-link" href="personal.php">Personal</a>
+                    <a class="nav-item nav-link" href="notificaciones.php">Notificaciones</a>
                 </div>
                             <a class="salir" href="../backend/logica/cerrar_sesion.php"> <i class="fas fa-sign-out-alt" ></i></a>
 </div>
