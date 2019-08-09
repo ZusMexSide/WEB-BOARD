@@ -101,9 +101,11 @@ if (isset($_GET['id'])) {
                                         <input name="nivel_estudios"  type="text" class="form-control" id="puesto" placeholder="">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">
+                                    <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Ingresar los 10 digitos de su telefono">
+                                          <label for="exampleInputPassword1">
                                             <i class="fas fa-phone" ></i>
                                             Numero De Telefono</label>
+                                            </span>
                                         <input name="tel" type="number" max="10" class="form-control" id="telefono" placeholder="">
                                     </div>
                                     <div class="form-group">

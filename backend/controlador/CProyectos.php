@@ -344,17 +344,27 @@ public function imprimirDashboard(){
     $acu="";
 foreach ($eventos as $evento) {
   $proyecto=$this->modelo->consultarProyecto($evento['proyecto_id']);
-  $acu.='<div class="col">
-  <div class="card text-center text-white bg-primary">
-  <div class="card-header">'.
-     date('d-m-Y',strtotime($evento['fecha'])).' a las '.$evento['hora'].'
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">'.$proyecto['nombre'].'</h5>
-    <p class="card-text">'.$evento['nombre'].' '.$evento['descripcion'].'</p>
-    <a href="descripcion.php?id_carpeta='.$evento['carpeta_id'].'&id_proyecto='.$evento['proyecto_id'].'" class="btn btn-primary">Revisar</a>
-  </div></div>
-</div>';
+  $acu.='<div class="comments-container">
+         <ul id="comments-list" class="comments-list">
+                <li>
+                    <div class="comment-main-level">
+                     <div class="comment-box">
+                            <div class="comment-head">
+                               
+                                <span><small class="text-muted">'.
+     date('d-m-Y',strtotime($evento['fecha'])).' a las '.$evento['hora'].'</small</span>
+                                
+                            </div>
+                            <div class="comment-content">
+                         <h5 class="card-title">'.$proyecto['nombre'].'</h5>
+                            <p>'.$evento['nombre'].' '.$evento['descripcion'].'</p>
+                                 <a href="descripcion.php?id_carpeta='.$evento['carpeta_id'].'&id_proyecto='.$evento['proyecto_id'].'" class="btn btn-primary">Revisar</a>
+ </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>';
     }
 return $acu;
   }

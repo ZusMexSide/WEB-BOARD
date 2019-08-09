@@ -61,7 +61,9 @@ class CUsuarios {
                     <div class="cardp mt-5" style="width: 15rem;">
                         <div class="uno"> 
                             <div class="card-bodie">
+                            <div class="imgp">
                              <img src=../' . $persona["imagen"] . ' class="img-fluid  w-60 sm-auto" alt="...">
+                                </div>
                                  <span>INFORMACIÓN</span>
                               <div class="card-titulo"> 
                              <p>' . $persona["nombre"] . '</p>
