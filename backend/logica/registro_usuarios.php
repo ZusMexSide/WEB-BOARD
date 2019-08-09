@@ -104,8 +104,7 @@ if (isset($_GET['id'])) {
                                           <label for="exampleInputPassword1">
                                             <i class="fas fa-phone" ></i>
                                             Numero De Telefono</label>
-                                            </span>
-                                        <input name="tel" type="number" max="10" class="form-control" id="telefono" placeholder="">
+                                        <input name="tel" type="tel" class="form-control" id="telefono" pattern="[0-9]{10}" >
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">
