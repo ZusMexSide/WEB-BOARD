@@ -18,12 +18,11 @@ include_once './backend/logica/LLogin.php';
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/full.css">
         <title>Login</title>
+        <link rel="shortcut icon" href="../img/logo-webBoard.png"/>
     </head>
     <body>
         <nav class="mb-1 navbar navbar-expand-lg navbar-dark orange lighten-1">
             WEB-BOARD
-
-
         </nav>
         <div class="container mt-5">
             <div class="row justify-content-center">
