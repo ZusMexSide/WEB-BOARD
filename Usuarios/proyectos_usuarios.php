@@ -21,21 +21,44 @@ if (!isset($_SESSION['autentificado'])) {
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Pragati+Narrow&display=swap" rel="stylesheet">        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <link rel="stylesheet" href="../css/bootstrap.css"> 
         <link rel="stylesheet" href="../css/full.css"> 
-        <title>Usuarios</title>
+        <title>Proyectos</title>
+        <link rel="shortcut icon" href="../img/logo-webBoard.png"/>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-2" >
-            <a class="navbar-brand" href="proyectos_usuarios.php">WebBoard</a>
-            <div class="collapse navbar-collapse p-2" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                </div>
-                <a class="salir" href="../backend/logica/cerrar_sesion.php"> <i class="fas fa-sign-out-alt" ></i></a>
+        <nav class="mb-1 navbar navbar-expand-lg navbar-dark orange lighten-1">
+            <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item avatar">
+                    <a class="nav-link p-0" href="#">
+                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
+                             alt="avatar image" height="35">
+                    </a>
+                </li>
+
+            </ul>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+                    aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="proyectos_usuarios.php">Proyectos</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto nav-flex-icons">
+                    <li class="nav-item avatar">
+                        <a  class="nav-item avatar" href="../backend/logica/cerrar_sesion.php"> Salir <i class="fas fa-sign-in-alt" ></i></a>
+                    </li>
+                </ul>
+
             </div>
         </nav>
-       <div class="section-title-wr  style-2 base base-al">
+        <div class="section-title-wr  style-2 base base-al">
             <br>
             <h3 class="section-title left"> <span>Proyectos</span></h3>
         </div>

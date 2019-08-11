@@ -30,21 +30,22 @@ class CUsuarios {
             }
             if ($cancelar == false) {
                 $acu .= '<div class="col-sm-auto">
-                    <div class="cardp mt-5" style="width: 15rem;">
-                        <div class="uno">
+                    <div class="card mt-5" style="width: 15rem;">
+                    <div class="imgp">
+                    <img src=../' . $persona["imagen"] . ' class="card-img-top"  w-60 sm-auto" alt="...">
+                        </div>
+                        <div class="uno"> 
                             <div class="card-bodie">
-                             <img src=../' . $persona["imagen"] . ' class="img-fluid w-60 sm-3" alt="...">
-                              <span>información</span>
-                             <div class="card-titulo">
-
-                               <span>' . $persona["nombre"] . '</sapn>
-                                    <span>Puesto:' . $persona["nivel_estudios"] . '</span>
-                                        <br>
-                                     <input type="checkbox" name="casilla[]" value="' . $persona['usuario_id'] . '"> Añadir <br>
+                            <span>INFORMACIÓN</span>
+                              <div class="card-titulo"> 
+                             <p>' . $persona["nombre"] . '</p>
+                                <p>Nivel de estudios: ' . $persona["nivel_estudios"] . '</p>
+                                        <input type="checkbox" name="casilla[]" value="' . $persona['usuario_id'] . '"> Añadir <br>
                                     </div>
+                                   
                                 </div>
                             </div>
-                        </div>
+                         </div>
                 </div>';
             } else {
                 $cancelar = false;
@@ -58,20 +59,21 @@ class CUsuarios {
         $acu = "";
         foreach ($personal as $persona) {
             $acu .= '<div class="col-sm-auto">
-                    <div class="cardp mt-5" style="width: 15rem;">
-                        <div class="uno">
+                    <div class="card mt-5" style="width: 15rem;">
+                    <div class="imgp">
+                    <img src=../' . $persona["imagen"] . ' class="card-img-top"  w-60 sm-auto" alt="...">
+                        </div>
+                        <div class="uno"> 
                             <div class="card-bodie">
-                            <div class="imgp">
-                             <img src=../' . $persona["imagen"] . ' class="img-fluid  w-60 sm-auto" alt="...">
-                                </div>
-                                 <span>INFORMACIÓN</span>
-                              <div class="card-titulo">
+                            <span>INFORMACIÓN</span>
+                              <div class="card-titulo"> 
                              <p>' . $persona["nombre"] . '</p>
-                                    <p>Puesto: ' . $persona["nivel_estudios"] . '</p>
+                                 <p>Nivel de estudios: ' . $persona["nivel_estudios"] . '</p>
                                     </div>
                                 </div>
+                                
                             </div>
-                        </div>
+                         </div>
                 </div>';
         }
         return $acu;
@@ -85,21 +87,22 @@ class CUsuarios {
                 continue;
             }
             $acu .= '<div class="col-sm-auto">
-                    <div class="cardp mt-5" style="width: 15rem;">
-                        <div class="uno">
+                    <div class="card mt-5" style="width: 15rem;">
+                    <div class="imgp">
+                    <img src=../' . $persona["imagen"] . ' class="card-img-top"  w-60 sm-auto" alt="...">
+                        </div>
+                        <div class="uno"> 
                             <div class="card-bodie">
-                             <img src=../' . $persona["imagen"] . ' class="img-fluid w-60 sm-3" alt="...">
-                              <span>información</span>
-                             <div class="card-titulo">
-
-                               <span>' . $persona["nombre"] . '</sapn>
-                                    <span>Puesto:' . $persona["nivel_estudios"] . '</span>
-                                        <br>
-                                     <input type="checkbox" name="casilla[]" value="' . $persona['usuario_id'] . '"> Añadir <br>
+                            <span>INFORMACIÓN</span>
+                              <div class="card-titulo"> 
+                             <p>' . $persona["nombre"] . '</p>
+                                <p>Nivel de estudios: ' . $persona["nivel_estudios"] . '</p>
+                                        <input type="checkbox" name="casilla[]" value="' . $persona['usuario_id'] . '"> Añadir <br>
                                     </div>
+                                   
                                 </div>
                             </div>
-                        </div>
+                         </div>
                 </div>';
         }
         return $acu;
@@ -148,7 +151,7 @@ class CUsuarios {
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">
-                                            <i class="fas fa-envelope" ></i>
+                                            <i class="fas fa-envelope" ></i> 
                                             Correo Electronico</label>
                                         <input name="email" type="email" class="form-control" id="correo"value="' . $empleado['correo'] . '">
                                     </div>
@@ -168,9 +171,9 @@ class CUsuarios {
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">
-                                            <i class="fas fa-phone" ></i>
+                                            <i class="fas fa-phone" ></i>    
                                             Numero De Telefono</label>
-                                        <input name="tel" type="tel" class="form-control" id="telefono" value="' . $empleado['tel'] . '" pattern="[0-9]{10}" > 
+                                        <input name="tel" type="tel" class="form-control" id="telefono" value="' . $empleado['tel'] . '">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">

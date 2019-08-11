@@ -28,8 +28,10 @@ class CProyecto {
         $acu = "";
         foreach ($proyectos as $proyecto) {
             $acu .= '<div class="col-md-auto">
+                <div class="tarjetas">
                 <div class="card text-white bg-white mt-5" style="max-width: 18rem;">
                         <a class="card-header">' . strtoupper(substr($proyecto['nombre'],0,12)) . '</a>
+                            <br>
                         <span class="lider" href="">Lider del proyecto: ' . $this->modelo->mostrarLiderProyecto($proyecto['lider']) . '</span>
                         <div class="card-body">
                             <div class="proyecto" href="#"> Fecha límite:<br>' .  date('d-m-Y',strtotime($proyecto['fecha_exp'])) . '</div>
@@ -41,6 +43,7 @@ class CProyecto {
                      <br>
                      </div>
                      <br>
+                     </div>
                     </div>';
         }
         return $acu;
@@ -53,7 +56,8 @@ class CProyecto {
             $acu .= '<div class="col-md-auto">
                 <div class="card text-dark bg-white mt-5" style="max-width: 18rem;">
                         <a class="card-header" href="descripcion_usuarios.php?id_carpeta=' . $this->modelo->consultarIdCarpeta($usuario_id, $proyecto['proyecto_id']) . '&id_proyecto=' . $proyecto['proyecto_id'] . '">' . strtoupper(substr($proyecto['nombre'], 0, 12)) . '</a>
-                        <a class="lider" href="">Lider del proyecto: ' . $this->modelo->mostrarLiderProyecto($proyecto['lider']) . '</a>
+                     <br>   
+<a class="lider" href="">Lider del proyecto: ' . $this->modelo->mostrarLiderProyecto($proyecto['lider']) . '</a>
                         <div class="card-body">
                             <div class="proyecto" href="#"> Fecha límite:<br>' . date('d-m-Y', strtotime($proyecto['fecha_exp'])) . '</div>
                                 <br>
@@ -73,7 +77,8 @@ class CProyecto {
             $acu .= '<div class="col-md-auto">
                 <div class="card text-dark bg-white mt-5" style="max-width: 18rem;">
                         <a class="card-header" href="../Administrador/verProyecto.php?id=' . $proyecto['proyecto_id'] . '">' . strtoupper(substr($proyecto['nombre'], 0, 12)) . '</a>
-                        <a class="lider" href="">Lider del proyecto: ' . $this->modelo->mostrarLiderProyecto($proyecto['lider']) . '</a>
+                       <br>
+<a class="lider" href="">Lider del proyecto: ' . $this->modelo->mostrarLiderProyecto($proyecto['lider']) . '</a>
                         <div class="card-body">
                             <div class="proyecto" href="#"> Fecha límite:<br>' . date('d-m-Y', strtotime($proyecto['fecha_exp'])) . '</div>
                                 <br>
@@ -218,11 +223,9 @@ public function mostrarCorreoUsuario($carpeta_id) {
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="container-fluid">
-                                            <div class="row">
-                                                <textarea class="ckeditor" name="descripcion"></textarea>
+                                        <div class="form-group">
+                                           <textarea class="ckeditor" name="descripcion"></textarea>
                             <input type="hidden" name="carpeta_id" value="' . $_GET['id_carpeta'] . '">
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -314,10 +317,9 @@ public function mostrarCorreoUsuario($carpeta_id) {
                       <div class="comment-avatar"><img src="../' . $usuario['imagen'] . '"alt="USUARIO"></div>
                           <div class="comment-box">
                             <div class="comment-head">
-                                <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">' . $usuario['nombre'] . '</a></h6>
+                                <h6 class=""><a href="http://creaticode.com/blog">' . $usuario['nombre'] . '</a></h6>
                                 <span><small class="text-muted">Comentado el ' . $fecha . ' a las ' . $hora . '</small</span>
-                                <i class="fa fa-reply"></i>
-                                <i class="fa fa-heart"></i>
+                                
                             </div>
                             <div class="comment-content">
                             <p>' . $comentario['contenido'] . ' </p>
@@ -345,24 +347,19 @@ public function imprimirDashboard(){
 foreach ($eventos as $evento) {
   $proyecto=$this->modelo->consultarProyecto($evento['proyecto_id']);
   $acu.='<div class="comments-container">
-         <ul id="comments-list" class="comments-list">
-                <li>
-                    <div class="comment-main-level">
-                     <div class="comment-box">
+         <ul  class="comments-list">
+                <div class="comment-box">
                             <div class="comment-head">
-                               
                                 <span><small class="text-muted">'.
-     date('d-m-Y',strtotime($evento['fecha'])).' a las '.$evento['hora'].'</small</span>
-                                
-                            </div>
+                                  date('d-m-Y',strtotime($evento['fecha'])).' a las '.$evento['hora'].'</small</span>
+                                 </div>
                             <div class="comment-content">
                          <h5 class="card-title">'.$proyecto['nombre'].'</h5>
                             <p>'.$evento['nombre'].' '.$evento['descripcion'].'</p>
                                  <a href="descripcion.php?id_carpeta='.$evento['carpeta_id'].'&id_proyecto='.$evento['proyecto_id'].'" class="btn btn-primary">Revisar</a>
- </div>
-                        </div>
+                            </div>
+                      
                     </div>
-                </li>
             </ul>
         </div>';
     }

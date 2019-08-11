@@ -14,7 +14,7 @@
 form{
     padding:20px;
     color:white;
-   
+
     margin:auto;
     width:auto;
 }
@@ -31,20 +31,13 @@ form{
     width:1300px;
     border-radius: 30px;
 }
-.navbar-dark .navbar-brand {
-    color: #fff;
-    font-size: 35px;
-}
-.navbar-dark .navbar-nav .nav-link {
-    color: rgba(255,255,255,.5);
-    font-size:19px;
-}
+
 body{
     font-family:'Raleway',sans-serif;
-    font-size: 15px;
+    font-size: 19px;
     font-weight:400;
     color:black;
-    background: #dee1e3;
+    background:white;
 }
 .salir{
     font-size:25px;
@@ -63,18 +56,18 @@ body{
     background-color:#2851A3;
     border-color:#2851A3;
     margin:3px 3px 3px 3px;
-    font-family:'Raleway',sans-serif;
-    font-size:16px; 
+   font-family: 'Open Sans Condensed', sans-serif;
+    font-size:20px; 
     width:100%;
-    
-  
+
+
 }
 
 .btn-primary:hover {
-   color:#2851A3;
+    color:#2851A3;
     background-color:white;
-   margin:3px 3px 3px 3px;
-    border:2px solid #2851A3;
+    margin:3px 3px 3px 3px;
+   
 }
 
 .input-label{
@@ -82,11 +75,16 @@ body{
     text-align:center;
     height:auto;
     width:60%;
-    background-color:#2851A3;
+    background:linear-gradient(40deg,#45cafc,#303f9f)!important;
     color:white;
     padding:16px;
-   margin-left:20%;
+    margin-left:20%;
     margin-right:15%;
+     font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.input-label span{
+     font-family: 'Open Sans Condensed', sans-serif;
 }
 .input-label:hover{
     text-align:center;
@@ -94,8 +92,7 @@ body{
     background-color:white;
     color:#1a2537; 
     padding:16px;
-    border: 2px solid #2851A3;
-  margin-left:20%;
+    margin-left:20%;
     margin-right:15%;
 }
 .form-div{
@@ -112,39 +109,39 @@ body{
 
 @media all and (max-width:430px){
     .form-control {
-    display: block;
-    width: 100%;
-    height: calc(1.5em + .75rem + 2px);
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 2px solid #2851A3;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        display: block;
+        width: 100%;
+        height: calc(1.5em + .75rem + 2px);
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 2px solid #2851A3;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 
     }
 }
 
 @media all and (min-width:430px){
     .form-control {
-    display: block;
-    width: 100%;
-    height: calc(1.5em + .75rem + 2px);
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 2px solid #2851A3;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
+        display: block;
+        width: 100%;
+        height: calc(1.5em + .75rem + 2px);
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 2px solid #2851A3;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
 }
 
 @media all and (max-width:430px){
@@ -153,20 +150,25 @@ body{
         font-size:11px;
         text-align:center;
         height:auto;
+        overflow:hidden;
+         font-family: 'Open Sans Condensed', sans-serif;
+        
     }
 }
 @media all and (min-width:430px){
     label{
-       color:black;
-       font-size:15px;
+        color:black;
+        font-size:20px;
         text-align:center;
         height:auto;
+        overflow:hidden;
+         font-family: 'Open Sans Condensed', sans-serif;
     }
 }
 @media all and (min-width:430px){
     .form-container{
         display:block;
-       margin-top:80px;
+        margin-top:80px;
         width:500px;
         margin-top:10px;
         border-radius:20px;
@@ -178,7 +180,7 @@ body{
 @media all and (max-width:430px){
     .form-container{
         display:block;
-      margin-top:80px;
+        margin-top:80px;
         width:auto;
         margin-top:10px;
         border-radius:20px;
@@ -194,7 +196,7 @@ body{
     width: 150px;
 }
 .error {
- -webkit-box-shadow:0 0 10px rgba(0,0,0,0.3);
+    -webkit-box-shadow:0 0 10px rgba(0,0,0,0.3);
     -moz-box-shadow:0 0 10px rgba(0,0,0,0.3);
     -o-box-shadow:0 0 10px rgba(0,0,0,0.3);
     box-shadow:0 0 10px rgba(0,0,0,.3);
@@ -202,6 +204,6 @@ body{
     text-align: center;
     padding: 10px;
     color:#fff;
-  background-color: red;
+    background-color: red;
 
 }
