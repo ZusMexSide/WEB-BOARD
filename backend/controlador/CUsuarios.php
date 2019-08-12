@@ -86,8 +86,8 @@ class CUsuarios {
             if ($persona['privilegios'] == 'Gerente') {
                 continue;
             }
-            $acu .= '<div class="col-sm-auto">
-                    <div class="card mt-5" style="width: 15rem;">
+            $acu .= '<div id="f'.$persona['usuario_id'].'" class="col-sm-auto">
+                    <div  class="card mt-5" style="width: 15rem;">
                     <div class="imgp">
                     <img src=../' . $persona["imagen"] . ' class="card-img-top"  w-60 sm-auto" alt="...">
                         </div>
@@ -112,7 +112,7 @@ class CUsuarios {
         $lideres = $this->modeloRegistro_usuarios->mostrarPersonal();
         $acu = "";
         foreach ($lideres as $lider) {
-            $acu .= "<option value='" . $lider['usuario_id'] . "'>" . " " . $lider['nombre'] . "</option> ";
+            $acu .= "<option id=".$lider['usuario_id']." value='" . $lider['usuario_id'] . "'>" . " " . $lider['nombre'] . "</option> ";
         }
         return $acu;
     }

@@ -99,7 +99,7 @@ if (isset($_POST['enviado'])) {
     if (!empty($_POST['descripcion'])) {
         $proyectos->nuevaTarea($_POST['carpeta_id'], $_POST['descripcion']);
         $asunto = 'Asignacion de tarea';
-        $contenido = 'El lider del proyecto ' . $proyecto['nombre'] . ' te asigno una tarea' . \n . 'en tu carpeta personal.';
+        $contenido = 'El lider del proyecto ' . $proyecto['nombre'] . ' te asigno una tarea'. 'en tu carpeta personal.';
         mail($destino, $asunto, $contenido);
         header('Location: descripcion.php?id_carpeta=' . $_GET['id_carpeta'] . '&id_proyecto=' . $_GET['id_proyecto'] . '');
     } else {

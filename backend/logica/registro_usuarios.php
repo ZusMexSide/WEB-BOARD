@@ -68,7 +68,9 @@ if (isset($_POST['submit'])) {
 if (isset($_GET['id'])) {
     $formulario = $CRegistro_usuarios->datosDeEmpleado($_GET['id']);
     $array_empleado = $CRegistro_usuarios->datosDeEmpleadoArray($_GET['id']);
-    $boton = '<button name="modificar" type="submit" class="btn btn-primary btn-block ">Modificar</button>';
+    $boton = '<div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col"><button name="modificar" type="submit" class="btn btn-primary btn-block ">Modificar</button></div></div></div>';
 } else {
     $formulario = '<div class="container">
                             <div class="row">
@@ -133,7 +135,9 @@ if (isset($_GET['id'])) {
                                     </label>
                                     <input name="foto" pattern="[a-z]{0,12}" multiple="true" type="file" accept="images/*"  id="foto" >
                                 </div>';
-    $boton = '<button name="submit" type="submit" class="btn btn-primary btn-block ">Añadir</button>';
+    $boton = '<div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col"><button name="submit" type="submit" class="btn btn-primary btn-block ">Añadir</button></div></div></div>';
 }
  if (isset($_POST['modificar'])) {
         $nombre = $_POST['nombre'];

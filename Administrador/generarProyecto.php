@@ -31,15 +31,15 @@ and open the template in the editor.
     <body>
         <!--Navbar -->
         <nav class="mb-1 navbar navbar-expand-lg navbar-dark orange lighten-1">
-           <ul class="navbar-nav ml-auto nav-flex-icons">
-                    <li class="nav-item avatar">
-                        <a class="nav-link p-0" href="#">
-                            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
-                                 alt="avatar image" height="35">
-                        </a>
-                    </li>
+            <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item avatar">
+                    <a class="nav-link p-0" href="#">
+                        <img src="<?php echo '../' . $_SESSION['autentificado']['imagen'] ?>" class="rounded-circle z-depth-0"
+                             alt="avatar image" height="35">
+                    </a>
+                </li>
 
-                </ul>
+            </ul>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
                     aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -84,7 +84,7 @@ and open the template in the editor.
                                         <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Escoge a un usuario como lider del proyecto">
                                             <label for="lider"> <p>Lider del proyecto</p></label>
                                         </span>
-                                        <select class="form-control" id="lider" name="lider">
+                                        <select onchange="quitarLider($('#lider').val());" class="form-control" id="lider" name="lider">
                                             <?php echo $imprimir->inputLiderProyecto() ?>
                                         </select>
                                     </div>
@@ -144,13 +144,18 @@ and open the template in the editor.
                             </div>
                         </div>
 
-
-                        <button type="submit" name="enviado" class="btn btn-primary btn-block ">Guardar Proyecto</button>
-                        <?php if (!empty($errores)): ?>
-                            <div class="error"> <?php echo $errores; ?> </div>
-                        <?php elseif ($enviado): ?>
-                            <div class="error">Enviado correctamente</div>
-                        <?php endif; ?>
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col">
+                                    <button type="submit" name="enviado" class="btn btn-primary btn-block ">Guardar Proyecto</button>
+                                    <?php if (!empty($errores)): ?>
+                                        <div class="error"> <?php echo $errores; ?> </div>
+                                    <?php elseif ($enviado): ?>
+                                        <div class="error">Enviado correctamente</div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
                         <!--                        segundo modal-->
                         <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                             <div class="modal-dialog modal-xl" role="document">
@@ -163,7 +168,7 @@ and open the template in the editor.
                                     </div>
                                     <div class="modal-body">
                                         <div class="form-group">
-                                           
+
                                             <textarea  class="ckeditor" name="descripcion" id="descripcion"></textarea>
                                         </div>
                                     </div>
@@ -182,5 +187,14 @@ and open the template in the editor.
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script>
+                                            function quitarLider($id) {
+                                                $("#lider option").each(function () {
+                                                    $("#f" + $(this).val()).show();
+                                                });
+                                                $("#f" + $id).hide();
+                                            }
+
+        </script>
     </body>
 </html>
