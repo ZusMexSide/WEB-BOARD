@@ -7,6 +7,7 @@ body{
     font-weight:400;
     color:black;
     height:auto;
+    margin: 0px 0px 30px 0px;
 }
 .orange.lighten-1 {
     background-color: #ffa726!important;
@@ -261,6 +262,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
     }   
 }
 .table th, .table td {
+    color:white;
     padding: 0.75rem;
     /* vertical-align: top; */
     border-top: 1px solid #02203e;
@@ -860,3 +862,6 @@ comment-content p{
  overflow:hidden;
 }
 
+h5{
+    color:white;
+}

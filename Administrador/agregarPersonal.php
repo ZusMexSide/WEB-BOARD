@@ -34,7 +34,7 @@ and open the template in the editor.
             <ul class="navbar-nav ml-auto nav-flex-icons">
                 <li class="nav-item avatar">
                     <a class="nav-link p-0" href="#">
-                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
+                        <img src="<?php echo '../' . $_SESSION['autentificado']['imagen'] ?>" class="rounded-circle z-depth-0"
                              alt="avatar image" height="35">
                     </a>
                 </li>

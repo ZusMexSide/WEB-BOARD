@@ -4,6 +4,14 @@ include_once '../backend/modelo/MProyectos.php';
 include '../backend/controlador/CProyectos.php';
 include '../backend/modelo/MUsuarios.php';
 include '../backend/controlador/CUsuarios.php';
+session_start();
+if (!isset($_SESSION['autentificado'])) {
+    header('Location: ../index.php');
+} else {
+    if ($_SESSION['autentificado']["privilegios"] == "Empleado") {
+        header('Location: ../index.php');
+    }
+}
 $controlador = new CProyecto();
 $tarea = $controlador->imprimirDashboard();
 ?>
@@ -25,7 +33,7 @@ $tarea = $controlador->imprimirDashboard();
             <ul class="navbar-nav ml-auto nav-flex-icons">
                 <li class="nav-item avatar">
                     <a class="nav-link p-0" href="#">
-                        <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
+                        <img src="<?php echo '../' . $_SESSION['autentificado']['imagen'] ?>" class="rounded-circle z-depth-0"
                              alt="avatar image" height="35">
                     </a>
                 </li>

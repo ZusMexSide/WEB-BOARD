@@ -40,7 +40,7 @@ class CUsuarios {
                               <div class="card-titulo"> 
                              <p>' . $persona["nombre"] . '</p>
                                 <p>Nivel de estudios: ' . $persona["nivel_estudios"] . '</p>
-                                        <input type="checkbox" name="casilla[]" value="' . $persona['usuario_id'] . '"> Añadir <br>
+                                        <input type="checkbox" name="casilla[]" value="1"' . $persona['usuario_id'] . '"> Añadir <br>
                                     </div>
                                    
                                 </div>
